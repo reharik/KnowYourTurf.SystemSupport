@@ -1,7 +1,6 @@
 ﻿@model EmailTemplateViewModel
 @using SystemSupport.Web
 @using SystemSupport.Web.Controllers
-@using DecisionCritical.Core.Html.FubuUI
 
 @{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
     
@@ -11,30 +10,28 @@
 @MvcHtmlString.Create(FormFor<EmailTemplateController>(x => x.Save(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
     <input type="hidden" id="EntityId" name="EntityId" value="@Model.EmailTemplate.EntityId" />
         <div class="col left">
-            <div class="fieldRow">
-                @Html.ViewFor(x=>x.Company.Name).LabelDisplay(WebLocalizationKeys.CLIENT_NAME).AddClassToRoot("first").ToHtmlTag()
+            <div class="row">
+                @Html.ViewFor(x=>x.Company.Name).LabelDisplay(WebLocalizationKeys.CLIENT_NAME).Size("5").ToHtmlTag()
             </div>
-            <div class="fieldRow">
-                @Html.SubmissionFor(x=>x.EmailTemplate.Name).AddClassToRoot("first").ToHtmlTag()
+            <div class="row">
+                @Html.SubmissionFor(x=>x.EmailTemplate.Name).Size("5").ToHtmlTag()
             </div>
-            <div class="fieldRow">
-                @Html.SubmissionFor(x => x.EmailTemplate.Description).ToHtmlTag()
+            <div class="row">
+                @Html.SubmissionFor(x => x.EmailTemplate.Description).Size("5").ToHtmlTag()
             </div>
         </div>
-        <div class="col full">
-            <div class="fieldRow">
+        <div class="row">
+            <div class="span20">
                 <h2>@WebLocalizationKeys.DONT_CHANGE_EMAIL_TOKENS</h2>
             </div>
         </div>
-        <div class="col left">
-            <div class="fieldRow">
-            @Html.SubmissionFor(x => x.EmailTemplate.ListOfTokenItems).AddClassToRoot("first").ToHtmlTag()
-        </div>
-        </div>
-    <div class="col full">
+            <div class="row">
+            @Html.SubmissionFor(x => x.EmailTemplate.ListOfTokenItems).Size("10").ToHtmlTag()
         
+        </div>
+       
         <div class="fieldRow">
-            @Html.SubmissionFor(x => x.EmailTemplate.Body).AddClassToInput("rte").ToHtmlTag()
+            @Html.SubmissionFor(x => x.EmailTemplate.Body).Size("10").AddClassToInput("rte").ToHtmlTag()
         </div>  
-    </div>
+    
 @EndForm()

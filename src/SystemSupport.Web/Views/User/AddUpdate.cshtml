@@ -1,33 +1,18 @@
 ﻿@model UserViewModel
 @using SystemSupport.Web
 @using SystemSupport.Web.Controllers
-@using DecisionCritical.Core.Html.FubuUI
-@using HtmlTags
 
 @{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
 
 @section HeaderJavascript{
-    var repeaters = {
-        addressItems: @MvcHtmlString.Create(JsonUtil.ToJson(Model.User.Addresses)),
-        emailItems: @MvcHtmlString.Create(JsonUtil.ToJson(Model.User.Emails)),
-        phoneItems: @MvcHtmlString.Create(JsonUtil.ToJson(Model.User.Phones))
-    }
-    extraFormOptions.repeaters = repeaters;
-    extraFormOptions.addUpdateAddressUrl = '@Model.AddUpdateAddressUrl';
-    extraFormOptions.addUpdatePhoneUrl = '@Model.AddUpdatePhoneUrl';
-    extraFormOptions.addUpdateEmailUrl = '@Model.AddUpdateEmailUrl';
-    extraFormOptions.deleteItemUrl = '@Model.DeleteItemUrl';
     extraFormOptions.viewHistoryText = "@WebLocalizationKeys.VIEW_SUBSCRIPTION_HISTORY";
     extraFormOptions.hideHistoryText = "@WebLocalizationKeys.HIDE_SUBSCRIPTION_HISTORY";
-    extraFormOptions.permissionsUrl = "@Model.PermissionsUrl";
-
 }
 
 <div id="validation-container-wrapper">
     <div id="errorMessagesForm" class="dci_ErrorMessages errorMessages"><ul></ul></div>
 </div>
 <div id="userProfile">
-    @MvcHtmlString.Create(FormFor<UserController>(x => x.Save(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
          <input type="hidden" id="EntityId" name="EntityId" value="@Model.User.EntityId">
          <input type="hidden" id="UserLoginInfoId" name="UserLoginInfo.EntityId" value="@Model.UserLoginInfo.EntityId">
         <div class="col left">

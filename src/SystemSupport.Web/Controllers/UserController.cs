@@ -162,8 +162,9 @@ namespace SystemSupport.Web.Controllers
         {
             public string ItemType { get; set; }
         }
+    }
 
-        public class UserViewModel : ViewModel
+    public class UserViewModel : ViewModel
         {
 
             public User User { get; set; }
@@ -184,5 +185,4 @@ namespace SystemSupport.Web.Controllers
 
             public string PermissionsUrl { get; set; }
         }
-    }
 }

@@ -417,19 +417,13 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Shared\_ListLayout.cshtml" />
-    <Content Include="Views\UserList\ItemList.cshtml" />
     <Content Include="Views\User\AddUpdate.cshtml" />
     <Content Include="Views\Shared\AddressTemplate.cshtml" />
     <Content Include="Views\Shared\EmailTemplate.cshtml" />
     <Content Include="Views\Shared\PhoneTemplate.cshtml" />
     <Content Include="Views\Shared\_FormLayout.cshtml" />
     <Content Include="Views\Shared\_DisplayLayout.cshtml" />
-    <Content Include="Views\Client\AddUpdate.cshtml" />
-    <Content Include="Views\Promotion\AddUpdate.cshtml" />
-    <Content Include="Views\PendingCharges\Display.cshtml" />
-    <Content Include="Views\User\Address.cshtml" />
-    <Content Include="Views\User\Email.cshtml" />
-    <Content Include="Views\User\Phone.cshtml" />
+    <Content Include="Views\Company\AddUpdate.cshtml" />
     <Content Include="Views\EmailTemplate\AddUpdate.cshtml">
       <SubType>
       </SubType>
