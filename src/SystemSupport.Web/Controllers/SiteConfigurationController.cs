@@ -7,6 +7,8 @@ using System.Xml.Linq;
 
 namespace SystemSupport.Web.Controllers
 {
+    using SystemSupport.Web.Config;
+
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.DomainTools;
     using CC.Core.Services;
@@ -26,6 +28,11 @@ namespace SystemSupport.Web.Controllers
             _selectListItemService = selectListItemService;
             _suiteWebsiteFullPath = SiteConfig.Settings().WebSiteRoot ?? "";
             _configFilePath = getConfigFilePath();
+        }
+
+        public ActionResult AddUpdate_Template(ViewModel input)
+        {
+            return View("AddUpdate", new SiteConfigurationViewModel());
         }
 
         public ActionResult AddUpdate(ViewModel input)
@@ -49,7 +56,8 @@ namespace SystemSupport.Web.Controllers
                                 //TODO ...show other settings as Readonly
                             };
 
-            return View(model);
+            return new CustomJsonResult(model);
+
         }
 
         private string getConfigFilePath()
@@ -236,7 +244,7 @@ namespace SystemSupport.Web.Controllers
                     break;
             }
 
-            return Json(notification);
+            return new CustomJsonResult(notification);
         }
 
         public bool DoesFileExist(string sourceFileFullPath)

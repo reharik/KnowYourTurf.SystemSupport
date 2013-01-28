@@ -45,3 +45,6 @@ D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bi
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\ImageResizer.xml
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\obj\Debug\SystemSupport.Web.dll
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\obj\Debug\SystemSupport.Web.pdb
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\Newtonsoft.Json.dll
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\Newtonsoft.Json.pdb
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\Newtonsoft.Json.xml

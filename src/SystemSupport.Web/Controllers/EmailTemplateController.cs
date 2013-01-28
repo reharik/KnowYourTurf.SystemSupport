@@ -2,6 +2,8 @@ using System.Web.Mvc;
 
 namespace SystemSupport.Web.Controllers
 {
+    using SystemSupport.Web.Config;
+
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.DomainTools;
     using CC.Core.Services;
@@ -19,6 +21,11 @@ namespace SystemSupport.Web.Controllers
             _saveEntityService = saveEntityService;
         }
 
+        public ActionResult AddUpdate_Template(ViewModel input)
+        {
+            return View("AddUpdate", new EmailTemplateViewModel());
+        }
+
         public ActionResult AddUpdate(ViewModel input)
         {
             EmailTemplate item = input.EntityId > 0 ? _repository.Find<EmailTemplate>(input.EntityId) : new EmailTemplate();
@@ -29,7 +36,7 @@ namespace SystemSupport.Web.Controllers
                 _Title = WebLocalizationKeys.EMAIL_TEMPLATE.ToString(),
                 Company = client
             };
-            return View(model);
+            return new CustomJsonResult(model);
         }
 
         [ValidateInput(false)]
@@ -39,7 +46,7 @@ namespace SystemSupport.Web.Controllers
             mapItem(ref item, input);
             var crudManger = _saveEntityService.ProcessSave(item);
             var notification = crudManger.Finish();
-            return Json(notification);
+            return new CustomJsonResult(notification);
         }
 
         private void mapItem(ref EmailTemplate item, EmailTemplateViewModel input)

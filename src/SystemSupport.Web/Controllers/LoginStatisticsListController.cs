@@ -3,6 +3,8 @@ using System.Web.Mvc;
 
 namespace SystemSupport.Web.Controllers
 {
+    using SystemSupport.Web.Config;
+
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.Html;
     using CC.Core.Services;
@@ -33,7 +35,8 @@ namespace SystemSupport.Web.Controllers
                 _Title = WebLocalizationKeys.LOGIN_INFORMATION.ToString(),
                 gridDef= gridDefinition,
             };
-            return Json(model,JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(model);
+
         }
 
         public JsonResult Items(GridItemsRequestModel input)
@@ -42,7 +45,7 @@ namespace SystemSupport.Web.Controllers
                 ? _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters)
                 : _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters, x=>x.CreatedDate.Value.Date==DateTime.Now.Date);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
-            return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(gridItemsViewModel);
         }
     }
 }

@@ -9,6 +9,8 @@ using StructureMap;
 
 namespace SystemSupport.Web.Controllers
 {
+    using SystemSupport.Web.Config;
+
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.DomainTools;
     using CC.Core.Html;
@@ -46,6 +48,11 @@ namespace SystemSupport.Web.Controllers
             _authorizationRepository = authorizationRepository;
         }
 
+        public ActionResult AddUpdate_Template(ViewModel input)
+        {
+            return View("AddUpdate", new UserViewModel());
+        }
+
         public ActionResult AddUpdate(ViewModel input)
         {
             var companys = _selectListItemService.CreateList<Company>(x => x.Name, x => x.EntityId, true);
@@ -80,7 +87,7 @@ namespace SystemSupport.Web.Controllers
                 model.Company = loginInfo.CompanyId;
                 model.UsersCompany = company;
             }
-            return View(model);
+            return new CustomJsonResult(model);
         }
 
         public ActionResult Login(ViewModel input)
@@ -96,7 +103,7 @@ namespace SystemSupport.Web.Controllers
                                        Variable = user.UserLoginInfo.ByPassToken.ToString(),
                                        EntityId = user.UserLoginInfo.User.EntityId
                                    };
-            return Json(notification, JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(notification);
         }
 
         public JsonResult Save(UserViewModel input)
@@ -119,7 +126,7 @@ namespace SystemSupport.Web.Controllers
 
             var crudManager = _saveEntityService.ProcessSave(origional);
             var notification = crudManager.Finish();
-            return Json(notification, JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(notification);
         }
 
         private void mapProperties(User origional, UserViewModel input)

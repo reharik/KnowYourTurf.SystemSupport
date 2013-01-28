@@ -5,6 +5,8 @@ using SystemSupport.Web.Models;
 
 namespace SystemSupport.Web.Controllers
 {
+    using SystemSupport.Web.Config;
+
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.DomainTools;
     using CC.Core.Html;
@@ -54,14 +56,14 @@ namespace SystemSupport.Web.Controllers
             };
             model.headerButtons.Add("new");
             model.headerButtons.Add("delete");
-            return Json(model,JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(model);
         }
 
         public JsonResult Items(GridItemsRequestModel input)
         {
             var items = _dynamicExpressionQuery.PerformQuery<UserLoginInfo>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
-            return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(gridItemsViewModel);
         }
         public JsonResult DeleteMultiple(BulkActionViewModel input)
         {
@@ -75,7 +77,7 @@ namespace SystemSupport.Web.Controllers
                 }
             });
             _repository.Commit();
-            return Json(new Notification { Success = true }, JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(new Notification { Success = true });
         }
     }
 

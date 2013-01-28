@@ -36,3 +36,6 @@ D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Test\b
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Test\bin\Debug\SystemSupport.Core.pdb
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Test\obj\Debug\SystemSupport.Test.dll
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Test\obj\Debug\SystemSupport.Test.pdb
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Test\bin\Debug\Newtonsoft.Json.dll
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Test\bin\Debug\Newtonsoft.Json.pdb
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Test\bin\Debug\Newtonsoft.Json.xml

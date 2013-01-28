@@ -2,6 +2,8 @@
 
 namespace SystemSupport.Web.Controllers
 {
+    using SystemSupport.Web.Config;
+
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.DomainTools;
     using CC.Core.Html;
@@ -38,14 +40,14 @@ namespace SystemSupport.Web.Controllers
                 addUpdateUrl = addUpdateUrl
             };
             model.headerButtons.Add("new");
-            return Json(model,JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(model);
         }
 
         public JsonResult Items(GridItemsRequestModel input)
         {
             var items = _dynamicExpressionQuery.PerformQuery<Company>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
-            return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
+            return new CustomJsonResult(gridItemsViewModel);
         }
 
         

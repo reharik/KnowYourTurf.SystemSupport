@@ -3,6 +3,8 @@ using System.Web.Mvc;
 
 namespace SystemSupport.Web.Controllers
 {
+    using SystemSupport.Web.Config;
+
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.DomainTools;
     using CC.Core.Services;
@@ -21,6 +23,11 @@ namespace SystemSupport.Web.Controllers
             _saveEntityService = saveEntityService;
         }
 
+        public ActionResult AddUpdate_Template(ViewModel input)
+        {
+            return View("AddUpdate", new CompanyViewModel());
+        }
+
         public ActionResult AddUpdate(ViewModel input)
         {
             Company item = input.EntityId > 0 ? _repository.Find<Company>(input.EntityId) : new Company();
@@ -28,7 +35,7 @@ namespace SystemSupport.Web.Controllers
                 Company = item,
                 _Title = WebLocalizationKeys.CLIENT.ToString(),
             };
-            return View(model);
+            return new CustomJsonResult(model);
         }
 
         public JsonResult Save(CompanyViewModel input)
