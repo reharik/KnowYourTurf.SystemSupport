@@ -38,11 +38,6 @@ namespace SystemSupport.Web
             return new ImageExpression(url);
         }
 
-        public static FormExpression FormFor(string actionUrl, string id = null)
-        {
-            return new FormExpression(actionUrl, id);
-        }
-
         public static StandardButtonExpression StandardButtonFor(string name, string value)
         {
             return new StandardButtonExpression(name).NonLocalizedText(value);
@@ -51,13 +46,6 @@ namespace SystemSupport.Web
         public static StandardButtonExpression StandardButtonFor(string name, StringToken text)
         {
             return new StandardButtonExpression(name).LocalizedText(text);
-        }
-
-
-      
-        public MvcHtmlString EndForm()
-        {
-            return MvcHtmlString.Create("</form>");
         }
 
         public static MenuExpression MenuItems(IList<MenuItem> items)

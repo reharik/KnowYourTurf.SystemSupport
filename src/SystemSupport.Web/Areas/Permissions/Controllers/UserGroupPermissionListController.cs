@@ -38,13 +38,13 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
         {
             var param = (input.EntityId > 0) ? "?ParentId=" + input.EntityId : "";
             var url = UrlContext.GetUrlForAction<UserGroupPermissionListController>(x => x.Items(null)) + param;
-            var gridDefinition = _grid.GetGridDefinition(url);
+            var gridDefinition = _grid.GetGridDefinition(url, input.User);
             var usersGroup = _authorizationRepository.GetUsersGroupById(input.EntityId);
             var model = new SecurityListViewModel
             {
-                Title = WebLocalizationKeys.PERMISSIONS_FOR.ToFormat(usersGroup.Name),
+                _Title = WebLocalizationKeys.PERMISSIONS_FOR.ToFormat(usersGroup.Name),
                 gridDef= gridDefinition,
-                addUpdateRoute = SystemSupportViewOptions.GetOption<PermissionController>(x => x.AddUpdate(null), AreaName.Permissions).route,
+                addUpdateUrl = UrlContext.GetUrlForAction<PermissionController>(x => x.AddUpdate(null), AreaName.Permissions),
                 deleteMultipleUrl = UrlContext.GetUrlForAction<PermissionController>(x=>x.DeleteMultiple(null),AreaName.Permissions),
                 headerButtons = new[] {"new","delete"}.ToList(),
                 EntityId = input.EntityId,
@@ -87,8 +87,8 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
                                                                                           UserGroupEntityId = usersGroup.EntityId
                                                                                       };
                                                                       });
-            IQueryable<PermissionDto> items = _dynamicExpressionQuery.PerformQueryWithItems(permissionDtos, input.filters);
-            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items);
+            IQueryable<PermissionDto> items = _dynamicExpressionQuery.PerformQuery(permissionDtos, input.filters);
+            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
         }
     }

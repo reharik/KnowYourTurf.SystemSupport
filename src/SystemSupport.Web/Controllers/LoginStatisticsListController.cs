@@ -27,10 +27,10 @@ namespace SystemSupport.Web.Controllers
         public ActionResult ItemList(ListViewModel viewModel)
         {
             var url = UrlContext.GetUrlForAction<LoginStatisticsListController>(x => x.Items(null));
-            var gridDefinition = _grid.GetGridDefinition(url);
+            var gridDefinition = _grid.GetGridDefinition(url,viewModel.User);
             var model = new ListViewModel
             {
-                Title = WebLocalizationKeys.LOGIN_INFORMATION.ToString(),
+                _Title = WebLocalizationKeys.LOGIN_INFORMATION.ToString(),
                 gridDef= gridDefinition,
             };
             return Json(model,JsonRequestBehavior.AllowGet);
@@ -41,7 +41,7 @@ namespace SystemSupport.Web.Controllers
             var items = input.filters.IsNotEmpty()
                 ? _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters)
                 : _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters, x=>x.CreatedDate.Value.Date==DateTime.Now.Date);
-            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items);
+            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
         }
     }

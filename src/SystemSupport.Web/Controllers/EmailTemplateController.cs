@@ -46,7 +46,7 @@ namespace SystemSupport.Web.Controllers
         {
             item.Description = input.EmailTemplate.Description;
             item.Name = input.EmailTemplate.Name;
-            item.Body = input.EmailTemplate.Body;
+            item.Template = input.EmailTemplate.Template;
         }
     }
 

@@ -16,6 +16,8 @@ namespace SystemSupport.Web.Controllers
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Services;
 
+    using CC.Core;
+
     public class UserListController:DCIController
     {
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;
@@ -34,13 +36,13 @@ namespace SystemSupport.Web.Controllers
             _authorizationRepository = authorizationRepository;
         }
 
-        public ActionResult ItemList(ListViewModel viewModel)
+        public ActionResult ItemList(ListViewModel input)
         {
             var addUpdateUrl = UrlContext.GetUrlForAction<UserController>(x=>x.AddUpdate(null));
             var deleteMultipleUrl = UrlContext.GetUrlForAction<UserListController>(x => x.DeleteMultiple(null));
-            var redirectUrl = SiteConfig.Settings().DCIUrl;
+            var redirectUrl = SiteConfig.Settings().WebSiteRoot;
             var url = UrlContext.GetUrlForAction<UserListController>(x => x.Items(null));
-            var gridDefinition = _grid.GetGridDefinition(url);
+            var gridDefinition = _grid.GetGridDefinition(url, input.User);
             var model = new UserListViewModel
             {
                 addUpdateUrl = addUpdateUrl,
@@ -58,27 +60,18 @@ namespace SystemSupport.Web.Controllers
         public JsonResult Items(GridItemsRequestModel input)
         {
             var items = _dynamicExpressionQuery.PerformQuery<UserLoginInfo>(input.filters);
-            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items);
+            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
         }
         public JsonResult DeleteMultiple(BulkActionViewModel input)
         {
             input.EntityIds.ForEachItem(x =>
             {
-                var userLoginInfo = _repository.Find<UserLoginInfo>(x);
-                if (userLoginInfo != null)
+                var user = _repository.Find<User>(x);
+                if (user != null)
                 {
-                    User deleteMe=null;
-                    if (userLoginInfo.User.UserLoginInfos.Count() == 1)
-                    {
-                        deleteMe = userLoginInfo.User;
-                    }
-                    _authorizationRepository.DetachUserFromAllGroups(userLoginInfo);
-                    _repository.Delete(userLoginInfo);
-                    if(deleteMe!=null)
-                    {
-                        _repository.Delete(deleteMe);
-                    }
+                    _authorizationRepository.DetachUserFromAllGroups(user);
+                    _repository.Delete(user);
                 }
             });
             _repository.Commit();

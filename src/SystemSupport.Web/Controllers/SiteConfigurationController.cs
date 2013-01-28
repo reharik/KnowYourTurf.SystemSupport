@@ -12,6 +12,7 @@ namespace SystemSupport.Web.Controllers
     using CC.Core.Services;
 
     using KnowYourTurf.Core.Config;
+    using KnowYourTurf.Core.Enums;
 
     //
     public class SiteConfigurationController : DCIController
@@ -23,7 +24,7 @@ namespace SystemSupport.Web.Controllers
         public SiteConfigurationController(ISelectListItemService selectListItemService)
         {
             _selectListItemService = selectListItemService;
-            _suiteWebsiteFullPath = SiteConfig.Settings().SuiteSiteFullPath ?? "";
+            _suiteWebsiteFullPath = SiteConfig.Settings().WebSiteRoot ?? "";
             _configFilePath = getConfigFilePath();
         }
 
@@ -35,13 +36,10 @@ namespace SystemSupport.Web.Controllers
             string suiteStatus = getSuiteStatus();
 
             var suiteOnlineStatusTypes =
-                _selectListItemService.CreateList(SuiteOnlineStatusType.GetAll<SuiteOnlineStatusType>(),
-                                                  z => z.Key,
-                                                  z => z.Key,
-                                                  false);
+                _selectListItemService.CreateList<SuiteOnlineStatusType>(true);
             var model = new SiteConfigurationViewModel
                             {
-                                Title = WebLocalizationKeys.SITE_CONFIGURATION.ToString(),
+                                _Title = WebLocalizationKeys.SITE_CONFIGURATION.ToString(),
                                 SuiteOnlineStatusType = suiteStatus,
                                 SuiteConfigFile = _configFilePath,
                                 SuiteSiteFullPath = _suiteWebsiteFullPath,
@@ -87,9 +85,7 @@ namespace SystemSupport.Web.Controllers
             XAttribute keyAttribute = new XAttribute("key", keyName);
             XAttribute valueAttribute = new XAttribute("value", newKeyValue);
 
-            var appSettingsSection = webConfigFile.Descendants()
-                .Where(z => z.Name.ToString().ToUpper() == "APPSETTINGS")
-                .FirstOrDefault();
+            var appSettingsSection = webConfigFile.Descendants().FirstOrDefault(z => z.Name.ToString().ToUpper() == "APPSETTINGS");
 
             if (appSettingsSection == null)
             {
@@ -108,9 +104,7 @@ namespace SystemSupport.Web.Controllers
                 appOfflineSetting = getAppSetting(keyName, appSettingsSection);
             }
 
-            var valueFromSetting = appOfflineSetting.Attributes()
-                .Where(z => z.Name.ToString().ToUpper() == "VALUE")
-                .FirstOrDefault();
+            var valueFromSetting = appOfflineSetting.Attributes().FirstOrDefault(z => z.Name.ToString().ToUpper() == "VALUE");
 
             valueFromSetting.Value = newKeyValue;
 
@@ -127,9 +121,7 @@ namespace SystemSupport.Web.Controllers
 
             var webConfigFile = XDocument.Load(configFilePath);
 
-            var appSettingsSection = webConfigFile.Descendants()
-                .Where(z => z.Name.ToString().ToUpper() == "APPSETTINGS")
-                .FirstOrDefault();
+            var appSettingsSection = webConfigFile.Descendants().FirstOrDefault(z => z.Name.ToString().ToUpper() == "APPSETTINGS");
 
             if (appSettingsSection == null)
             {
@@ -146,9 +138,7 @@ namespace SystemSupport.Web.Controllers
 
             //check if null, else create new xElement
 
-            var settingAttribute = appOfflineSetting.Attributes()
-                .Where(z => z.Name.ToString().ToUpper() == "VALUE")
-                .FirstOrDefault();
+            var settingAttribute = appOfflineSetting.Attributes().FirstOrDefault(z => z.Name.ToString().ToUpper() == "VALUE");
 
             //TODO: simplify 
             string valueFromSetting = "";
@@ -176,12 +166,10 @@ namespace SystemSupport.Web.Controllers
 
         private static XElement getAppSetting(string keyName, XElement appSettingsSection)
         {
-            return appSettingsSection.Elements()
-                .Where(z => z.Attributes()
-                                .Any(a => a.Name.ToString().ToUpper() == "KEY"
-                                          && a.Value.ToUpper() == keyName.ToUpper()
-                                ) == true
-                ).FirstOrDefault();
+            return appSettingsSection.Elements().FirstOrDefault(z => z.Attributes()
+                                                                      .Any(a => a.Name.ToString().ToUpper() == "KEY"
+                                                                                && a.Value.ToUpper() == keyName.ToUpper()
+                                                                         ) == true);
         }
 
         public JsonResult Save(SiteConfigurationViewModel input)

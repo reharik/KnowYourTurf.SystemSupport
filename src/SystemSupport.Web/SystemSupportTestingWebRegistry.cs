@@ -53,9 +53,9 @@ namespace SystemSupport.Web
                 x.AssemblyContainingType<Entity>();
                 x.AssemblyContainingType<IUser>();
                 x.AssemblyContainingType<HtmlConventionRegistry>();
-                x.AddAllTypesOf<ICalculatorHandler>().NameBy(t => t.Name);
+//                x.AddAllTypesOf<ICalculatorHandler>().NameBy(t => t.Name);
                 x.AddAllTypesOf<RulesEngineBase>().NameBy(t => t.Name);
-                x.AddAllTypesOf<IEmailTemplateHandler>().NameBy(t => t.Name);
+//                x.AddAllTypesOf<IEmailTemplateHandler>().NameBy(t => t.Name);
                 x.WithDefaultConventions();
             });
 
@@ -97,12 +97,9 @@ namespace SystemSupport.Web
 
             For(typeof(IGridBuilder<>)).Use(typeof(GridBuilder<>));
 
-
-            For<Grids.IEntityListGrid<UserLoginInfo>>().Use<UserListGrid>();
-            For<Grids.IEntityListGrid<UserLoginInfo>>().Add<PendingChargesListGrid>().Named("pendingCharges");
-
-            For<Grids.IEntityListGrid<PermissionDto>>().Use<UserPermissionListGrid>();
-            For<Grids.IEntityListGrid<PermissionDto>>().Add<GroupPermissionListGrid>().Named("group");
+            For<IEntityListGrid<UserLoginInfo>>().Use<UserListGrid>();
+            For<IEntityListGrid<PermissionDto>>().Use<UserPermissionListGrid>();
+            For<IEntityListGrid<PermissionDto>>().Add<GroupPermissionListGrid>().Named("group");
 
 
         }

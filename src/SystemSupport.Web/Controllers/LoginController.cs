@@ -30,7 +30,7 @@ namespace SystemSupport.Web.Controllers
         {
             var loginViewModel = new LoginViewModel
                                      {
-                                         Title = WebLocalizationKeys.LOGIN_SYSTEM_SUPPORT.ToString()
+                                         _Title = WebLocalizationKeys.LOGIN_SYSTEM_SUPPORT.ToString()
                                      };
             return View(loginViewModel);
         }
@@ -45,17 +45,14 @@ namespace SystemSupport.Web.Controllers
                 if (input.HasCredentials())
                 {
                     var redirectUrl = string.Empty;
-                    var uli = _securityDataService.AuthenticateForUserId(input.UserName, input.Password,"");
+                    var uli = _securityDataService.AuthenticateForUserId(input.UserName, input.Password);
                     if (uli != null)
                     {
-                        if (uli.GetCurrentSubscription().ExpirationDate > DateTime.Now)
-                        {
-                            redirectUrl = _authenticationContext.ThisUserHasBeenAuthenticated(uli, input.RememberMe);
-                            notification.Success = true;
-                            notification.Message = string.Empty;
-                            notification.Redirect = true;
-                            notification.RedirectUrl = redirectUrl;
-                        }
+                        redirectUrl = _authenticationContext.ThisUserHasBeenAuthenticated(uli, input.RememberMe);
+                        notification.Success = true;
+                        notification.Message = string.Empty;
+                        notification.Redirect = true;
+                        notification.RedirectUrl = redirectUrl;
                     }
                 }
             }

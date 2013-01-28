@@ -34,11 +34,11 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
         public ActionResult ItemList(ListViewModel input)
         {
             var url = UrlContext.GetUrlForAction<UserGroupListController>(x => x.Items(null));
-            var gridDefinition = _grid.GetGridDefinition(url);
+            var gridDefinition = _grid.GetGridDefinition(url, input.User);
             var model = new ListViewModel
             {
-                Title = WebLocalizationKeys.USER_GROUPS.ToString(),
-                addUpdateRoute = SystemSupportViewOptions.GetOption<UserGroupController>(x=>x.AddUpdate(null),AreaName.Permissions).route,
+                _Title = WebLocalizationKeys.USER_GROUPS.ToString(),
+                addUpdateUrl = UrlContext.GetUrlForAction<UserGroupController>(x=>x.AddUpdate(null),AreaName.Permissions),
                 gridDef= gridDefinition
             };
             return Json(model,JsonRequestBehavior.AllowGet);
@@ -73,8 +73,8 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
                                                                                           FullGroupName = fullName
                                                                                       };
                                                                       });
-            IQueryable<UserGroupDto> items = _dynamicExpressionQuery.PerformQueryWithItems(usersGroups, input.filters);
-            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items);
+            IQueryable<UserGroupDto> items = _dynamicExpressionQuery.PerformQuery(usersGroups, input.filters);
+            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
         }
     }

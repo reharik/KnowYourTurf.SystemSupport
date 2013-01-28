@@ -30,10 +30,10 @@ namespace SystemSupport.Web.Controllers
         {
             var addUpdateUrl = UrlContext.GetUrlForAction<CompanyController>(x => x.AddUpdate(null));
             var url = UrlContext.GetUrlForAction<CompanyListController>(x=>x.Items(null));
-            var gridDefinition = _grid.GetGridDefinition(url);
+            var gridDefinition = _grid.GetGridDefinition(url, input.User);
             var model = new ListViewModel
             {
-                Title = WebLocalizationKeys.CLIENT.ToString(),
+                _Title = WebLocalizationKeys.CLIENT.ToString(),
                 gridDef = gridDefinition,
                 addUpdateUrl = addUpdateUrl
             };
@@ -43,8 +43,8 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = _dynamicExpressionQuery.PerformQuery((Grid<Company>)_grid, input.filters);
-            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items);
+            var items = _dynamicExpressionQuery.PerformQuery<Company>(input.filters);
+            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
         }
 

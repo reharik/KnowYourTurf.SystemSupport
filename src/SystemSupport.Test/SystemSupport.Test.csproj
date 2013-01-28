@@ -54,17 +54,16 @@
   <ItemGroup>
     <Compile Include="ControllerTester.cs" />
     <Compile Include="SpecificationExtensions.cs" />
-    <Compile Include="ObjectMother.cs" />
-    <Compile Include="Web\Controllers\PermissionControllerTester.cs" />
-    <Compile Include="Web\Controllers\PermissionsUserGroupControllerTester.cs" />
-    <Compile Include="Web\Controllers\EmailTemplateControllerTester.cs" />
-    <Compile Include="Web\Controllers\PendingChargesControllerTester.cs" />
-    <Compile Include="Web\Controllers\ClientControllerTester.cs" />
-    <Compile Include="Web\Controllers\PromotionControllerTester.cs" />
-    <Compile Include="Web\Controllers\UserControllerTester.cs" />
-    <Compile Include="Web\Controllers\PermissionListControllerTester.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CannibalCoder\CC.Core\CC.Core.csproj">
+      <Project>{5E0B0CA2-BD5E-4953-A336-2AADC00CD81B}</Project>
+      <Name>CC.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\KnowYourTurf\KnowYourTurf.Core\KnowYourTurf.Core.csproj">
+      <Project>{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}</Project>
+      <Name>KnowYourTurf.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SystemSupport.Web\SystemSupport.Web.csproj">
       <Project>{507F8BA0-E7FE-438F-A30A-7718240DB1F0}</Project>
       <Name>SystemSupport.Web</Name>
@@ -75,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Web\Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

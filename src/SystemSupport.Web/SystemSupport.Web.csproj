@@ -131,7 +131,6 @@
     </Compile>
     <Compile Include="Grids\LoginStatisticsListGrid.cs" />
     <Compile Include="Grids\EmailTemplateListGrid.cs" />
-    <Compile Include="Grids\PendingChargesListGrid.cs" />
     <Compile Include="Grids\ClientListGrid.cs" />
     <Compile Include="Menus\IMenuConfig.cs" />
     <Compile Include="Models\BulkActionViewModel.cs" />

@@ -16,7 +16,7 @@ namespace SystemSupport.Web.Grids
 
         protected override Grid<UserLoginInfo> BuildGrid()
         {
-            GridBuilder.LinkColumnFor(x => x.User.FullNameFNF)
+            GridBuilder.LinkColumnFor(x => x.User.FullName)
                 .ToPerformAction(ColumnAction.AddUpdateItem)
                 .ToolTip(WebLocalizationKeys.EDIT_ITEM);
             GridBuilder.DisplayFor(x => x.User.FirstName);

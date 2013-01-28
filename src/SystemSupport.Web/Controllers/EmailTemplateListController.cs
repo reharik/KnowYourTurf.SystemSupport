@@ -29,7 +29,7 @@ namespace SystemSupport.Web.Controllers
         public ActionResult ItemList(ViewModel input)
         {
             var url = UrlContext.GetUrlForAction<EmailTemplateListController>(x=>x.Items(null))+"/"+input.EntityId;
-            var gridDefinition = _grid.GetGridDefinition(url);
+            var gridDefinition = _grid.GetGridDefinition(url,input.User);
             var model = new ListViewModel
             {
                 _Title = WebLocalizationKeys.EMAIL_TEMPLATE.ToString(),
@@ -42,8 +42,8 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = _dynamicExpressionQuery.PerformQuery((Grid<EmailTemplate>)_grid, input.filters, x=>x.CompanyId==input.EntityId);
-            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items);
+            var items = _dynamicExpressionQuery.PerformQuery<EmailTemplate>(input.filters, x=>x.CompanyId==input.EntityId);
+            var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return Json(gridItemsViewModel, JsonRequestBehavior.AllowGet);
         }
 

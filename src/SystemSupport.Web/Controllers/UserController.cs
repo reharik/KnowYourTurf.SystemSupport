@@ -77,7 +77,7 @@ namespace SystemSupport.Web.Controllers
             {
                 // stupid problem with dropdownlists
                 var company = _repository.Find<Company>(loginInfo.CompanyId);
-                model.Client = loginInfo.CompanyId;
+                model.Company = loginInfo.CompanyId;
                 model.UsersCompany = company;
             }
             return View(model);
@@ -86,15 +86,15 @@ namespace SystemSupport.Web.Controllers
         public ActionResult Login(ViewModel input)
         {
             var repository = ObjectFactory.Container.GetInstance<IRepository>();
-            var uli = repository.Find<UserLoginInfo>(input.EntityId);
-            uli.ByPassToken = Guid.NewGuid();
-            repository.Save(uli);
+            var user = repository.Find<User>(input.EntityId);
+            user.UserLoginInfo.ByPassToken = Guid.NewGuid();
+            repository.Save(user);
             repository.Commit();
             var notification = new Notification
                                    {
                                        Success = true,
-                                       Variable = uli.ByPassToken.ToString(),
-                                       EntityId = uli.User.EntityId
+                                       Variable = user.UserLoginInfo.ByPassToken.ToString(),
+                                       EntityId = user.UserLoginInfo.User.EntityId
                                    };
             return Json(notification, JsonRequestBehavior.AllowGet);
         }
@@ -110,16 +110,12 @@ namespace SystemSupport.Web.Controllers
             {
                 origional = new User();
                 var userLoginInfo = new UserLoginInfo();
-                origional.AddUserLoginInfo(userLoginInfo);
+                origional.UserLoginInfo=userLoginInfo;
             }
             mapProperties(origional, input);
             handlePassword(origional, input);
 
-            var loginInfo = input.UserLoginInfo.EntityId == 0
-                                ? origional.UserLoginInfos.FirstOrDefault()
-                                : origional.UserLoginInfos.FirstOrDefault(
-                                    x => x.EntityId == input.UserLoginInfo.EntityId);
-            assignUserGroupAndPermissions(loginInfo);
+            assignUserGroupAndPermissions(origional);
 
             var crudManager = _saveEntityService.ProcessSave(origional);
             var notification = crudManager.Finish();
@@ -132,32 +128,27 @@ namespace SystemSupport.Web.Controllers
             origional.FirstName = input.User.FirstName;
             origional.LastName = input.User.LastName;
             origional.BirthDate = input.User.BirthDate;
-            if (input.DefaultEmail.IsNotEmpty())
-            {
-                origional.AddEmail(new Email { EmailAddress = input.DefaultEmail, IsDefault = true });
-            }
+                origional.Email=input.DefaultEmail;
 
-            var loginInfo = origional.UserLoginInfos.FirstOrDefault(x => x.EntityId == input.UserLoginInfo.EntityId);
+            var loginInfo = origional.UserLoginInfo;
             loginInfo.LoginName = input.UserLoginInfo.LoginName;
-            loginInfo.ClientId = input.Client > 0 ? input.Client : loginInfo.ClientId;
-            loginInfo.IsActive = true;
-            
+            loginInfo.CompanyId = input.Company > 0 ? input.Company : loginInfo.CompanyId;
         }
 
         private void handlePassword(User origional, UserViewModel input)
         {
             if (input.Password.IsNotEmpty())
             {
-                var loginInfo = origional.UserLoginInfos.FirstOrDefault(x => x.EntityId == input.UserLoginInfo.EntityId);
+                var loginInfo = origional.UserLoginInfo;
                 loginInfo.Salt = _securityDataService.CreateSalt();
                 loginInfo.Password = _securityDataService.CreatePasswordHash(input.Password, loginInfo.Salt);
             }
         }
 
-        private void assignUserGroupAndPermissions(UserLoginInfo loginInfo)
+        private void assignUserGroupAndPermissions(User user)
         {
-            _authorizationRepository.AssociateUserWith(loginInfo, "/Portfolio/" + level.Name);
-            AssignPermissionProfile.AssignBySubscriptionLevel(loginInfo, level);
+//            _authorizationRepository.AssociateUserWith(user, "/Portfolio/" + level.Name);
+//            AssignPermissionProfile.AssignBySubscriptionLevel(loginInfo, level);
         }
 
         public class DeleteUserProfileItemViewModel : ViewModel

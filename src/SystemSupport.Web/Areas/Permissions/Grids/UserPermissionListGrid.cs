@@ -26,7 +26,7 @@ namespace SystemSupport.Web.Areas.Permissions.Grids
             GridBuilder.DisplayFor(x => x.OnUser);
             GridBuilder.LinkColumnFor(x => x.UserGroup)
                 .ReturnValueWithTrigger(x => x.UserGroupEntityId)
-                .ToPerformAction(ColumnAction.AddUpdateItem,"UserGroup")
+                .ToPerformAction(ColumnAction.AddUpdateItem)
                 .ToolTip(WebLocalizationKeys.EDIT_ITEM);
             GridBuilder.GroupingColumnFor(x => x.FirstToken).GroupingColumnName("FirstToken");
             return this;

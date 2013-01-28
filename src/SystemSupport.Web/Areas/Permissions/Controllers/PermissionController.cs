@@ -46,7 +46,7 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
                                           {
                                               Item = permission,
                                               UserGroupId =input.ParentId,
-                                              UliId = input.RootId
+                                              UId = input.RootId
                                           };
             if (input.EntityId <= 0)
             {
@@ -98,10 +98,10 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
                     var usersGroup = _authorizationRepository.GetUsersGroupById(input.UserGroupId);
                     permission.UsersGroup = usersGroup;
                 }
-                else if (input.UliId > 0)
+                else if (input.UId > 0)
                 {
-                    var userLoginInfo = _repository.Find<UserLoginInfo>(input.UliId);
-                    permission.User = userLoginInfo;
+                    var user = _repository.Find<User>(input.UId);
+                    permission.User = user;
                 }
                 _permissionsBuilderService.Save(permission);
             }
@@ -115,10 +115,10 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
                         _permissionsBuilderService.Allow(input.Item.Operation.EntityId).For(usersGroup).OnEverything().Level
                             (input.Item.Level).Description(input.Item.Description).Save();
                     }
-                    else if (input.UliId > 0)
+                    else if (input.UId > 0)
                     {
-                        var userLoginInfo = _repository.Find<UserLoginInfo>(input.UliId);
-                        _permissionsBuilderService.Allow(input.Item.Operation.EntityId).For(userLoginInfo).OnEverything().
+                        var user = _repository.Find<User>(input.UId);
+                        _permissionsBuilderService.Allow(input.Item.Operation.EntityId).For(user).OnEverything().
                             Level(input.Item.Level).Description(input.Item.Description).Save();
                     }
                 }
@@ -130,9 +130,9 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
                         _permissionsBuilderService.Deny(input.Item.Operation.EntityId).For(usersGroup).OnEverything().Level(
                             input.Item.Level).Description(input.Item.Description).Save();
                     }
-                    else if (input.UliId > 0)
+                    else if (input.UId > 0)
                     {
-                        var userLoginInfo = _repository.Find<UserLoginInfo>(input.UliId);
+                        var userLoginInfo = _repository.Find<User>(input.UId);
                         _permissionsBuilderService.Deny(input.Item.Operation.EntityId).For(userLoginInfo).OnEverything().
                             Level(input.Item.Level).Description(input.Item.Description).Save();
                     }
@@ -151,7 +151,7 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
         public int Level { get; set; }
         public IEnumerable<SelectListItem> OperationList { get; set; }
         public int UserGroupId { get; set; }
-        public int UliId { get; set; }
+        public int UId { get; set; }
     }
 
     public class SecurityViewModel : ViewModel
