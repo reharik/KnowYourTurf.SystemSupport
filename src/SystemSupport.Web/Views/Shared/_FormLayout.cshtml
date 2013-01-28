@@ -1,0 +1,28 @@
+﻿@using SystemSupport.Web
+
+@RenderSection("ExtraCss", false)
+
+    @RenderSection("HeaderScripts", false)
+
+<script>
+    var contentArea;
+        @RenderSection("HeaderJavascript", false)
+</script>
+
+   <div class="content-header">
+        <span class="title-name">@Model.Title</span>
+       <button class="close cancel" title="@WebLocalizationKeys.CLOSE_BUTTON_TITLE"></button>
+        @RenderSection("additionalHeaderButtons", false)
+
+    </div>
+    <div id="contentArea" class="content-inner">
+    <div id="validation-container-wrapper">
+        <div id="errorMessagesForm" class="dci_ErrorMessages errorMessages"><ul></ul></div>
+    </div>
+    <div class="required_style"><span>* @WebLocalizationKeys.REQUIRED</span></div>
+        @RenderBody()
+         <div class="footer">
+            @StandardButtonFor("save", WebLocalizationKeys.SAVE).AddClass("save").ToHtmlTag()
+            @StandardButtonFor("cancel", WebLocalizationKeys.CANCEL).AddClass("cancel").ToHtmlTag()
+        </div>
+    </div>

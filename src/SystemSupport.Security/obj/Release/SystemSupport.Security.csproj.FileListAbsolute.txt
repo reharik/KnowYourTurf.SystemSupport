@@ -1,0 +1,13 @@
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\SystemSupport.Security.dll
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\SystemSupport.Security.pdb
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\Rhino.Security.XML
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\log4net.dll
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\NHibernate.dll
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\Iesi.Collections.dll
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\log4net.xml
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\NHibernate.xml
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Release\Iesi.Collections.xml
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Release\SystemSupport.Security.Properties.Resources.resources
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Release\SystemSupport.Security.csproj.GenerateResource.Cache
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Release\SystemSupport.Security.dll
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Release\SystemSupport.Security.pdb

@@ -1,0 +1,39 @@
+﻿@model SiteConfigurationViewModel
+@using SystemSupport.Web
+@using SystemSupport.Web.Controllers
+@using DecisionCritical.Core.Html.FubuUI
+@using HtmlTags
+
+@{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
+
+@section HeaderJavascript{
+}
+
+@MvcHtmlString.Create(FormFor<SiteConfigurationController>(x => x.Save(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
+
+<div id="siteConfiguration">
+    @MvcHtmlString.Create(FormFor<UserController>(x => x.Save(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
+         <input type="hidden" id="EntityId" name="EntityId" value="@Model.EntityId">
+
+         <div class="col left">
+             <div class="fieldRow">
+                @Html.ViewFor(x => x.SuiteConfigFile).AddClassToRoot("bold_label").ToHtmlTag()
+                </div>
+             <div class="fieldRow">
+                @Html.ViewFor(x => x.SuiteSiteFullPath).AddClassToRoot("bold_label").ToHtmlTag()
+             </div>
+             <div class="fieldRow">
+                @Html.SubmissionFor(x => x.SuiteOnlineStatusType).AddClassToRoot("bold_label").ToHtmlTag()
+             </div>
+         </div>
+         <div id="offline-warning" class="clear dci_ErrorMessages errorMessages" style="display: block" >
+                <ul class="invalid_field">
+                    <li>
+                        <label class="invalid_field">
+                            Setting the system to TESTING or OFFLINE will disable the Suite Website.
+                        </label>
+                    </li>
+                </ul>
+            </div> 
+        </div>
+@EndForm()

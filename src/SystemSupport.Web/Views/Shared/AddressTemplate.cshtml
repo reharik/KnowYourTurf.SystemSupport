@@ -1,0 +1,24 @@
+﻿@using SystemSupport.Web
+@using DecisionCritical.Core.Html.FubuUI
+@model SystemSupport.Web.Controllers.AddressViewModel
+
+        @Html.HiddenFor(x => x.EntityId)
+
+
+<div class="fieldRow">
+            @Html.SubmissionFor(x => x.Address.AddressType).AddClassToRoot("half").ToHtmlTag()
+            @Html.SubmissionFor(x => x.Address.IsDefault).AddClassToRoot("checkbox half ").InlineReverse().ToHtmlTag()
+        </div>
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Address.Address1).AddClassToRoot("full-row").LabelDisplay(WebLocalizationKeys.ADDRESS1).ToHtmlTag()
+        </div>
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Address.Address2).AddClassToRoot("full-row").LabelDisplay(WebLocalizationKeys.ADDRESS2).ToHtmlTag()
+        </div>
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Address.City).AddClassToRoot("three-quarters").ToHtmlTag()
+            @Html.SubmissionFor(x => x.Address.State).AddClassToRoot("one-quarter ").ToHtmlTag()
+        </div>
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Address.ZipCode).AddClassToRoot("one-quarter").ToHtmlTag()
+        </div>

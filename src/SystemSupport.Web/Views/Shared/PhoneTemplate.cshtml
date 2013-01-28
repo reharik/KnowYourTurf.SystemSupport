@@ -1,0 +1,13 @@
+﻿@using DecisionCritical.Core.Html.FubuUI
+@model SystemSupport.Web.Controllers.PhoneViewModel
+
+        @Html.HiddenFor(x => x.EntityId)
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Phone.PhoneType).AddClassToRoot("half").ToHtmlTag()
+        </div>
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Phone.PhoneNumber).AddClassToRoot("half").ToHtmlTag()
+        </div>
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Phone.IsDefault).AddClassToRoot("one-third checkbox").InlineReverse().ToHtmlTag()
+        </div>

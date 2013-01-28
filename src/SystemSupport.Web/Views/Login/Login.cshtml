@@ -1,0 +1,95 @@
+﻿@model SystemSupport.Web.Controllers.LoginViewModel 
+@using SystemSupport.Web
+@using SystemSupport.Web.Controllers
+@using DecisionCritical.Core.Html.Expressions
+@using DecisionCritical.Core.Html.FubuUI
+@using HtmlTags
+
+@{
+    Layout = "";
+}
+<!--[if IE]>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- [Else]>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- [endif]-->
+<html>
+    <head>
+    <title>@Model.Title</title>
+
+    @CSS("jquery-ui-1.8.16.custom.css").ToHtmlTag()
+    @CSS("main.css").ToHtmlTag()
+    <!--[if gt IE 7]>
+    @CSS("ie.css").ToHtmlTag()
+     <![endif]-->
+     @CSS("dci.css").ToHtmlTag()
+    @Script("jqueryPlugins/jquery-1.6.2.min.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery-ui-1.8.16.custom.min.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.validate.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.form.js").ToHtmlTag()
+    @Script("internalHelpers/cc.utilities.js").ToHtmlTag()
+    @Script("internalHelpers/cc.crudForm.js").ToHtmlTag()
+    @Script("internalHelpers/cc.Notifications.js").ToHtmlTag()
+    @Script("externalHelpers/underscore.js").ToHtmlTag()
+    @Script("externalHelpers/backbone.js").ToHtmlTag()
+
+   
+    @Script("jqueryPlugins/jquery.pubsub.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.metadata.js").ToHtmlTag()
+    @Script("externalHelpers/json2.js").ToHtmlTag()
+    
+    <script type="text/javascript">
+        
+		dci.contentLevelControllers = {};
+		var extraFormOptions = {};
+
+		$(document).ready(function () {
+		    var loginArea = new cc.NotificationArea("loginArea", "#errorMessagesGrid", "#errorMessagesForm", DCI.vent);
+		    DCI.notificationService = new cc.MessageNotficationService();
+		    DCI.notificationService.addArea(loginArea);
+		    $('.dci_CRUD').crudForm({}, "loginArea");
+		    $("#save").click(function (event) {
+		        $("#CRUDForm").submit();
+		        event.preventDefault();
+		    });
+
+		    $("input[name='UserName']").focus();
+
+		});
+        </script>
+    </head>
+    <body id="signin">
+        <div id="outer-wrapper">
+            <div class="content-outer">
+                <div class="content-header"></div>
+                <div class="content-inner norequired">
+                    @MvcHtmlString.Create(FormFor<LoginController>(l => l.Login(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
+                        
+                        <div class="signin">
+                            <div class="col">
+                                <label class="big">@WebLocalizationKeys.SYSTEM_SUPPORT_SIGN_IN</label>
+                                <div id="validation-container-wrapper">
+                                    <div id="errorMessagesForm" class="dci_ErrorMessages errorMessages"><ul></ul></div>
+                                </div>
+                                <div class="fieldRow">
+                                    @Html.SubmissionFor(x => x.UserName).ToHtmlTag()
+                                </div>
+                                <div class="fieldRow">
+                                    @Html.SubmissionFor(x => x.Password).ToHtmlTag()
+                                </div>
+                                <div class="fieldRow">
+                                    @Html.SubmissionFor(x => x.RememberMe).AddClassToRoot("checkbox").InlineReverse().ToHtmlTag()
+                                </div>
+                            </div>
+                            <div class="footer some-top-padding">
+                                @StandardButtonFor("save", WebLocalizationKeys.SIGN_IN).AddClass("save").AddClass("dci_submitButton").ToHtmlTag()
+                            </div>
+                        </div>
+                    @EndForm()
+                </div>
+                <div class="content-footer"><span></span></div>
+            </div>
+        </div>
+        <div id="forgotPasswordArea"></div>
+    </body>
+</html>

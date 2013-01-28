@@ -1,0 +1,14 @@
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\SystemSupport.Security.dll
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\SystemSupport.Security.pdb
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\Rhino.Security.xml
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\log4net.dll
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\NHibernate.dll
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\Iesi.Collections.dll
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\log4net.xml
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\NHibernate.xml
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\bin\Debug\Iesi.Collections.xml
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Debug\SystemSupport.Security.Properties.Resources.resources
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Debug\SystemSupport.Security.dll
+D:\Development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Debug\SystemSupport.Security.pdb
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Debug\SystemSupport.Security.csprojResolveAssemblyReference.cache
+D:\development\DCI\Marfa\SystemSupport\src\SystemSupport.Security\obj\Debug\SystemSupport.Security.csproj.GenerateResource.Cache

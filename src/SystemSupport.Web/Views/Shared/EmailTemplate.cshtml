@@ -1,0 +1,10 @@
+﻿@using DecisionCritical.Core.Html.FubuUI
+@model SystemSupport.Web.Controllers.EmailViewModel
+
+        @Html.HiddenFor(x => x.EntityId)
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Email.EmailAddress).AddClassToRoot("three-quarters").ToHtmlTag()
+        </div>
+        <div class="fieldRow">
+            @Html.SubmissionFor(x => x.Email.IsDefault).AddClassToRoot("checkbox").InlineReverse().ToHtmlTag()
+        </div>

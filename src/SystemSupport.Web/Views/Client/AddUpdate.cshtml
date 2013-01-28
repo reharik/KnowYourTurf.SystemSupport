@@ -1,0 +1,24 @@
+﻿@model CompanyViewModel
+@using SystemSupport.Web
+@using SystemSupport.Web.Controllers
+@using DecisionCritical.Core.Html.FubuUI
+@using HtmlTags
+
+@{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
+
+@section HeaderJavascript{
+}
+
+@section additionalHeaderButtons
+{
+    <button class="emailTemplates" title="@WebLocalizationKeys.EMAIL_TEMPLATES"></button>
+}
+@MvcHtmlString.Create(FormFor<CompanyController>(x => x.Save(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
+    <input type="hidden" id="EntityId" name="EntityId" value="@Model.Company.EntityId" />
+        <div class="col left">
+            <div class="fieldRow">
+                @Html.SubmissionFor(x=>x.Company.Name).ToHtmlTag()
+                @Html.SubmissionFor(x => x.Company.HomeUrl).ToHtmlTag()
+            </div>
+        </div>
+@EndForm()

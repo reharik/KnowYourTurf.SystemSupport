@@ -1,0 +1,141 @@
+﻿@using SystemSupport.Web
+@using DecisionCritical.Core.Html.FubuUI
+@using HtmlTags
+<!--[if IE]>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- [Else]>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- [endif]-->
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @CSS("jquery-ui-1.8.16.custom.css").ToHtmlTag()
+    @CSS("ui.multiselect.css").ToHtmlTag()
+    @CSS("fileinput.css").ToHtmlTag()
+    @CSS("ui.jqgrid.css").ToHtmlTag()
+    @CSS("token-input.css").ToHtmlTag()
+    @CSS("fg.menu.css").ToHtmlTag()
+    @CSS("jquery.cleditor.css").ToHtmlTag()
+    @CSS("chosen.css").ToHtmlTag()
+    @CSS("prettyPhoto.css").ToHtmlTag()
+    @CSS("main.css").ToHtmlTag()
+    @CSS("dci.css").ToHtmlTag()
+    <!--[if gt IE 7]>
+    @CSS("ie.css").ToHtmlTag()
+    <![endif]-->
+    @RenderSection("ExtraCss", false)
+
+    @Script("jqueryPlugins/jquery-1.7.1.js").ToHtmlTag()
+
+    @Script("jqueryPlugins/jquery.transform-0.9.3.min.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery-ui-1.8.16.custom.min.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.tokeninput.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.validate.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.cleditor.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.form.2.83.js").ToHtmlTag()
+    @Script("jqueryPlugins/chosen.jquery.js").ToHtmlTag()
+    @Script("externalHelpers/modernizr-2.0.min.js").ToHtmlTag()
+    @Script("externalHelpers/respond.min.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.metadata.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.prettyPhoto.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.searchabledropdown-1.0.7.src.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.maskedinput.js").ToHtmlTag()
+    @Script("externalHelpers/underscore.js").ToHtmlTag()
+    @Script("externalHelpers/backbone.js").ToHtmlTag()
+    @Script("externalHelpers/backbone.marionette.js").ToHtmlTag()
+    @Script("DCI/DCI.App.js").ToHtmlTag()
+    @Script("DCI/DCI.Header.js").ToHtmlTag()
+    @Script("DCI/DCI.View.js").ToHtmlTag()
+    @Script("DCI/DCI.Routing.js").ToHtmlTag()
+    @Script("DCI/DCI.State.js").ToHtmlTag()
+    @Script("DCI/DCI.WorkflowManager.js").ToHtmlTag()
+    @Script("DCI/SystemSettings/DCI.SystemSettingsApp.js").ToHtmlTag()
+    @Script("DCI/SystemSettings/DCI.SystemSettingsApp.Menu.js").ToHtmlTag()
+    @Script("DCI/SystemSettings/DCI.SystemSettingsApp.Routing.js").ToHtmlTag()
+    @Script("DCI/SystemSettings/DCI.SystemSettingsApp.Views.js").ToHtmlTag()
+    
+    @Script("internalHelpers/cc.ccMenu.js").ToHtmlTag()
+    @Script("internalHelpers/cc.utilities.js").ToHtmlTag()
+    @Script("internalHelpers/cc.crudForm.js").ToHtmlTag()
+    @Script("internalHelpers/cc.Notifications.js").ToHtmlTag()
+    @Script("externalHelpers/json2.js").ToHtmlTag()
+     @Script("jqueryPlugins/grid.locale-en.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery.jqGrid.src.js").ToHtmlTag()
+    @Script("jqueryPlugins/jquery-tmpl.js").ToHtmlTag()
+    @Script("externalHelpers/xdate.js").ToHtmlTag()
+    
+    @Script("internalHelpers/jquery.cc.grid.js").ToHtmlTag()
+    @Script("internalHelpers/cc.grid.columnService.js").ToHtmlTag()
+    @Script("internalHelpers/cc.gridHelpers.js").ToHtmlTag()
+
+
+    @Script("internalHelpers/dci.repository.js").ToHtmlTag()
+
+    
+    @Script("internalHelpers/dci.gridSearch.js").ToHtmlTag()
+    
+    @RenderSection("HeaderScripts", false)
+
+
+     <script type="text/javascript">
+        var entityId = @Model.EntityId ;
+        var parentId = @Model.ParentId ;
+        var rootId = @Model.RootId ;
+        var extraFormOptions = {};
+        DCI.routeTokens = @MvcHtmlString.Create(JsonUtil.ToJson(@Model.SerializedRoutes));
+        
+        @RenderSection("HeaderJavascript", false)
+
+        </script>
+    </head>
+
+    <body id="portfolios" class="dci_dyn">
+    <div id="ajaxLoading" style="z-index: 1000">&nbsp;</div>
+        @Html.Action("DecisionCriticalHeader", "Orthogonal")
+        <div id="top-separator"></div>
+        <div id="main-body">
+            <div id="left-navigation" class="dci_menuContainer">
+            </div>
+            <div id="main-content">
+                <div class="content-outer" >
+                    <div id="contentInner">
+                        @RenderBody()
+                    </div>
+                    <div class="content-footer"><span>&nbsp;</span></div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+    
+    <script id="loginStatSearchTemplate" type="text/x-jQuery-tmpl">
+        <div>
+            <div class="headerInput">@WebLocalizationKeys.START_DATE 
+            <input  type="text" id="start_date" class="dci_datePicker"/></div>
+            <div class="headerInput"> -- </div>
+            <div class="headerInput">@WebLocalizationKeys.END_DATE
+            <input type="text" id="end_date" class="dci_datePicker"/></div>
+            <button id="search" class="dateFilter" title="@WebLocalizationKeys.FILTER"></button>
+        </div>
+    </script>
+    
+        <script id="gridTemplate" type="text/x-jQuery-tmpl">
+        <div class="content-header">
+            <input class="search" /> 
+            <button style="display:none" id="new" class="new" title="@WebLocalizationKeys.NEW"></button>
+            <button style="display:none" class="delete" title="@WebLocalizationKeys.DELETE_ITEMS"></button>
+            <span class="title-name">${Title}</span>
+        </div>
+        <div id="contentArea" class="content-inner">
+            <div id="validation-container-wrapper">
+                <div id="errorMessagesGrid" class="dci_ErrorMessages errorMessages"><ul></ul></div>
+            </div>
+            <input type="hidden" id="EntityId" value="${EntityId}"/>
+            <input type="hidden" id="ParentId" value="${ParentId}"/>
+            <input type="hidden" id="RootId" value="${RootId}"/>
+            <table id="gridContainer" class="scroll"></table>
+            <div id="pager" class="scroll" style="text-align:center;"></div>
+        </div>
+    
+    </script>
+</html>

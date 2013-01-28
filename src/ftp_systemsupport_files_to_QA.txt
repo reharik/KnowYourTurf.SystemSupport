@@ -1,0 +1,10 @@
+-- local
+lcd d:\marfa\DeployToQaBuild\SystemSupport
+-- remote
+cd /D/DecisionCritical/SystemSupport/QA
+
+
+put -o -r -s *
+
+
+ 

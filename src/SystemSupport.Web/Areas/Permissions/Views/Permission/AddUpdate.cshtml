@@ -1,0 +1,36 @@
+﻿@using SystemSupport.Web.Areas.Permissions.Controllers
+@using DecisionCritical.Core.Html.FubuUI
+@using DecisionCritical.Core.Enumerations
+@model PermissionViewModel
+
+@{
+    Layout = "~/Views/Shared/_FormLayout.cshtml"; 
+}
+
+@MvcHtmlString.Create(FormFor<PermissionController>(x => x.Save(null),AreaName.Permissions).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
+    <input type="hidden" id="EntityId" name="EntityId" value="@Model.Item.EntityId" />
+    <input type="hidden" id="UliId" name="UliId" value="@Model.UliId" />
+    <input type="hidden" id="UserGroupId" name="UserGroupId" value="@Model.UserGroupId" />
+        <div class="col left">
+            <div class="fieldRow">
+                @if (Model.Item.EntityId>0)
+                {
+                    @Html.ViewFor(x => x.Item.Operation.Name).ToHtmlTag()
+                    @MvcHtmlString.Create(@Html.HiddenFor(x => x.Item.Operation.EntityId).ToString())
+                }
+                else
+                {
+                    @Html.SubmissionFor(x => x.Item.Operation).ToHtmlTag()
+                }
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.Item.Allow).ToHtmlTag()
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.Item.Level).ToHtmlTag()
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.Item.Description).ToHtmlTag()
+            </div>
+        </div>
+@EndForm()

@@ -1,0 +1,47 @@
+﻿@model PromotionViewModel
+@using SystemSupport.Web
+@using SystemSupport.Web.Controllers
+@using DecisionCritical.Core.Html.FubuUI
+
+@{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
+
+@section HeaderJavascript{
+}
+@MvcHtmlString.Create(FormFor<PromotionController>(x => x.Save(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
+    <input type="hidden" id="EntityId" name="EntityId" value="@Model.Promotion.EntityId" />
+        <div class="col left">
+            <div class="fieldRow">
+                @Html.SubmissionFor(x=>x.Promotion.Name).AddClassToRoot("first half").ToHtmlTag()
+                @Html.SubmissionFor(x => x.Promotion.PromoCode).AddClassToRoot("half").ToHtmlTag()
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.Promotion.Description).ToHtmlTag()
+            </div>
+        </div>
+        <div class="col left">
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.Promotion.StartDate).ToHtmlTag()
+                @Html.SubmissionFor(x => x.Promotion.EndDate).ToHtmlTag()
+            </div>
+            <div class="fieldRow">
+                <input type="radio" id="promoTypeSelector_0" name="promoTypes" >
+                    <label for="promoTypeSelector_0">@WebLocalizationKeys.MONTH_BASE_PROMOTION</label>
+                </input>
+                <div id="monthBasePromo">
+                    @Html.SubmissionFor(x => x.Promotion.MonthsBeforeNextBilling).AddClassToRoot("first three-quarters").ToHtmlTag()
+                </div>
+                <input type="radio" id="promoTypeSelector_1" name="promoTypes" >
+                    <label for="promoTypeSelector_1">@WebLocalizationKeys.PERCENTAGE_BASE_PROMOTION</label>
+                </input>
+                <div id="percentageBasePromo">
+                    @Html.SubmissionFor(x => x.Promotion.PercentageDiscount).AddClassToRoot("first three-quarters").ToHtmlTag()
+                </div>
+
+            </div>
+        </div>
+        <div class="col full">
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.Promotion.Terms).AddClassToInput("rte").ToHtmlTag()
+            </div>
+        </div>
+@EndForm()

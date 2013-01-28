@@ -1,0 +1,4 @@
+﻿@using SystemSupport.Web.Controllers
+@model MenuViewModel
+
+@MenuItems(Model.MenuItems).filGroup().ToHtmlTag()

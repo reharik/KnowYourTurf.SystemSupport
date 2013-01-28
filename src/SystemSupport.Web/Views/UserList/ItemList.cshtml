@@ -1,0 +1,17 @@
+﻿@model UserListViewModel
+@using SystemSupport.Web.Controllers
+@using DecisionCritical.Core;
+
+@{ Layout = "~/Views/Shared/_ListLayout.cshtml"; }
+
+  
+@section HeaderJavascript{
+    $(document).ready(function() {
+        gridControllerOptions.searchField ="LastName";
+        gridControllerOptions.redirectUrl ="@MvcHtmlString.Create(Model.RedirectUrl)";
+        var controller = new dci.UserController(gridControllerOptions);
+    });
+}
+
+<table id="gridContainer" class="scroll"></table>
+<div id="pager" class="scroll" style="text-align:center;"></div>

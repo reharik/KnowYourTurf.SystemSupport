@@ -1,0 +1,248 @@
+﻿@model UserViewModel
+@using SystemSupport.Web
+@using SystemSupport.Web.Controllers
+@using DecisionCritical.Core.Html.FubuUI
+@using HtmlTags
+
+@{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
+
+@section HeaderJavascript{
+    var repeaters = {
+        addressItems: @MvcHtmlString.Create(JsonUtil.ToJson(Model.User.Addresses)),
+        emailItems: @MvcHtmlString.Create(JsonUtil.ToJson(Model.User.Emails)),
+        phoneItems: @MvcHtmlString.Create(JsonUtil.ToJson(Model.User.Phones))
+    }
+    extraFormOptions.repeaters = repeaters;
+    extraFormOptions.addUpdateAddressUrl = '@Model.AddUpdateAddressUrl';
+    extraFormOptions.addUpdatePhoneUrl = '@Model.AddUpdatePhoneUrl';
+    extraFormOptions.addUpdateEmailUrl = '@Model.AddUpdateEmailUrl';
+    extraFormOptions.deleteItemUrl = '@Model.DeleteItemUrl';
+    extraFormOptions.viewHistoryText = "@WebLocalizationKeys.VIEW_SUBSCRIPTION_HISTORY";
+    extraFormOptions.hideHistoryText = "@WebLocalizationKeys.HIDE_SUBSCRIPTION_HISTORY";
+    extraFormOptions.permissionsUrl = "@Model.PermissionsUrl";
+
+}
+
+<div id="validation-container-wrapper">
+    <div id="errorMessagesForm" class="dci_ErrorMessages errorMessages"><ul></ul></div>
+</div>
+<div id="userProfile">
+    @MvcHtmlString.Create(FormFor<UserController>(x => x.Save(null)).AddClass("dci_CRUD").ElementId("CRUDForm").ToString())
+         <input type="hidden" id="EntityId" name="EntityId" value="@Model.User.EntityId">
+         <input type="hidden" id="UserLoginInfoId" name="UserLoginInfo.EntityId" value="@Model.UserLoginInfo.EntityId">
+        <div class="col left">
+            <div class="fieldRow">
+                <h4>@WebLocalizationKeys.ACCOUNT_INFORMATION</h4>
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.User.FirstName).AddClassToRoot("two-five first").ToHtmlTag()
+                @Html.SubmissionFor(x => x.User.MiddleInitial).LabelDisplay(WebLocalizationKeys.INITIAL).AddClassToRoot("one-five mid").ToHtmlTag()
+                @Html.SubmissionFor(x => x.User.LastName).AddClassToRoot("two-five last").ToHtmlTag()
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.User.Title).AddClassToRoot("full-row").ToHtmlTag()
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.User.BirthDate).AddClassToRoot("first half").ToHtmlTag()
+            </div>
+             <div class="fieldRow">
+                <h4>@WebLocalizationKeys.PASSWORD</h4>
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.Password).AddClassToRoot("first half").InputId("Password").ToHtmlTag()
+                @Html.SubmissionFor(x => x.PasswordConfirmation).AddClassToRoot("half").ToHtmlTag()
+            </div>
+@*             <div class="fieldRow">*@
+@*                @Html.SubmissionFor(x => x.UserLoginInfo.PasswordExpires).AddClassToRoot("first half checkbox").ToHtmlTag()*@
+@*                @Html.SubmissionFor(x => x.UserLoginInfo.PasswordExpireDate).AddClassToRoot("half").ToHtmlTag()*@
+@*            </div>*@
+             @if (@Model.User.EntityId <= 0)
+             {
+                 <div class="fieldRow">
+                     @Html.SubmissionFor(x => x.DefaultEmail).AddClassToRoot("first").ToHtmlTag()
+                 </div>
+             }
+        </div>
+
+        <div class="col right">
+            <div class="fieldRow">
+                <h4>@WebLocalizationKeys.LOGIN_INFORMATION</h4>
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.UserLoginInfo.LoginName).AddClassToRoot("first half").ToHtmlTag()
+                @Html.ViewFor(x => x.UserLoginInfo.LastVisitDate).AddClassToRoot("half").ToHtmlTag()
+            </div>
+@*            <div class="fieldRow">*@
+@*                @Html.SubmissionFor(x => x.UserLoginInfo.CanLoginFrom).AddClassToRoot("first half").ToHtmlTag()*@
+@*                @Html.SubmissionFor(x => x.UserLoginInfo.CanLoginTo).AddClassToRoot("half").ToHtmlTag()*@
+@*            </div>*@
+        </div>
+        <div class="col right">
+            <div class="fieldRow">
+                <h4>@WebLocalizationKeys.USER_SUBSCRIPTION_INFORMATION</h4>
+            </div>
+            <div class="fieldRow">
+                @Html.SubmissionFor(x => x.LatestSubscription.Promotion).AddClassToRoot("first").ToHtmlTag()
+            </div>
+             <div class="fieldRow">
+                @Html.SubmissionFor(x => x.SubscriptionLevel).AddClassToRoot("first").ToHtmlTag()
+            </div>
+            <div class="fieldRow">
+                @Html.ViewFor(x => x.LatestSubscription.BeginDate).AddClassToRoot("first one-third").ToHtmlTag()
+                @Html.SubmissionFor(x => x.LatestSubscription.ExpirationDate).AddClassToRoot(" one-third").ToHtmlTag()
+                @Html.SubmissionFor(x => x.NotApplicable).AddClassToRoot(" one-third").ToHtmlTag()
+            </div>
+            @if (@Model.User.EntityId <= 0)
+            {
+                <div class="fieldRow">
+                    <h4>@WebLocalizationKeys.CHOOSE_CLIENT</h4>
+                </div>
+                <div class="fieldRow">
+                    @Html.SubmissionFor(x => x.Company).ToHtmlTag()
+                </div>
+            }
+            else
+            {
+                <div class="fieldRow">
+                    @Html.ViewFor(x => x.UsersCompany.Name).LabelDisplay(@WebLocalizationKeys.CLIENT).ToHtmlTag()
+                </div>   
+            }
+            <div class="fieldRow">
+                <button class="plus-rounded" id="viewHistory">@WebLocalizationKeys.VIEW_SUBSCRIPTION_HISTORY</button>
+            </div>
+        </div>
+        <div class="col full clear"><hr/></div>
+     
+    @EndForm()
+       <div class="col right">
+            <div class="fieldRow">
+                <h4>@WebLocalizationKeys.ADDRESSES</h4>
+            </div>
+            <div class="fieldRow">
+                <div id="addressDisplayContainer" class="repeaterItems">
+                </div>
+                <span class="profile_add "><button class="plus-rounded" id="addAddress">@WebLocalizationKeys.ADD_A_NEW_.ToFormat(WebLocalizationKeys.ADDRESS)</button></span>
+            </div>
+            <div class="fieldRow">
+                <h4>@WebLocalizationKeys.EMAIL_ADDRESSES</h4>
+            </div>
+            <div class="fieldRow">
+                <div id="emailDisplayContainer" class="repeaterItems">
+                </div>
+                <span class="profile_add"><button class="plus-rounded" id="addEmail">@WebLocalizationKeys.ADD_A_NEW_.ToFormat(WebLocalizationKeys.EMAIL)</button></span>
+            </div>
+            <div class="fieldRow">
+                <h4>@WebLocalizationKeys.PHONE_NUMBERS</h4>
+            </div>
+            <div class="fieldRow">
+                <div id="phoneDisplayContainer" class="repeaterItems"></div>
+            </div>
+            <div class="fieldRow">
+                <span class="profile_add "><button class="plus-rounded" id="addPhone">@WebLocalizationKeys.ADD_A_NEW_.ToFormat(WebLocalizationKeys.PHONE)</button></span>
+            </div>
+        </div>
+        <div id="userSubscriptionHistoryContainer">
+            <div class="col full clear">
+                <div class="fieldRow">
+                    <h4>@WebLocalizationKeys.USER_SUBSCRIPTION_HISTORY</h4>
+                </div>
+                <div class="fieldRow">
+                    <div id="subscriptionHistoryContainer" class="repeaterItems">
+                        <table>
+                            <tr>
+                                <th>
+                                    @WebLocalizationKeys.BEGINNING_DATE
+                                </th>
+                                <th>
+                                    @WebLocalizationKeys.EXPIRATION_DATE
+                                </th>                       
+                                 <th>
+                                    @WebLocalizationKeys.PROMOTION
+                                </th>
+                            </tr>
+                            @if (Model.User.EntityId > 0)
+                            {
+                                foreach (var sub in Model.UserLoginInfo.UserSubscriptions)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if(@sub.BeginDate.HasValue)
+                                            {
+                                                @sub.BeginDate.Value.ToShortDateString()
+                                            }
+                                            else
+                                            {
+                                                @WebLocalizationKeys.UNKNOWN.ToString()
+                                            }
+                                        </td>
+                                        <td>
+                                            @if(@sub.ExpirationDate.HasValue)
+                                            {
+                                                @sub.ExpirationDate.Value.ToShortDateString()   
+                                            }else
+                                            {
+                                                @WebLocalizationKeys.TO_PRESENT
+                                            }
+                                        </td>
+                                        <td>
+                                            @sub.Promotion.Name
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script type="text/x-jquery-tmpl" id="addressDisplayTemplate">
+    <div class="fieldRow unit">
+        <a class="close dci_remove" id="removeAddress" data-bind="click: removeItem">
+            <input type="hidden" id="EntityId" value="${EntityId}"/>
+        </a>
+        <span>
+            {{if $data.AddressType}}
+                ${$data.AddressType.Name}: 
+            {{/if}}
+            ${Address1}</span>
+            <br/>
+            {{if Address2 }}
+            <span>${Address2}</span>
+            <br/>
+            {{/if}}
+            <span>
+                ${City}{{if City && (State || ZipCode)}} ,{{/if}}
+                {{if State }}
+                    <span>${State}</span>
+                {{/if}}
+                {{if ZipCode }}
+                    <span>${ZipCode}</span>
+                {{/if}}
+            </span>
+        </div>
+</script>
+
+<script type="text/x-jquery-tmpl" id="phoneDisplayTemplate">
+    <div class="fieldRow unit">
+        <a class="close dci_remove" id="removePhone" data-bind="click: removeItem">
+            <input type="hidden" id="EntityId" value="${EntityId}"/>
+        </a>
+        <span>
+            {{if $data.PhoneType}}
+                ${$data.PhoneType.Name}: 
+            {{/if}}
+                ${PhoneNumber}</span>
+        </div>
+</script>
+
+        <script type="text/x-jquery-tmpl" id="emailDisplayTemplate">
+            <div class="fieldRow unit">
+                <a class="close dci_remove" id="removeEmail" data-bind="click: removeItem">
+                    <input type="hidden" id="EntityId" value="${EntityId}"/>
+                </a>
+                <span>${EmailAddress}</span>
+            </div>
+        </script>
