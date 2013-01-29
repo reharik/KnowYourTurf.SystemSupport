@@ -4,7 +4,7 @@ Version: 3.0, 03.31.2009
 
 By: Maggie Costello Wachs (maggie@filamentgroup.com) and Scott Jehl (scott@filamentgroup.com)
 	http://www.filamentgroup.com
-	* reference articles: http://www.filamentgroup.com/lab/jquery_ipod_style_drilldown_menu/
+        * reference articles: http://www.filamentgroup.com/lab/jquery_ipod_style_drilldown_menu/
 		
 Copyright (c) 2009 Filament Group
 Dual licensed under the MIT (filamentgroup.com/examples/mit-license.txt) and GPL (filamentgroup.com/examples/gpl-license.txt) licenses.
@@ -59,12 +59,12 @@ function CCMenu(_caller, _options){
 		nextMenuLink: 'ui-icon-triangle-1-e', // class to style the link (specifically, a span within the link) used in the multi-level menu to show the next level
 		topLinkText: 'Home',
 		nextCrumbLink: 'ui-icon-carat-1-e',
-        containingElement :".dci_menuContainer"
+        containingElement :".menuContainer"
 	}, _options);
 	this.showLoading = function(){
 		caller.addClass(options.loadingState);
 	};
-    var container = $('<div class="dci_menuContainer ui-widget ui-widget-content ui-corner-all">'+options.content+'</div>');
+    var container = $('<div class="kyt_menuContainer ui-widget ui-widget-content ui-corner-all">'+options.content+'</div>');
     $(caller).hide();
 
     this.getLocationString = function(){
@@ -77,11 +77,9 @@ function CCMenu(_caller, _options){
         return result.length>0 ? result.substring(0,result.length-1):"";
     };
 
-    this.setMenuByRel = function(rel){
-        var item = container.find('.fg-menu').find("a[rel='"+rel+"']");
+    this.setMenuByUrl = function(url){
+        var item = container.find('.fg-menu').find("a[href='"+url+"']");
         if($(item).size()==0)return;
-        if($("."+options.callerOnState).attr("rel")==rel)return;
-        $("."+options.callerOnState).removeClass(options.callerOnState);
         var result="";
         function getToken(item){
             var parent = $(item).parents('ul:eq(0)');
@@ -92,7 +90,7 @@ function CCMenu(_caller, _options){
         getToken(item);
         // if result is empty then the item is on the root menu.  still need to hightlite item (callerOnState)
         if(!result){
-            menu.goToItem($(item).text());
+            menu.resetDrilldownMenu();
         }else{
             result = result.substring(0,result.length-1).split("/").reverse().join("/");
             menu.goToItem(result);
@@ -111,7 +109,9 @@ function CCMenu(_caller, _options){
 
         $('.fg-menu-all-lists').find('span').remove();
 		$(".fg-menu-breadcrumb").empty().append( $('<li class="fg-menu-breadcrumb-text">'+options.crumbDefaultText+'</li>') );
-
+        	
+        
+        
         var tokens = displayText.split("/");
         var parentUl = container.find('.fg-menu');
         $(tokens).each(function(x,xy){
@@ -125,10 +125,13 @@ function CCMenu(_caller, _options){
         });
     };
 
-
     this.showMenu = function(){
 		if (!menu.menuExists) {
             menu.create();
+//            var urlToken = $.address.value();
+//            if(urlToken){
+//                menu.setMenuByUrl(urlToken);
+//            }
         }
 		menu.menuOpen = true;
 		// assign key events
@@ -140,6 +143,72 @@ function CCMenu(_caller, _options){
 
 			var menuType = ($(event.target).parents('div').is('.fg-menu-flyout')) ? 'flyout' : 'ipod' ;
 
+			/*switch(e) {
+				case 37: // left arrow
+					if (menuType == 'flyout') {
+						$(event.target).trigger('mouseout');
+						if ($('.'+options.flyOutOnState).size() > 0) { $('.'+options.flyOutOnState).trigger('mouseover'); }
+					}
+
+					if (menuType == 'ipod') {
+						$(event.target).trigger('mouseout');
+						if ($('.fg-menu-footer').find('a').size() > 0) { $('.fg-menu-footer').find('a').trigger('click'); }
+						if ($('.fg-menu-header').find('a').size() > 0) { $('.fg-menu-current-crumb').prev().find('a').trigger('click'); }
+						if ($('.fg-menu-current').prev().is('.fg-menu-indicator')) {
+							$('.fg-menu-current').prev().trigger('mouseover');
+                        }
+					}
+					return false;
+					break;
+
+				case 38: // up arrow
+					if ($(event.target).is('.' + options.linkHover)) {
+						var prevLink = $(event.target).parent().prev().find('a:eq(0)');
+						if (prevLink.size() > 0) {
+							$(event.target).trigger('mouseout');
+							prevLink.trigger('mouseover');
+						}
+					}
+					else { container.find('a:eq(0)').trigger('mouseover'); }
+					return false;
+					break;
+
+				case 39: // right arrow
+					if ($(event.target).is('.fg-menu-indicator')) {
+						if (menuType == 'flyout') {
+							$(event.target).next().find('a:eq(0)').trigger('mouseover');
+						}
+						else if (menuType == 'ipod') {
+							$(event.target).trigger('click');
+							setTimeout(function(){
+								$(event.target).next().find('a:eq(0)').trigger('mouseover');
+							}, options.crossSpeed);
+						}
+					}
+					return false;
+					break;
+
+				case 40: // down arrow
+					if ($(event.target).is('.' + options.linkHover)) {
+						var nextLink = $(event.target).parent().next().find('a:eq(0)');
+						if (nextLink.size() > 0) {
+							$(event.target).trigger('mouseout');
+							nextLink.trigger('mouseover');
+						}
+					}
+					else { container.find('a:eq(0)').trigger('mouseover'); }
+					return false;
+					break;
+
+				case 13: // enter
+					if ($(event.target).is('.fg-menu-indicator') && menuType == 'ipod') {
+						$(event.target).trigger('click');
+						setTimeout(function(){
+							$(event.target).next().find('a:eq(0)').trigger('mouseover');
+						}, options.crossSpeed);
+					}
+					break;
+			}*/
 		});
 	};
 
@@ -192,18 +261,14 @@ function CCMenu(_caller, _options){
 		menu.setPosition(container, caller, options);
 	};
 	
-	this.chooseItem = function(item) {
-        // edit this for your own custom function/callback:
-        $('.fg-menu li a', container).removeClass(options.callerOnState);
+	this.chooseItem = function(item){
+		// edit this for your own custom function/callback:
+        $('.fg-menu li a',container).removeClass(options.callerOnState);
         $(item).addClass(options.callerOnState);
-        var rel = $(item).attr('rel');
-        if ($(item).parent().hasClass("menuItem-disabled")) {
-            DCI.vent.trigger("menuItem", "disabled", $(item).attr("data"),rel.replace('portfolio/',''));
-        } else {
-            DCI.vent.trigger("menuItem", rel);
-        }
+
+        KYT.vent.trigger("menuItem", $(item).attr('rel'));
         return false;
-    };
+	};
 }
 
 CCMenu.prototype.drilldown = function(container, options) {

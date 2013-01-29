@@ -48,3 +48,5 @@ D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\ob
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\Newtonsoft.Json.dll
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\Newtonsoft.Json.pdb
 D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\Newtonsoft.Json.xml
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\AutoMapper.pdb
+D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\bin\AutoMapper.xml

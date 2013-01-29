@@ -45,6 +45,8 @@ namespace SystemSupport.Web.Config
                 StructureMapBootstrapperTesting.Bootstrap();
             else
                 StructureMapBootstrapper.Bootstrap();
+
+            AutoMapperBootstrapper.Bootstrap();
             // sets SM as CSL
             ServiceLocator.SetLocatorProvider(() => new StructureMapServiceLocator());
             // sets MVCDependencyResolver to use the CSL

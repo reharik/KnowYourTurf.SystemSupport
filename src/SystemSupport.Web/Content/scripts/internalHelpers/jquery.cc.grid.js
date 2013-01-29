@@ -20,9 +20,9 @@ if (typeof cc.grid == 'undefined') {
             rowNum: 100,
             multiselect: true,
             scrollOffset:0,
-            scroll: true,
             altRows:true,
-            height:"1000",
+            height:"100%",
+            autowidth:true,
             // here we move the value of the entityId to ParentId since it's the Id of the containing element
             // and set EntityId to RowId as RowId is for the Particular entity we want to change
             beforeSubmitCell: function(rowid, celname, value, iRow, iCol) { return { RootId: rootId, ParentId: entityId, EntityId: rowid, rowId: rowid, cellName: celname, cellValue: value} },
@@ -32,12 +32,13 @@ if (typeof cc.grid == 'undefined') {
             },
             loadtext:"",
             //emptyrecords:"aint go nothin",
-            gridComplete:function(){$(this).find(".cbox").parent().addClass("jqg_cb");
-                DCI.vent.trigger("gridLoadComplete",this.rows.length-1)},
+            gridComplete:function(){$(this).find(".cbox").parent().addClass("jqg_cb");},
             sortorder: "asc",
             sortname:cc.grid.columnService.defaultSortColumnName(gridDefinition),
             onSortCol:function(index,iCol,sortorder) {cc.gridHelper.adjustSortStyles(index,iCol,sortorder);},
             jsonReader: {
+
+
                 repeatitems: true,
                 root: "items",
                 cell: "cell",

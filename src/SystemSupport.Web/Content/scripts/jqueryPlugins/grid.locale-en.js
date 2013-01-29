@@ -45,7 +45,7 @@ $.jgrid = {
 			nodefined : " is not defined!",
 			novalue : " return value is required!",
 			customarray : "Custom function should return array!",
-			customfcheck : "Custom function should be present in case of custom checking!"
+			custokytcheck : "Custom function should be present in case of custom checking!"
 			
 		}
 	},

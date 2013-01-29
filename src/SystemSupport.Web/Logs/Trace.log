@@ -1,0 +1,68 @@
+2013-01-29 14:06:02,380 [21] DEBUG - IDbTransaction disposed.
+2013-01-29 14:06:02,400 [21] DEBUG - transaction completion
+2013-01-29 14:06:02,401 [21] DEBUG - aggressively releasing database connection
+2013-01-29 14:06:02,401 [21] DEBUG - Closing connection
+2013-01-29 14:06:02,402 [21] DEBUG - [session-id=0a111d9c-414a-4501-9504-fb958e3e4f8a] running ISession.Dispose()
+2013-01-29 14:06:02,402 [21] DEBUG - [session-id=0a111d9c-414a-4501-9504-fb958e3e4f8a] executing real Dispose(True)
+2013-01-29 14:06:02,403 [21] DEBUG - closing session
+2013-01-29 14:06:02,403 [21] DEBUG - running BatcherImpl.Dispose(true)
+2013-01-29 14:06:02,474 [22] DEBUG - [session-id=cbe5acaf-195e-44aa-b1aa-0fa7a01c5423] opened session at timestamp: 634950651624, for session factory: [/99b95a3d34274a9d8857d150a209fb44]
+2013-01-29 14:08:57,435 [22] DEBUG - IDbTransaction disposed.
+2013-01-29 14:08:57,459 [22] DEBUG - transaction completion
+2013-01-29 14:08:57,460 [22] DEBUG - aggressively releasing database connection
+2013-01-29 14:08:57,460 [22] DEBUG - Closing connection
+2013-01-29 14:08:57,461 [22] DEBUG - [session-id=4e3d7387-8cf5-4e44-93a1-297890ccc51d] running ISession.Dispose()
+2013-01-29 14:08:57,461 [22] DEBUG - [session-id=4e3d7387-8cf5-4e44-93a1-297890ccc51d] executing real Dispose(True)
+2013-01-29 14:08:57,462 [22] DEBUG - closing session
+2013-01-29 14:08:57,462 [22] DEBUG - running BatcherImpl.Dispose(true)
+2013-01-29 14:08:57,512 [25] DEBUG - [session-id=51ac5a02-59eb-4030-bae2-220daa7cda24] opened session at timestamp: 634950653375, for session factory: [/59d64aed03ec4567a15d51da9d421790]
+2013-01-29 14:10:15,587 [22] DEBUG - IDbTransaction disposed.
+2013-01-29 14:10:15,612 [22] DEBUG - transaction completion
+2013-01-29 14:10:15,612 [22] DEBUG - aggressively releasing database connection
+2013-01-29 14:10:15,612 [22] DEBUG - Closing connection
+2013-01-29 14:10:15,614 [22] DEBUG - [session-id=f23d80d0-270a-4127-8421-cbb750d46021] running ISession.Dispose()
+2013-01-29 14:10:15,614 [22] DEBUG - [session-id=f23d80d0-270a-4127-8421-cbb750d46021] executing real Dispose(True)
+2013-01-29 14:10:15,614 [22] DEBUG - closing session
+2013-01-29 14:10:15,615 [22] DEBUG - running BatcherImpl.Dispose(true)
+2013-01-29 14:10:15,660 [24] DEBUG - [session-id=5a9c9fa7-401f-41e7-b632-4c17bd6e67dc] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,679 [21] DEBUG - [session-id=f3b981b7-6089-4c19-835a-d43ebbaf3562] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,679 [25] DEBUG - [session-id=b09e9d83-9593-4fdc-ab5f-c8eb6c746dc9] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,682 [22] DEBUG - [session-id=7da81b70-0605-4bbf-95b8-b8e6feecfa57] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,682 [17] DEBUG - [session-id=5ffc2f42-73cc-49fe-9ad2-4c442bb55700] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,682 [24] DEBUG - [session-id=daacfc4a-df3e-49c3-970d-1058e8f38d6e] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,685 [24] DEBUG - [session-id=c1ebecdb-29fa-46d3-b792-95d1b8467e3e] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,685 [16] DEBUG - [session-id=2ad8f7f6-18d9-4b13-8bb8-ee7c682a38a1] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,697 [16] DEBUG - [session-id=3021000d-8cc8-4854-a592-44f1a989d536] opened session at timestamp: 634950654156, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,704 [2] DEBUG - [session-id=2ad8f7f6-18d9-4b13-8bb8-ee7c682a38a1] executing real Dispose(False)
+2013-01-29 14:10:15,704 [2] DEBUG - [session-id=5a9c9fa7-401f-41e7-b632-4c17bd6e67dc] executing real Dispose(False)
+2013-01-29 14:10:15,704 [2] DEBUG - [session-id=f3b981b7-6089-4c19-835a-d43ebbaf3562] executing real Dispose(False)
+2013-01-29 14:10:15,704 [2] DEBUG - [session-id=daacfc4a-df3e-49c3-970d-1058e8f38d6e] executing real Dispose(False)
+2013-01-29 14:10:15,704 [2] DEBUG - [session-id=c1ebecdb-29fa-46d3-b792-95d1b8467e3e] executing real Dispose(False)
+2013-01-29 14:10:15,725 [22] DEBUG - [session-id=f5335e30-fc5c-4e68-ab4b-94ce0637fbdc] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,725 [21] DEBUG - [session-id=efa6cfa5-7bd5-423d-bab4-fdecb78ae061] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,725 [25] DEBUG - [session-id=32bd95bd-5c66-40d3-b025-c64ad9ef6668] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,725 [16] DEBUG - [session-id=50571d6d-a599-48a8-9548-ab9ea8d10e41] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,740 [18] DEBUG - [session-id=c1a0504f-4b3f-43c9-827d-4c748101b8d5] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,740 [17] DEBUG - [session-id=e65246bb-b921-4f17-bb96-900e608a062b] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,742 [24] DEBUG - [session-id=aebe2750-d559-4557-a730-2bd5f6448914] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,745 [16] DEBUG - [session-id=83782983-411d-44e7-a723-2eb1734c46ba] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,750 [2] DEBUG - [session-id=b09e9d83-9593-4fdc-ab5f-c8eb6c746dc9] executing real Dispose(False)
+2013-01-29 14:10:15,751 [2] DEBUG - [session-id=50571d6d-a599-48a8-9548-ab9ea8d10e41] executing real Dispose(False)
+2013-01-29 14:10:15,751 [18] DEBUG - [session-id=f2f9f80d-c7ac-416c-9b21-b2539c8a6745] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,751 [2] DEBUG - [session-id=e65246bb-b921-4f17-bb96-900e608a062b] executing real Dispose(False)
+2013-01-29 14:10:15,751 [2] DEBUG - [session-id=3021000d-8cc8-4854-a592-44f1a989d536] executing real Dispose(False)
+2013-01-29 14:10:15,751 [2] DEBUG - [session-id=7da81b70-0605-4bbf-95b8-b8e6feecfa57] executing real Dispose(False)
+2013-01-29 14:10:15,751 [2] DEBUG - [session-id=aebe2750-d559-4557-a730-2bd5f6448914] executing real Dispose(False)
+2013-01-29 14:10:15,751 [2] DEBUG - [session-id=5ffc2f42-73cc-49fe-9ad2-4c442bb55700] executing real Dispose(False)
+2013-01-29 14:10:15,754 [25] DEBUG - [session-id=92c8e169-2f18-4ed7-9cc1-368981c33660] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,756 [21] DEBUG - [session-id=8713938e-2172-4ad1-972e-f4c9b5e1935e] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,756 [16] DEBUG - [session-id=9c8fb742-72c1-45e2-aa55-6dea8c4f78f9] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,756 [18] DEBUG - [session-id=67773d7a-4ecf-46e0-a96c-69bb26ee50a4] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,761 [21] DEBUG - [session-id=bf780c5b-446a-4884-bc72-2ccf4febab67] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,761 [22] DEBUG - [session-id=7b93d82d-bd15-4f57-ab5d-a4cf38ae2df9] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,762 [17] DEBUG - [session-id=48471e95-7d61-4d55-8614-ece23be10402] opened session at timestamp: 634950654157, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,811 [18] DEBUG - [session-id=56e57f0d-e3db-4f6c-9140-30e6247726c5] opened session at timestamp: 634950654158, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,811 [17] DEBUG - [session-id=6491ecac-a58d-4397-aac8-e8e70ab85b57] opened session at timestamp: 634950654158, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,811 [21] DEBUG - [session-id=0bbf33ae-7531-4cc0-af14-ee68127b40a6] opened session at timestamp: 634950654158, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,812 [25] DEBUG - [session-id=6dd12bf7-2b36-4b7d-bc80-8de3fa0524b9] opened session at timestamp: 634950654158, for session factory: [/1610f1f2065243d38e656ae64eff7d06]
+2013-01-29 14:10:15,854 [22] DEBUG - [session-id=ae0c2426-62b0-4633-b7a6-a03909ecb602] opened session at timestamp: 634950654158, for session factory: [/1610f1f2065243d38e656ae64eff7d06]

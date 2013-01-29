@@ -94,5 +94,13 @@
         public static readonly StringToken INVALID_CONFIG_FILE = new WebLocalizationKeys("INVALID_CONFIG_FILE", "Invalid config file path");
         public static readonly StringToken TO_PRESENT = new WebLocalizationKeys("TO_PRESENT", "To Present");
         public static readonly StringToken UNKNOWN = new WebLocalizationKeys("UNKNOWN", "Unknown");
+
+
+        public static readonly StringToken EMPLOYEE_PHOTO = new WebLocalizationKeys("EMPLOYEE_PHOTO", "Employee Photo");
+        public static readonly StringToken STATUS = new WebLocalizationKeys("STATUS", "Status");
+        public static readonly StringToken EMPLOYEE_INFORMATION = new WebLocalizationKeys("EMPLOYEE_INFORMATION", "Employee Information");
+        public static readonly StringToken FORGOT_YOUR_PASSWORD = new WebLocalizationKeys("FORGOT_YOUR_PASSWORD", "Forgot your password?");
+    
+    
     }
 }

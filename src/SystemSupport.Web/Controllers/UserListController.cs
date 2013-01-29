@@ -42,7 +42,7 @@ namespace SystemSupport.Web.Controllers
         {
             var addUpdateUrl = UrlContext.GetUrlForAction<UserController>(x=>x.AddUpdate(null));
             var deleteMultipleUrl = UrlContext.GetUrlForAction<UserListController>(x => x.DeleteMultiple(null));
-            var redirectUrl = SiteConfig.Settings().WebSiteRoot;
+            var redirectUrl = SiteConfig.Config.WebSiteRoot;
             var url = UrlContext.GetUrlForAction<UserListController>(x => x.Items(null));
             var gridDefinition = _grid.GetGridDefinition(url, input.User);
             var model = new UserListViewModel

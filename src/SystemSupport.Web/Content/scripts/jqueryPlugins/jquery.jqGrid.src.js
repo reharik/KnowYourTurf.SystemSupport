@@ -5701,7 +5701,7 @@ $.extend($.jgrid,{
 							return [false,$.jgrid.edit.msg.customarray,""];
 						}
 					} else {
-						return [false,$.jgrid.edit.msg.customfcheck,""];
+						return [false,$.jgrid.edit.msg.custokytcheck,""];
 					}
 				}
 			}

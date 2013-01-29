@@ -58,9 +58,9 @@
     // Define all usable toolbar buttons - the init string property is 
     //   expanded during initialization back into the buttons object and 
     //   seperate object properties are created for each button.
-    //   e.g. buttons.size.Title = "Font Size"
+    //   e.g. buttons.size.title = "Font Size"
     buttons: {
-      // name,Title,command,popupName (""=use name)
+      // name,title,command,popupName (""=use name)
       init:
       "bold,,|" +
       "italic,,|" +
@@ -174,7 +174,7 @@
 
   // Expand the buttons.init string back into the buttons object
   //   and create seperate object properties for each button.
-  //   e.g. buttons.size.Title = "Font Size"
+  //   e.g. buttons.size.title = "Font Size"
   $.each(buttons.init.split("|"), function(idx, button) {
     var items = button.split(","), name = items[0];
     buttons[name] = {
@@ -253,7 +253,7 @@
         var $buttonDiv = $(DIV_TAG)
           .data(BUTTON_NAME, button.name)
           .addClass(BUTTON_CLASS)
-          .attr("Title", button.title)
+          .attr("title", button.title)
           .bind(CLICK, $.proxy(buttonClick, editor))
           .appendTo($group)
           .hover(hoverEnter, hoverLeave);
@@ -299,6 +299,7 @@
 
     // Create the iframe and resize the controls
     refresh(editor);
+
   };
 
   //===============
@@ -324,7 +325,6 @@
     ["showMessage", showMessage],
     ["updateFrame", updateFrame],
     ["updateTextArea", updateTextArea]
-
   ];
 
   $.each(methods, function(idx, method) {

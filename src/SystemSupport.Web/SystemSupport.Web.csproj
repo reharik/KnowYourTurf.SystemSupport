@@ -40,6 +40,7 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\lib\fluentnhibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
     <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Castle.Components.Validator.dll</HintPath>
@@ -113,6 +114,7 @@
     <Compile Include="Areas\Permissions\Grids\UserGroupListGrid.cs" />
     <Compile Include="Areas\Permissions\Grids\UserPermissionListGrid.cs" />
     <Compile Include="Areas\Permissions\PermissionsAreaRegistration.cs" />
+    <Compile Include="Config\AutoMapperBootstrapper.cs" />
     <Compile Include="Config\Bootstrapper.cs" />
     <Compile Include="Config\CustomAuthorizationAttribute.cs" />
     <Compile Include="Config\StructureMapBootstrapper.cs" />

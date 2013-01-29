@@ -6,7 +6,7 @@ Date:		September 2008
 
 /* REQUIRED STYLES - the menus will only render correctly with these rules */	
 
-.dci_menuContainer {
+.kyt_menuContainer {
     font-size:12px;
     border:none;
 }
@@ -46,6 +46,7 @@ Date:		September 2008
     margin: 10px 0 0 5px;
     padding: 4px 2px 4px 6px;
     /*width: 192px;*/
+    width: 90%;
     height:auto;
     display:none;
 }
@@ -102,13 +103,11 @@ Date:		September 2008
 */
 
 
-.fg-menu a:link { float:left; width:92%; padding:.3em 3%; text-decoration:none; outline: 0 !important;  line-height: 21px; }
-
-.fg-menu a:visited { float:left; width:92%; padding:.3em 3%; text-decoration:none; outline: 0 !important;  line-height: 21px; }
-
-.fg-menu a:hover { float:left; width:92%; padding:.3em 3%; text-decoration:none; outline: 0 !important;  line-height: 21px; }
-
-.fg-menu a:active { float:left; width:92%; padding:.3em 3%; text-decoration:none; outline: 0 !important;  line-height: 21px; }
+.fg-menu a:link ,
+.fg-menu a:visited,
+.fg-menu a:hover,
+.fg-menu a:active 
+	{ float:left; width:92%; padding:.3em 3%; text-decoration:none; outline: 0 !important;  line-height: 21px; }
 
 
 
@@ -161,20 +160,20 @@ Date:		September 2008
 
 .fg-menu a:hover { 	 
     background: none repeat scroll 0 0 #D7E6ED !important;
-    border: 1px solid transparent !important;
+    border: 0px none transparent !important;
     color: #457596;
  }
 
 
 
-.dci_menuContainer .ui-state-active, .dci_menuContainer  .ui-widget-content .ui-state-active, .dci_menuContainer .ui-widget-header .ui-state-active { 
+.kyt_menuContainer .ui-state-active, .kyt_menuContainer  .ui-widget-content .ui-state-active, .kyt_menuContainer .ui-widget-header .ui-state-active { 
     background: none repeat scroll 0 0 #D7E6ED !important;
     border:none !important;
     padding-bottom: 5px;
     color: #457596;
 }
 
-.dci_menuContainer a:hover  .ui-icon {
+.kyt_menuContainer a:hover  .ui-icon {
     margin-top: 1px;
 }
 
@@ -187,7 +186,6 @@ Date:		September 2008
 
 #left-navigation ul li.portfolios>a 
 	, #left-navigation ul li.repository>a
-	, #left-navigation ul li.assets>a 
 	, #left-navigation ul li.tools>a 
 	{
     /*padding-left: 25px !important;*/
@@ -276,7 +274,7 @@ one leveld deeper
     margin-top:8px;
 }
 
-#left-navigation .dci_menuContainer .fg-menu-breadcrumb .ui-icon {
+#left-navigation .kyt_menuContainer .fg-menu-breadcrumb .ui-icon {
     background: url("../images/left-nav-separator-icon.png") no-repeat scroll 6px 3px transparent;
 }
 

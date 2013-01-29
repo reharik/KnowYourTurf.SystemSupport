@@ -26,7 +26,7 @@ namespace SystemSupport.Web.Controllers
         public SiteConfigurationController(ISelectListItemService selectListItemService)
         {
             _selectListItemService = selectListItemService;
-            _suiteWebsiteFullPath = SiteConfig.Settings().WebSiteRoot ?? "";
+            _suiteWebsiteFullPath = SiteConfig.Config.WebSiteRoot ?? "";
             _configFilePath = getConfigFilePath();
         }
 

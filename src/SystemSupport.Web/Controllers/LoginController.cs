@@ -10,6 +10,7 @@ namespace SystemSupport.Web.Controllers
     using CC.Core.CoreViewModelAndDTOs;
     using CC.Core.DomainTools;
     using CC.Core;
+    using CC.Core.Html;
 
     using KnowYourTurf.Core;
     using KnowYourTurf.Core.Services;
@@ -29,9 +30,9 @@ namespace SystemSupport.Web.Controllers
         public ActionResult Login()
         {
             var loginViewModel = new LoginViewModel
-                                     {
-                                         _Title = WebLocalizationKeys.LOGIN_SYSTEM_SUPPORT.ToString()
-                                     };
+            {
+                _saveUrl = UrlContext.GetUrlForAction<LoginController>(x => x.Login(null))
+            };
             return View(loginViewModel);
         }
 
@@ -45,10 +46,10 @@ namespace SystemSupport.Web.Controllers
                 if (input.HasCredentials())
                 {
                     var redirectUrl = string.Empty;
-                    var uli = _securityDataService.AuthenticateForUserId(input.UserName, input.Password);
-                    if (uli != null)
+                    var user = _securityDataService.AuthenticateForUserId(input.UserName, input.Password);
+                    if (user != null)
                     {
-                        redirectUrl = _authenticationContext.ThisUserHasBeenAuthenticated(uli, input.RememberMe);
+                        redirectUrl = _authenticationContext.ThisUserHasBeenAuthenticated(user, input.RememberMe);
                         notification.Success = true;
                         notification.Message = string.Empty;
                         notification.Redirect = true;

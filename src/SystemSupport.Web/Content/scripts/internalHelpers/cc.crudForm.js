@@ -1,36 +1,6 @@
-if (typeof dci == "undefined") {
-            var dci = {};
+if (typeof KYT == "undefined") {
+            var KYT = {};
 }
-
-dci.crudHelpers = {
-    documentHandler: function(arr){
-        if($("#DocumentInput").val())
-        {
-            arr.push({"name":"DocumentTokenViewModel.DocumentInput","value":$("#DocumentInput").val()})
-        }
-    }
-};
-
-    if (typeof cc == "undefined") {
-        var cc = {};
-    }
-    if (typeof DCI == "undefined") {
-      var DCI = {};
-    }
-
-    cc.namespace = function() {
-        var a = arguments, o = null, i, j, d;
-        for (i = 0; i < a.length; i = i + 1) {
-            d = a[i].split(".");
-            o = window;
-            for (j = 0; j < d.length; j = j + 1) {
-                o[d[j]] = o[d[j]] || {};
-                o = o[d[j]];
-            }
-        }
-        return o;
-    };
-    cc.namespace("cc.utilities");
 
 (function($) {
 
@@ -55,8 +25,8 @@ dci.crudHelpers = {
             var ajaxOptions = {dataType: 'json',
                 success: function(result){
                     var viewId = $(currentForm).data().viewId;
-                    DCI.notificationService.resetArea(notificationAreaName);
-                    DCI.notificationService.processResult(result,notificationAreaName,viewId);
+                    KYT.notificationService.resetArea(notificationAreaName);
+                    KYT.notificationService.processResult(result,notificationAreaName,viewId);
                 },
                 beforeSubmit:  beforSubmitCallback
             };
@@ -69,9 +39,8 @@ dci.crudHelpers = {
                 if(typeof(item) === 'function') item(_arr);
             });
         };
-        // public methods.
 
-        var nArea = DCI.notificationService.retrieveArea(notificationAreaName);
+        var nArea = KYT.notificationService.retrieveArea(notificationAreaName);
         this.setBeforeSubmitFuncs = function(beforeSubmitFunc){
              var array = !$.isArray(beforeSubmitFunc) ? [beforeSubmitFunc] : beforeSubmitFunc;
             $(array).each(function(i,item){
@@ -114,7 +83,6 @@ dci.crudHelpers = {
 
     $.fn.crudForm.defaults = {
         dataType: 'json',
-        beforeSubmitCallbackFunctions: [dci.crudHelpers.documentHandler]
+        beforeSubmitCallbackFunctions: []
     };
 })(jQuery);
-

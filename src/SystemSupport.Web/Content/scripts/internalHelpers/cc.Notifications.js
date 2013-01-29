@@ -1,4 +1,11 @@
 /**
+ * Created by JetBrains RubyMine.
+ * User: Owner
+ * Date: 7/1/12
+ * Time: 3:45 PM
+ * To change this template use File | Settings | File Templates.
+ */
+/**
  * Created with JetBrains WebStorm.
  * User: RHarik
  * Date: 4/20/12
@@ -9,9 +16,9 @@
 
 cc.MessageNotficationService = function(){
     this.areaCache = [];
+    this.extend = cc.extend;
 };
 
-cc.MessageNotficationService.extend = cc.extend;
     $.extend(cc.MessageNotficationService.prototype, {
         processResult:function(result, _area, viewId){
             if(typeof result == "string"){
@@ -27,9 +34,9 @@ cc.MessageNotficationService.extend = cc.extend;
         addArea: function(area){
             this.areaCache.push(area);
         },
-        removeArea: function(_key){
-            _.reject(this.areaCache,function(item,idx,list){
-                return item.name = _key;
+        removeArea: function(areaName){
+            DCI.notificationService.areaCache = _.reject(this.areaCache,function(item,idx,list){
+                return item.name === areaName;
             },this)
         },
         retrieveArea:function(areaName){
@@ -42,19 +49,17 @@ cc.MessageNotficationService.extend = cc.extend;
         resetArea:function(areaName){
             var area = this.retrieveArea(areaName);
             if(area){
-                area.resetArea(); 
+                area.resetArea();
             }
         }
     });
 
 cc.NotificationArea = function(_name,_successContainer,_errorContainer, _ventHandler){
     this.name = _name;
-    this.$errorContainer = $(_errorContainer);
-    this.$successContainer = $(_successContainer);
-    this.$successContainer.hide().find("ul").removeClass();
-    this.$errorContainer.hide().find("ul").removeClass();
+    this.errorContainer = _errorContainer;
+    this.successContainer = _successContainer;
     this.ventHandler = _ventHandler;
-    this.messageHandler = new cc.NotificationMessageHandler();
+
     this.handleData = function(result,viewId){
         if(result.Success && result.Redirect) {
             if (result.RedirectUrl) {
@@ -81,10 +86,21 @@ cc.NotificationArea = function(_name,_successContainer,_errorContainer, _ventHan
         }
         return messageType;
     };
+
 };
 cc.NotificationArea.extend = cc.extend;
 
 $.extend(cc.NotificationArea.prototype, {
+
+    render:function(formEl)
+    {
+        this.$errorContainer = $(this.errorContainer,formEl);
+        this.$successContainer = $(this.successContainer);
+        this.$successContainer.hide().find("ul").removeClass();
+        this.$errorContainer.hide().find("ul").removeClass();
+        this.messageHandler = new cc.NotificationMessageHandler();
+    },
+
     areaName: function(){return this.name},
     processResult:function(result,viewId){ return this.handleData(result,viewId); },
     getSuccessContainer:function(){ return this.$successContainer; },
@@ -131,14 +147,14 @@ cc.NotificationMessageHandler.extend = cc.extend;
             selector.find("ul").addClass(cssClass).html(this.createHtmlForMessage(message));
         },
         showAllMessages: function(selector, cssClass, fadeOut) {
-            selector.find("ul").removeClass();
             if (this.hasMessages()) {
-                selector.find("ul").addClass(cssClass).html(this.createHtmlForAllMessages());
+                var $ul = selector.find("ul");
+                $ul.addClass(cssClass).html(this.createHtmlForAllMessages());
                 selector.show();
                 if(fadeOut){
-                    selector.find("ul").show().delay(3000).fadeOut(2000);
+                    $ul.show().delay(3000).fadeOut(2000,function(){$ul.find("li").remove();});
                 }else{
-                    selector.find("ul").show();
+                    $ul.show();
                 }
             } else {
                 selector.hide().find("ul").removeClass();

@@ -1,0 +1,168 @@
+﻿<error errorId="b1c0cca0-2f0b-4ccb-abfb-9d33d37ad39a" host="RHARIK-PC" type="System.ArgumentNullException" message="Value cannot be null.&#xD;&#xA;Parameter name: Data Source" source="System.Data" detail="System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; StructureMap.StructureMapException: StructureMap Exception Code:  207&#xA;Internal exception while creating Instance 'b8100aa3-a931-4c9e-b4d4-f95a1909fa4e' of PluginType NHibernate.ISession, NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.  Check the inner exception for more details. ---&gt; StructureMap.StructureMapException: StructureMap Exception Code:  207&#xA;Internal exception while creating Instance 'f091d723-158f-47c6-84e7-e288035c362e' of PluginType NHibernate.ISessionFactory, NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.  Check the inner exception for more details. ---&gt; System.ArgumentNullException: Value cannot be null.&#xD;&#xA;Parameter name: Data Source&#xD;&#xA;   at System.Data.SqlClient.SqlConnectionStringBuilder.set_DataSource(String value)&#xD;&#xA;   at FluentNHibernate.Cfg.Db.MsSqlConnectionStringBuilder.Create() in d:\Builds\FluentNH-v1.x-nh3\src\FluentNHibernate\Cfg\Db\MsSqlConnectionStringBuilder.cs:line 55&#xD;&#xA;   at FluentNHibernate.Cfg.Db.PersistenceConfiguration`2.CreateProperties() in d:\Builds\FluentNH-v1.x-nh3\src\FluentNHibernate\Cfg\Db\PersistenceConfiguration.cs:line 58&#xD;&#xA;   at FluentNHibernate.Cfg.Db.PersistenceConfiguration`2.ConfigureProperties(Configuration nhibernateConfig) in d:\Builds\FluentNH-v1.x-nh3\src\FluentNHibernate\Cfg\Db\PersistenceConfiguration.cs:line 73&#xD;&#xA;   at FluentNHibernate.Cfg.FluentConfiguration.Database(IPersistenceConfigurer config) in d:\Builds\FluentNH-v1.x-nh3\src\FluentNHibernate\Cfg\FluentConfiguration.cs:line 82&#xD;&#xA;   at KnowYourTurf.Core.Domain.SqlServerSessionSourceConfiguration.CreateSessionFactory() in D:\Development\CannibalCoder\KnowYourTurf\KnowYourTurf.Core\Config\SqlServerSessionSourceConfiguration.cs:line 54&#xD;&#xA;   at SystemSupport.Web.SystemSupportWebRegistry.&lt;.ctor&gt;b__2(IContext ctx) in D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\SystemSupportWebRegistry.cs:line 73&#xD;&#xA;   at StructureMap.Pipeline.LambdaInstance`1.build(Type pluginType, BuildSession session)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at StructureMap.Pipeline.LambdaInstance`1.build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.createRawObject(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.Build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ObjectBuilder.ConstructNew(Type pluginType, Instance instance, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ObjectBuilder.Resolve(Type pluginType, Instance instance, BuildSession session)&#xD;&#xA;   at StructureMap.BuildSession.CreateInstance(Type pluginType, Instance instance)&#xD;&#xA;   at StructureMap.BuildSession.&lt;&gt;c__DisplayClass3.&lt;.ctor&gt;b__1()&#xD;&#xA;   at StructureMap.BuildSession.CreateInstance(Type pluginType)&#xD;&#xA;   at StructureMap.BuildSession.GetInstance[T]()&#xD;&#xA;   at SystemSupport.Web.SystemSupportWebRegistry.&lt;.ctor&gt;b__3(IContext context) in D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\SystemSupportWebRegistry.cs:line 75&#xD;&#xA;   at StructureMap.Pipeline.LambdaInstance`1.build(Type pluginType, BuildSession session)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at StructureMap.Pipeline.LambdaInstance`1.build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.createRawObject(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.Build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ObjectBuilder.ConstructNew(Type pluginType, Instance instance, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ObjectBuilder.Resolve(Type pluginType, Instance instance, BuildSession session)&#xD;&#xA;   at StructureMap.BuildSession.CreateInstance(Type pluginType, Instance instance)&#xD;&#xA;   at StructureMap.BuildSession.&lt;&gt;c__DisplayClass3.&lt;.ctor&gt;b__1()&#xD;&#xA;   at StructureMap.BuildSession.CreateInstance(Type pluginType)&#xD;&#xA;   at StructureMap.Pipeline.DefaultInstance.build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.createRawObject(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.Build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ConstructorInstance.Get(String propertyName, Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ConstructorInstance.Get[T](String propertyName, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Arguments.Get[T](String propertyName)&#xD;&#xA;   at lambda_method(Closure , IArguments )&#xD;&#xA;   at StructureMap.Construction.BuilderCompiler.FuncCompiler`1.&lt;&gt;c__DisplayClass2.&lt;CreateBuilder&gt;b__0(IArguments args)&#xD;&#xA;   at StructureMap.Construction.InstanceBuilder.BuildInstance(IArguments args)&#xD;&#xA;   at StructureMap.Pipeline.ConstructorInstance.Build(Type pluginType, BuildSession session, IInstanceBuilder builder)&#xD;&#xA;   at StructureMap.Pipeline.ConstructorInstance.build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.SmartInstance`1.build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.createRawObject(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.Instance.Build(Type pluginType, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ObjectBuilder.ConstructNew(Type pluginType, Instance instance, BuildSession session)&#xD;&#xA;   at StructureMap.Pipeline.ObjectBuilder.Resolve(Type pluginType, Instance instance, BuildSession session)&#xD;&#xA;   at StructureMap.BuildSession.CreateInstance(Type pluginType, Instance instance)&#xD;&#xA;   at StructureMap.BuildSession.&lt;&gt;c__DisplayClass3.&lt;.ctor&gt;b__1()&#xD;&#xA;   at StructureMap.BuildSession.CreateInstance(Type pluginType)&#xD;&#xA;   at StructureMap.Container.GetInstance(Type pluginType)&#xD;&#xA;   at StructureMap.Container.GetInstance[T]()&#xD;&#xA;   at SystemSupport.Web.MvcApplication.Application_EndRequest() in D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\Global.asax.cs:line 80&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&#xD;&#xA;   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&#xD;&#xA;   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;&#xA;   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&#xD;&#xA;   at System.Web.Util.ArglessEventHandlerProxy.Callback(Object sender, EventArgs e)&#xD;&#xA;   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" time="2013-01-29T20:03:43.0387070Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip,deflate,sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:O=OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002; ASP.NET_SessionId=02jncvupl0e2nzbt3cq2atlg; MF=9E0E17BF9F7A71BB04D3EDBBEE4B45A1C1C960BCD61DFC52D81B364A3E122B0B4DAD9A960ED96993A701737CCD3116DD63D7D04B4D6ADFF102F1A4A0996679BAE8F4FDECD6807331E6AE01A172BC903BAF1AF6F95934729EF5A5FFCD5EEC1715BB168DE1E5E0EBCD8238FF3815118F37EF6D264C543E31777E57799946397DE6C4DD1A23614116A1251CB79982647CC6B5F71AB3B9F6833D4322F725FB2354B050556FB10D851CBC9A97B5A39F01262805C1D35153455AA9D404C2FDA9DF0C0C&#xD;&#xA;HTTP_HOST:localhost:777&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;Accept-Encoding: gzip,deflate,sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: O=OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002; ASP.NET_SessionId=02jncvupl0e2nzbt3cq2atlg; MF=9E0E17BF9F7A71BB04D3EDBBEE4B45A1C1C960BCD61DFC52D81B364A3E122B0B4DAD9A960ED96993A701737CCD3116DD63D7D04B4D6ADFF102F1A4A0996679BAE8F4FDECD6807331E6AE01A172BC903BAF1AF6F95934729EF5A5FFCD5EEC1715BB168DE1E5E0EBCD8238FF3815118F37EF6D264C543E31777E57799946397DE6C4DD1A23614116A1251CB79982647CC6B5F71AB3B9F6833D4322F725FB2354B050556FB10D851CBC9A97B5A39F01262805C1D35153455AA9D404C2FDA9DF0C0C&#xD;&#xA;Host: localhost:777&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Rharik-PC\Rharik" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="" />
+    </item>
+    <item name="HTTPS">
+      <value string="" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/favicon.ico" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\favicon.ico" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/favicon.ico" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="777" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="" />
+    </item>
+    <item name="URL">
+      <value string="/favicon.ico" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_CHARSET">
+      <value string="ISO-8859-1,utf-8;q=0.7,*;q=0.3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip,deflate,sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="O=OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002; ASP.NET_SessionId=02jncvupl0e2nzbt3cq2atlg; MF=9E0E17BF9F7A71BB04D3EDBBEE4B45A1C1C960BCD61DFC52D81B364A3E122B0B4DAD9A960ED96993A701737CCD3116DD63D7D04B4D6ADFF102F1A4A0996679BAE8F4FDECD6807331E6AE01A172BC903BAF1AF6F95934729EF5A5FFCD5EEC1715BB168DE1E5E0EBCD8238FF3815118F37EF6D264C543E31777E57799946397DE6C4DD1A23614116A1251CB79982647CC6B5F71AB3B9F6833D4322F725FB2354B050556FB10D851CBC9A97B5A39F01262805C1D35153455AA9D404C2FDA9DF0C0C" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:777" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="O">
+      <value string="OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="02jncvupl0e2nzbt3cq2atlg" />
+    </item>
+    <item name="MF">
+      <value string="9E0E17BF9F7A71BB04D3EDBBEE4B45A1C1C960BCD61DFC52D81B364A3E122B0B4DAD9A960ED96993A701737CCD3116DD63D7D04B4D6ADFF102F1A4A0996679BAE8F4FDECD6807331E6AE01A172BC903BAF1AF6F95934729EF5A5FFCD5EEC1715BB168DE1E5E0EBCD8238FF3815118F37EF6D264C543E31777E57799946397DE6C4DD1A23614116A1251CB79982647CC6B5F71AB3B9F6833D4322F725FB2354B050556FB10D851CBC9A97B5A39F01262805C1D35153455AA9D404C2FDA9DF0C0C" />
+    </item>
+  </cookies>
+</error>
