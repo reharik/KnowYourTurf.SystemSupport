@@ -10,8 +10,9 @@ namespace SystemSupport.Web.Controllers
     using CC.Core.Services;
 
     using KnowYourTurf.Core.Domain;
+    using KnowYourTurf.Web.Controllers;
 
-    public class CompanyController:DCIController
+    public class CompanyController : KYTController
     {
         private readonly IRepository _repository;
         private readonly ISaveEntityService _saveEntityService;

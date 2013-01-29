@@ -28,12 +28,13 @@ namespace SystemSupport.Web.Controllers
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Enums;
     using KnowYourTurf.Core.Services;
+    using KnowYourTurf.Web.Controllers;
 
     using NHibernate.Linq;
 
     using Status = CC.Core.Enumerations.Status;
 
-    public class UserController : DCIController
+    public class UserController : KYTController
     {
         private readonly IRepository _repository;
         private readonly ISaveEntityService _saveEntityService;

@@ -18,7 +18,9 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
 
     using CC.Core;
 
-    public class PermissionController:DCIController
+    using KnowYourTurf.Web.Controllers;
+
+    public class PermissionController : KYTController
     {
         private readonly IRepository _repository;
         private readonly IPermissionsService _permissionsService;

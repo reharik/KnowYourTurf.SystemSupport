@@ -12,8 +12,9 @@ namespace SystemSupport.Web.Controllers
 
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Services;
+    using KnowYourTurf.Web.Controllers;
 
-    public class EmailTemplateListController:DCIController
+    public class EmailTemplateListController : KYTController
     {
         private readonly IEntityListGrid<EmailTemplate> _grid;
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;

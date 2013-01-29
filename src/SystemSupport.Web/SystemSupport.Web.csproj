@@ -21,6 +21,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +51,15 @@
       <HintPath>..\lib\fluentnhibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
+    <Reference Include="Cassette">
+      <HintPath>..\lib\Cassette.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassette.Aspnet">
+      <HintPath>..\lib\Cassette.Aspnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Cassette.Views">
+      <HintPath>..\lib\Cassette.Views.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Castle.Components.Validator.dll</HintPath>
@@ -68,6 +81,10 @@
     </Reference>
     <Reference Include="HibernatingRhinos.Profiler.Appender">
       <HintPath>..\lib\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\lib\fluentnhibernate\Iesi.Collections.dll</HintPath>
@@ -99,6 +116,11 @@
       <HintPath>..\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages" />
     <Reference Include="Microsoft.CSharp" />
@@ -110,6 +132,9 @@
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="xVal">
+      <HintPath>..\..\..\MethodFitness\src\MethodFitness.Web\bin\xVal.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Permissions\Controllers\UserGroupListController.cs" />
@@ -120,6 +145,7 @@
     <Compile Include="Areas\Permissions\Grids\UserGroupListGrid.cs" />
     <Compile Include="Areas\Permissions\Grids\UserPermissionListGrid.cs" />
     <Compile Include="Areas\Permissions\PermissionsAreaRegistration.cs" />
+    <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Config\AutoMapperBootstrapper.cs" />
     <Compile Include="Config\Bootstrapper.cs" />
     <Compile Include="Config\CustomAuthorizationAttribute.cs" />
@@ -127,17 +153,19 @@
     <Compile Include="Config\StructureMapControllerFactory.cs" />
     <Compile Include="Config\StructureMapServiceLocator.cs" />
     <Compile Include="Config\CustomJsonResult.cs" />
+    <Compile Include="Controllers\SystemSupportController.cs" />
     <Compile Include="Controllers\LoginStatisticsListController.cs" />
     <Compile Include="Controllers\EmailTemplateController.cs" />
     <Compile Include="Controllers\EmailTemplateListController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CompanyListController.cs" />
-    <Compile Include="Controllers\DCIController.cs" />
+    <Compile Include="Controllers\KYTController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\SiteConfigurationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrthoganalController.cs" />
     <Compile Include="Controllers\UserListController.cs" />
+    <Compile Include="Filters\AddUserToViewModelFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -392,7 +420,7 @@
     <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Orthogonal\DecisionCriticalHeader.cshtml" />
+    <Content Include="Views\Orthogonal\SystemSupportHeader.cshtml" />
     <Content Include="Views\Orthogonal\DecisionCriticalMenu.cshtml" />
     <Content Include="Views\Orthogonal\SystemSupportMenu.cshtml" />
   </ItemGroup>
@@ -436,10 +464,6 @@
       <SubType>
       </SubType>
     </Content>
-    <Content Include="DeployFiles\appSettings_prod.config" />
-    <Content Include="DeployFiles\appSettings_sandbox.config" />
-    <Content Include="DeployFiles\appSettings_stage.config" />
-    <Content Include="DeployFiles\appSettings_test.config" />
     <Content Include="Views\SiteConfiguration\AddUpdate.cshtml" />
   </ItemGroup>
   <PropertyGroup>

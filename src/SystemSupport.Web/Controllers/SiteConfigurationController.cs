@@ -15,9 +15,10 @@ namespace SystemSupport.Web.Controllers
 
     using KnowYourTurf.Core.Config;
     using KnowYourTurf.Core.Enums;
+    using KnowYourTurf.Web.Controllers;
 
     //
-    public class SiteConfigurationController : DCIController
+    public class SiteConfigurationController : KYTController
     {
         private readonly ISelectListItemService _selectListItemService;
         private readonly string _configFilePath;

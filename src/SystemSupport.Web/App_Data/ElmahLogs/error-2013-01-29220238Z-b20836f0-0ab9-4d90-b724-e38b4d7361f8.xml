@@ -1,0 +1,168 @@
+﻿<error errorId="b20836f0-0ab9-4d90-b724-e38b4d7361f8" host="RHARIK-PC" type="System.MissingMethodException" message="No parameterless constructor defined for this object." source="mscorlib" detail="System.InvalidOperationException: An error occurred when trying to create a controller of type 'SystemSupport.Web.Controllers.SystemSupportController'. Make sure that the controller has a parameterless public constructor. ---&gt; System.MissingMethodException: No parameterless constructor defined for this object.&#xD;&#xA;   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean&amp; canBeCached, RuntimeMethodHandleInternal&amp; ctor, Boolean&amp; bNeedSecurityCheck)&#xD;&#xA;   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark&amp; stackMark)&#xD;&#xA;   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark&amp; stackMark)&#xD;&#xA;   at System.Activator.CreateInstance(Type type, Boolean nonPublic)&#xD;&#xA;   at System.Activator.CreateInstance(Type type)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c__DisplayClass6.&lt;BeginProcessRequest&gt;b__2()&#xD;&#xA;   at System.Web.Mvc.SecurityUtil.&lt;&gt;c__DisplayClassb`1.&lt;ProcessInApplicationTrust&gt;b__a()&#xD;&#xA;   at System.Web.Mvc.SecurityUtil.&lt;GetCallInAppTrustThunk&gt;b__0(Action f)&#xD;&#xA;   at System.Web.Mvc.SecurityUtil.ProcessInApplicationTrust(Action action)&#xD;&#xA;   at System.Web.Mvc.SecurityUtil.ProcessInApplicationTrust[TResult](Func`1 func)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="Demo, KYT" time="2013-01-29T22:02:38.4568296Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.5&#xD;&#xA;HTTP_COOKIE:O=OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002; KYT=6919B31F99005E538FB663AC92D4957A8831DFF91A404667FD5C9C808ABE4C90B66D401BAF3818F62606379E5C0BB69EE3D8AE85459BA6A0DC44F161239FB8C5A333CF50196CAED77EE012E567071B5CC932FA64D87E790FF0ED196545B4E34DABCD2FCB592FC3361B08E22B0C463F4B2E253246AA44FC8E0573C85724C0BFE6FC28AD44466C052BED5CDD96937BB301C3DF849D1B9F09F25C467284CACC1121631C4DE970FD048830369BA41A00A216; DCI.SystemSupport=E45A764A7CCCF559BFB0DBD57477ED41F7764D0F68BA8232A1F4E0E7EF9A6DB230D78EA1382AE5C33017753A2C0228DE4BC460E8D92FDAAD8224881653E9942D298671B2EB9421E586BA0D412FCE85891E139B802FE8DE7B7DF0889C010317D7102DF1935B8ABB5EC211FF9E3D819476AD97344A83B5E67917F4E6A3A2906033546C39D1769880D5560F6D695059CEDB562B802F45118EEF994981533987994425FC1B19977C0BF0A6EAFFA7953CB71F5AAA735F1743BB5BA46C8AEB4A00A9BC0FA5C26D7C7576DB528455A5F7EC2EE9&#xD;&#xA;HTTP_HOST:localhost:777&#xD;&#xA;HTTP_REFERER:http://localhost:777/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0) Gecko/20100101 Firefox/18.0&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.5&#xD;&#xA;Cookie: O=OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002; KYT=6919B31F99005E538FB663AC92D4957A8831DFF91A404667FD5C9C808ABE4C90B66D401BAF3818F62606379E5C0BB69EE3D8AE85459BA6A0DC44F161239FB8C5A333CF50196CAED77EE012E567071B5CC932FA64D87E790FF0ED196545B4E34DABCD2FCB592FC3361B08E22B0C463F4B2E253246AA44FC8E0573C85724C0BFE6FC28AD44466C052BED5CDD96937BB301C3DF849D1B9F09F25C467284CACC1121631C4DE970FD048830369BA41A00A216; DCI.SystemSupport=E45A764A7CCCF559BFB0DBD57477ED41F7764D0F68BA8232A1F4E0E7EF9A6DB230D78EA1382AE5C33017753A2C0228DE4BC460E8D92FDAAD8224881653E9942D298671B2EB9421E586BA0D412FCE85891E139B802FE8DE7B7DF0889C010317D7102DF1935B8ABB5EC211FF9E3D819476AD97344A83B5E67917F4E6A3A2906033546C39D1769880D5560F6D695059CEDB562B802F45118EEF994981533987994425FC1B19977C0BF0A6EAFFA7953CB71F5AAA735F1743BB5BA46C8AEB4A00A9BC0FA5C26D7C7576DB528455A5F7EC2EE9&#xD;&#xA;Host: localhost:777&#xD;&#xA;Referer: http://localhost:777/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0) Gecko/20100101 Firefox/18.0&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms Authentication" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Demo, KYT" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Rharik-PC\Rharik" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Demo, KYT" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="" />
+    </item>
+    <item name="HTTPS">
+      <value string="" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/SystemSupport/Home" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Development\CannibalCoder\KnowYourTurf.SystemSupport\src\SystemSupport.Web\SystemSupport\Home" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/SystemSupport/Home" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="777" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="" />
+    </item>
+    <item name="URL">
+      <value string="/SystemSupport/Home" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.5" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="O=OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002; KYT=6919B31F99005E538FB663AC92D4957A8831DFF91A404667FD5C9C808ABE4C90B66D401BAF3818F62606379E5C0BB69EE3D8AE85459BA6A0DC44F161239FB8C5A333CF50196CAED77EE012E567071B5CC932FA64D87E790FF0ED196545B4E34DABCD2FCB592FC3361B08E22B0C463F4B2E253246AA44FC8E0573C85724C0BFE6FC28AD44466C052BED5CDD96937BB301C3DF849D1B9F09F25C467284CACC1121631C4DE970FD048830369BA41A00A216; DCI.SystemSupport=E45A764A7CCCF559BFB0DBD57477ED41F7764D0F68BA8232A1F4E0E7EF9A6DB230D78EA1382AE5C33017753A2C0228DE4BC460E8D92FDAAD8224881653E9942D298671B2EB9421E586BA0D412FCE85891E139B802FE8DE7B7DF0889C010317D7102DF1935B8ABB5EC211FF9E3D819476AD97344A83B5E67917F4E6A3A2906033546C39D1769880D5560F6D695059CEDB562B802F45118EEF994981533987994425FC1B19977C0BF0A6EAFFA7953CB71F5AAA735F1743BB5BA46C8AEB4A00A9BC0FA5C26D7C7576DB528455A5F7EC2EE9" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:777" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:777/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0) Gecko/20100101 Firefox/18.0" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="O">
+      <value string="OID=ffffffff-ffff-ffff-ffff-000000000001&amp;IID=ffffffff-ffff-ffff-ffff-000000000002" />
+    </item>
+    <item name="KYT">
+      <value string="6919B31F99005E538FB663AC92D4957A8831DFF91A404667FD5C9C808ABE4C90B66D401BAF3818F62606379E5C0BB69EE3D8AE85459BA6A0DC44F161239FB8C5A333CF50196CAED77EE012E567071B5CC932FA64D87E790FF0ED196545B4E34DABCD2FCB592FC3361B08E22B0C463F4B2E253246AA44FC8E0573C85724C0BFE6FC28AD44466C052BED5CDD96937BB301C3DF849D1B9F09F25C467284CACC1121631C4DE970FD048830369BA41A00A216" />
+    </item>
+    <item name="DCI.SystemSupport">
+      <value string="E45A764A7CCCF559BFB0DBD57477ED41F7764D0F68BA8232A1F4E0E7EF9A6DB230D78EA1382AE5C33017753A2C0228DE4BC460E8D92FDAAD8224881653E9942D298671B2EB9421E586BA0D412FCE85891E139B802FE8DE7B7DF0889C010317D7102DF1935B8ABB5EC211FF9E3D819476AD97344A83B5E67917F4E6A3A2906033546C39D1769880D5560F6D695059CEDB562B802F45118EEF994981533987994425FC1B19977C0BF0A6EAFFA7953CB71F5AAA735F1743BB5BA46C8AEB4A00A9BC0FA5C26D7C7576DB528455A5F7EC2EE9" />
+    </item>
+  </cookies>
+</error>

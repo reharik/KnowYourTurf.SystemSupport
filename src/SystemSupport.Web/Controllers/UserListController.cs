@@ -20,7 +20,9 @@ namespace SystemSupport.Web.Controllers
 
     using CC.Core;
 
-    public class UserListController:DCIController
+    using KnowYourTurf.Web.Controllers;
+
+    public class UserListController : KYTController
     {
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;
         private readonly IEntityListGrid<UserLoginInfo> _grid;

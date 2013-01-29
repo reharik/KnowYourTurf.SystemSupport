@@ -8,6 +8,8 @@ using SystemSupport.Web.Services;
 
 namespace SystemSupport.Web
 {
+    using SystemSupport.Web.Services.ViewOptions;
+
     using Alpinely.TownCrier;
 
     using CC.Core.Domain;
@@ -32,12 +34,12 @@ namespace SystemSupport.Web
 
     using Microsoft.Practices.ServiceLocation;
 
+    using NHibernate;
+
     using StructureMap.Configuration.DSL;
     using StructureMap.Pipeline;
 
     using Log4NetLogger = KnowYourTurf.Core.Log4NetLogger;
-    using ISession = NHibernate.ISession;
-    using ISessionFactory = NHibernate.ISessionFactory;
     using StructureMapServiceLocator = SystemSupport.Web.Config.StructureMapServiceLocator;
 
     public class SystemSupportWebRegistry : Registry
@@ -73,7 +75,6 @@ namespace SystemSupport.Web
             For<ISessionFactory>().Singleton().Use(ctx => ctx.GetInstance<ISessionFactoryConfiguration>().CreateSessionFactory());
 
             For<ISession>().HybridHttpOrThreadLocalScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession(new SaveUpdateInterceptorWithCompanyFilter()));
-            For<ISession>().HybridHttpOrThreadLocalScoped().Add(context => context.GetInstance<ISessionFactory>().OpenSession(new SaveUpdateInterceptor())).Named("SpecialInterceptorNoFilters");
 
             For<IUnitOfWork>().HybridHttpOrThreadLocalScoped().Use<SysUnitOfWork>();
 
@@ -92,6 +93,7 @@ namespace SystemSupport.Web
             For<IPermissionsBuilderService>().HybridHttpOrThreadLocalScoped().Use<PermissionsBuilderService>();
             For<IPermissionsService>().HybridHttpOrThreadLocalScoped().Use<PermissionsService>();
             For<ILogger>().Use(() => new Log4NetLogger(typeof(string)));
+            For<IRouteTokenConfig>().Add<SystemSupportRouteTokenList>();
 
             For<ICCSessionContext>().Use<SessionContext>();
 

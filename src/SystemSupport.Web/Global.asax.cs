@@ -74,7 +74,10 @@ namespace SystemSupport.Web
             //RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
             Bootstrapper.Bootstrap();
         }
-
+        protected void Application_PostMapRequestHandler(object sender, EventArgs e)
+        {
+            var x = "";
+        }
         protected void Application_EndRequest()
         {
             var unitOfWork = ObjectFactory.Container.GetInstance<IUnitOfWork>();

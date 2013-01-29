@@ -1,0 +1,20 @@
+﻿@using SystemSupport.Web
+@using SystemSupport.Web.Controllers
+@model HeaderViewModel
+ <script type="text/javascript">
+</script>
+            
+    <div id="main-header">
+        <span id="login-links">
+         @if (Model.LoggedIn)
+            {
+            <a href="" class="first" id="userSettings">@Model.User.FullName</a>
+            <a href="">Help</a>
+            @Html.ActionLink(WebLocalizationKeys.LOG_OUT.ToString(), "Logout", "Login")
+            }
+        else
+        {
+                @Html.ActionLink(WebLocalizationKeys.SIGN_IN.ToString(), "Login", "Login")
+            }
+        </span>
+    </div>

@@ -8,7 +8,9 @@ namespace SystemSupport.Web.Areas.Permissions.Grids
     using CC.Security.Interfaces;
     using CC.Security.Model;
 
-    public class UserGroupController:DCIController
+    using KnowYourTurf.Web.Controllers;
+
+    public class UserGroupController:KYTController
     {
         private readonly IAuthorizationRepository _authorizationRepository;
         private readonly IRepository _repository;

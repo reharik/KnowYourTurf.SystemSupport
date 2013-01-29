@@ -15,8 +15,9 @@ namespace SystemSupport.Web.Areas.Permissions.Controllers
 
     using KnowYourTurf.Core.Enums;
     using KnowYourTurf.Core.Services;
+    using KnowYourTurf.Web.Controllers;
 
-    public class UserGroupListController:DCIController
+    public class UserGroupListController : KYTController
     {
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;
         private readonly IEntityListGrid<UserGroupDto> _grid;

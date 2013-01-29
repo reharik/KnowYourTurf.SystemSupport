@@ -12,8 +12,9 @@ namespace SystemSupport.Web.Controllers
 
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Services;
+    using KnowYourTurf.Web.Controllers;
 
-    public class CompanyListController:DCIController
+    public class CompanyListController : KYTController
     {
         private readonly IEntityListGrid<Company> _grid;
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;

@@ -13,8 +13,9 @@ namespace SystemSupport.Web.Controllers
 
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Services;
+    using KnowYourTurf.Web.Controllers;
 
-    public class LoginStatisticsListController:DCIController
+    public class LoginStatisticsListController : KYTController
     {
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;
         private readonly IEntityListGrid<LoginStatistics> _grid;
