@@ -1,10 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSupport.Test", "SystemSupport.Test\SystemSupport.Test.csproj", "{2ED85E5C-B5AF-4B1E-9DF1-9DC0B8A00ED6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSupport.Web", "SystemSupport.Web\SystemSupport.Web.csproj", "{507F8BA0-E7FE-438F-A30A-7718240DB1F0}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{20D23A31-18C0-4DDA-BEC9-6FD5A8AE0B17}"
 	ProjectSection(SolutionItems) = preProject
 		SystemSupport.Web\appSettings.config = SystemSupport.Web\appSettings.config
@@ -13,6 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		ftp_systemsupport_files_to_QA.txt = ftp_systemsupport_files_to_QA.txt
 		..\Gen.bat = ..\Gen.bat
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CannibalCoder", "CannibalCoder", "{E32141E8-FEB3-42E0-8747-20A0B8833B3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSupport.Test", "SystemSupport.Test\SystemSupport.Test.csproj", "{2ED85E5C-B5AF-4B1E-9DF1-9DC0B8A00ED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSupport.Web", "SystemSupport.Web\SystemSupport.Web.csproj", "{507F8BA0-E7FE-438F-A30A-7718240DB1F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSupport.Core", "SystemSupport.Core\SystemSupport.Core.csproj", "{6F644C87-3BF2-4109-8731-F257104DC45A}"
 EndProject
@@ -27,8 +29,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CC.UI.Helpers", "..\..\CannibalCoder\CC.UI.Helpers\CC.UI.Helpers.csproj", "{0DBFB19C-E106-4807-AA4B-FC8D128A3438}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlTags", "..\..\CannibalCoder\HtmlTags\HtmlTags\HtmlTags.csproj", "{F01C84F2-6E41-404C-AC8D-BF189A9EC05B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CannibalCoder", "CannibalCoder", "{E32141E8-FEB3-42E0-8747-20A0B8833B3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,9 +77,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{DBA372FE-3D52-45B3-AF82-B37696328764} = {E32141E8-FEB3-42E0-8747-20A0B8833B3D}
 		{5E0B0CA2-BD5E-4953-A336-2AADC00CD81B} = {E32141E8-FEB3-42E0-8747-20A0B8833B3D}
 		{54970D60-6123-4227-9C72-04CA09BAF7B9} = {E32141E8-FEB3-42E0-8747-20A0B8833B3D}
-		{DBA372FE-3D52-45B3-AF82-B37696328764} = {E32141E8-FEB3-42E0-8747-20A0B8833B3D}
 		{0DBFB19C-E106-4807-AA4B-FC8D128A3438} = {E32141E8-FEB3-42E0-8747-20A0B8833B3D}
 		{F01C84F2-6E41-404C-AC8D-BF189A9EC05B} = {E32141E8-FEB3-42E0-8747-20A0B8833B3D}
 	EndGlobalSection
