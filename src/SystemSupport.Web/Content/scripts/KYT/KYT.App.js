@@ -38,7 +38,7 @@ KYT.addInitializer(function(){
 });
 
 KYT.bind("initialize:after", function(){
-    KYT.State.set({"application":"fields"});
+    KYT.State.set({"application":"systemsupport"});
     if (Backbone.history){
         Backbone.history.start();
     }

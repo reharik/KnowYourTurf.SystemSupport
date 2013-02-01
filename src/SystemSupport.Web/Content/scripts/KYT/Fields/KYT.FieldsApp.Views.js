@@ -1054,5 +1054,3 @@ KYT.Views.CompletedEquipmentTaskListView = KYT.Views.View.extend({
     onClose:function(){this.unbindBindings();}
 });
 
-
-

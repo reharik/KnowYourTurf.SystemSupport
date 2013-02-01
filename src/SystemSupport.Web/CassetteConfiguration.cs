@@ -89,11 +89,10 @@ namespace KnowYourTurf.Web
             fileNames.Add("KYT/KYT.State.js");
             //            fileNames.Add("KYT/KYT.Services.js");
             fileNames.Add("KYT/KYT.WorkflowManager.js");
-            fileNames.Add("KYT/Fields/KYT.FieldsApp.js");
-            fileNames.Add("KYT/Fields/KYT.FieldsApp.Menu.js");
-            fileNames.Add("KYT/Fields/KYT.FieldsApp.Routing.js");
-            fileNames.Add("KYT/Fields/KYT.FieldsApp.Views.js");
-            fileNames.Add("KYT/Fields/KYT.Services.js");
+            fileNames.Add("KYT/SystemSupport/KYT.SystemSupportApp.js");
+            fileNames.Add("KYT/SystemSupport/KYT.SystemSupportApp.Menu.js");
+            fileNames.Add("KYT/SystemSupport/KYT.SystemSupportApp.Routing.js");
+            fileNames.Add("KYT/SystemSupport/KYT.SystemSupportApp.Views.js");
 
             fileNames.Add("KYT/CC.ModelBinding/CC.CustomBindings.js");
             fileNames.Add("KYT/CC.ModelBinding/CC.Elements.js");
