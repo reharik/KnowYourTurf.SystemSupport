@@ -38,7 +38,7 @@
         public static readonly StringToken ADD_THIS_ITEM = new WebLocalizationKeys("ADD_THIS_ITEM", "Add This Item");
         public static readonly StringToken CLOSE_BUTTON_TITLE = new WebLocalizationKeys("CLOSE_BUTTON_TITLE", "Close");
         public static readonly StringToken DEFAULT = new WebLocalizationKeys("DEFAULT", "Default");
-        public static readonly StringToken CHOOSE_CLIENT = new WebLocalizationKeys("CHOOSE_CLIENT", "Choose Company");
+        public static readonly StringToken CHOOSE_CLIENT = new WebLocalizationKeys("CHOOSE_CLIENT", "Choose Client");
         public static readonly StringToken LOGIN_INFORMATION = new WebLocalizationKeys("LOGIN_INFORMATION", "Login Information");
 
         public static readonly StringToken TENANT = new WebLocalizationKeys("TENANT", "Tenant");
@@ -78,7 +78,7 @@
         public static readonly StringToken EMAIL_TEMPLATES = new WebLocalizationKeys("EMAIL_TEMPLATES", "Email Templates");
         public static readonly StringToken EMAIL_TEMPLATE = new WebLocalizationKeys("EMAIL_TEMPLATE", "Email Template");
         public static readonly StringToken DONT_CHANGE_EMAIL_TOKENS = new WebLocalizationKeys("DONT_CHANGE_EMAIL_TOKENS", "Please don't change the Email Tokens unless you have updated the code!");
-        public static readonly StringToken CLIENT_NAME = new WebLocalizationKeys("CLIENT_NAME", "Company Name");
+        public static readonly StringToken CLIENT_NAME = new WebLocalizationKeys("CLIENT_NAME", "Client Name");
         public static readonly StringToken START_DATE = new WebLocalizationKeys("START_DATE", "Start Date");
         public static readonly StringToken END_DATE = new WebLocalizationKeys("END_DATE", "End Date");
         public static readonly StringToken FILTER = new WebLocalizationKeys("FILTER", "Filter");

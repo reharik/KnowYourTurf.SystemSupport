@@ -30,8 +30,8 @@ namespace SystemSupport.Web.Services.ViewOptions
             _builder.TokenForList<UserListController>(x => x.ItemList(null)).ViewName("UserGridView").End();
             _builder.TokenForForm<UserController>(x => x.AddUpdate(null)).ViewName("UserSettingsView").End();
 
-            _builder.TokenForList<CompanyListController>(x => x.ItemList(null)).End();
-            _builder.TokenForForm<CompanyController>(x => x.AddUpdate(null)).End();
+            _builder.TokenForList<ClientListController>(x => x.ItemList(null)).End();
+            _builder.TokenForForm<ClientController>(x => x.AddUpdate(null)).End();
 
             _builder.TokenForList<EmailTemplateListController>(x => x.ItemList(null)).End();
             _builder.TokenForForm<EmailTemplateController>(x => x.AddUpdate(null)).End();

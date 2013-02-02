@@ -1,4 +1,4 @@
-﻿@model CompanyViewModel
+﻿@model ClientViewModel
 @using SystemSupport.Web
 @using SystemSupport.Web.Controllers
 @using HtmlTags
@@ -12,8 +12,8 @@
 {
     <button class="emailTemplates" title="@WebLocalizationKeys.EMAIL_TEMPLATES"></button>
 }
-    <input type="hidden" id="EntityId" name="EntityId" value="@Model.Company.EntityId" />
+    <input type="hidden" id="EntityId" name="EntityId" value="@Model.Client.EntityId" />
     <div class="row">
-        @Html.SubmissionFor(x=>x.Company.Name).Site("5").ToHtmlTag()
-        @Html.SubmissionFor(x => x.Company.HomeUrl).Site("5").ToHtmlTag()
+        @Html.SubmissionFor(x=>x.Client.Name).Site("5").ToHtmlTag()
+        @Html.SubmissionFor(x => x.Client.HomeUrl).Site("5").ToHtmlTag()
     </div>

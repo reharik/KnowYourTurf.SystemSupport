@@ -17,7 +17,7 @@ namespace SystemSupport.Web.Services
         public string ThisUserHasBeenAuthenticated(User user, bool rememberMe)
         {
             string userData = String.Empty;
-            userData = userData + "UserId=" + user.EntityId + "|CompanyId=" + user.CompanyId + "|LoginInfoId=" + user.UserLoginInfo.EntityId;
+            userData = userData + "UserId=" + user.EntityId + "|ClientId=" + user.ClientId + "|LoginInfoId=" + user.UserLoginInfo.EntityId;
             var ticket = new FormsAuthenticationTicket(1, user.FullNameLNF, DateTime.Now, DateTime.Now.AddMinutes(30), rememberMe, userData);
             string encTicket = FormsAuthentication.Encrypt(ticket);
             var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);

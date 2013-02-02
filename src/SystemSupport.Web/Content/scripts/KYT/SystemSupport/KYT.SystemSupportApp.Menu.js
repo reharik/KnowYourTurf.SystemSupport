@@ -12,8 +12,7 @@ KYT.SystemSupportApp.Menu = (function(KYT, Backbone, $){
 
     var MenuView =  KYT.Views.View.extend({
         render:function(){
-            KYT.repository.ajaxGet(this.options.url, this.options.data).done($.proxy(this.render
-            Callback,this));
+            KYT.repository.ajaxGet(this.options.url, this.options.data).done($.proxy(this.renderCallback,this));
         },
         renderCallback:function(result){
             $(this.el).html(result);

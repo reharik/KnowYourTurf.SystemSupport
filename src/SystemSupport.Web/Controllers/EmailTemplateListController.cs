@@ -45,7 +45,7 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = _dynamicExpressionQuery.PerformQuery<EmailTemplate>(input.filters, x=>x.CompanyId==input.EntityId);
+            var items = _dynamicExpressionQuery.PerformQuery<EmailTemplate>(input.filters, x=>x.ClientId==input.EntityId);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);
         }

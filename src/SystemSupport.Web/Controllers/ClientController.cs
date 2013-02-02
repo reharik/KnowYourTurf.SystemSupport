@@ -12,12 +12,12 @@ namespace SystemSupport.Web.Controllers
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Web.Controllers;
 
-    public class CompanyController : KYTController
+    public class ClientController : KYTController
     {
         private readonly IRepository _repository;
         private readonly ISaveEntityService _saveEntityService;
 
-        public CompanyController(IRepository repository,
+        public ClientController(IRepository repository,
             ISaveEntityService saveEntityService)
         {
             _repository = repository;
@@ -26,37 +26,37 @@ namespace SystemSupport.Web.Controllers
 
         public ActionResult AddUpdate_Template(ViewModel input)
         {
-            return View("AddUpdate", new CompanyViewModel());
+            return View("AddUpdate", new ClientViewModel());
         }
 
         public ActionResult AddUpdate(ViewModel input)
         {
-            Company item = input.EntityId > 0 ? _repository.Find<Company>(input.EntityId) : new Company();
-            var model = new CompanyViewModel{
-                Company = item,
+            Client item = input.EntityId > 0 ? _repository.Find<Client>(input.EntityId) : new Client();
+            var model = new ClientViewModel{
+                Client = item,
                 _Title = WebLocalizationKeys.CLIENT.ToString(),
             };
             return new CustomJsonResult(model);
         }
 
-        public JsonResult Save(CompanyViewModel input)
+        public JsonResult Save(ClientViewModel input)
         {
-            var item = input.EntityId > 0 ? _repository.Find<Company>(input.EntityId) : new Company();
+            var item = input.EntityId > 0 ? _repository.Find<Client>(input.EntityId) : new Client();
             mapItem(ref item, input);
             var crudManger = _saveEntityService.ProcessSave(item);
             var notification = crudManger.Finish();
             return Json(notification);
         }
 
-        private void mapItem(ref Company original, CompanyViewModel input)
+        private void mapItem(ref Client original, ClientViewModel input)
         {
-            original.Name = input.Company.Name;
+            original.Name = input.Client.Name;
         }
     }
 
-    public class CompanyViewModel:ViewModel
+    public class ClientViewModel:ViewModel
     {
-        public Company Company { get; set; }
+        public Client Client { get; set; }
 
         public IEnumerable<SelectListItem> TenantList { get; set; }
     }

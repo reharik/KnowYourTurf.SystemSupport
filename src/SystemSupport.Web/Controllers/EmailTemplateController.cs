@@ -29,12 +29,12 @@ namespace SystemSupport.Web.Controllers
         public ActionResult AddUpdate(ViewModel input)
         {
             EmailTemplate item = input.EntityId > 0 ? _repository.Find<EmailTemplate>(input.EntityId) : new EmailTemplate();
-            var client = _repository.Find<Company>(input.ParentId);
+            var client = _repository.Find<Client>(input.ParentId);
             var model = new EmailTemplateViewModel
             {
                 EmailTemplate = item,
                 _Title = WebLocalizationKeys.EMAIL_TEMPLATE.ToString(),
-                Company = client
+                Client = client
             };
             return new CustomJsonResult(model);
         }
@@ -60,6 +60,6 @@ namespace SystemSupport.Web.Controllers
     public class EmailTemplateViewModel : ViewModel
     {
         public EmailTemplate EmailTemplate { get; set; }
-        public Company Company { get; set; }
+        public Client Client { get; set; }
     }
 }

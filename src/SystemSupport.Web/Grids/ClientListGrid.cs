@@ -5,14 +5,14 @@
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Services;
 
-    public class ClientListGrid : Grid<Company>, IEntityListGrid<Company>
+    public class ClientListGrid : Grid<Client>, IEntityListGrid<Client>
     {
-        public ClientListGrid(IGridBuilder<Company> gridBuilder)
+        public ClientListGrid(IGridBuilder<Client> gridBuilder)
             : base(gridBuilder)
         {
         }
 
-        protected override Grid<Company> BuildGrid()
+        protected override Grid<Client> BuildGrid()
         {
             GridBuilder.LinkColumnFor(x => x.Name)
                 .ToPerformAction(ColumnAction.AddUpdateItem)

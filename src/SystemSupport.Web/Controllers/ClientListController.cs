@@ -14,13 +14,13 @@ namespace SystemSupport.Web.Controllers
     using KnowYourTurf.Core.Services;
     using KnowYourTurf.Web.Controllers;
 
-    public class CompanyListController : KYTController
+    public class ClientListController : KYTController
     {
-        private readonly IEntityListGrid<Company> _grid;
+        private readonly IEntityListGrid<Client> _grid;
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;
         private readonly IRepository _repository;
 
-        public CompanyListController(IEntityListGrid<Company> grid,
+        public ClientListController(IEntityListGrid<Client> grid,
             IDynamicExpressionQuery dynamicExpressionQuery,
             IRepository repository)
         {
@@ -31,8 +31,8 @@ namespace SystemSupport.Web.Controllers
 
         public ActionResult ItemList(ViewModel input)
         {
-            var addUpdateUrl = UrlContext.GetUrlForAction<CompanyController>(x => x.AddUpdate(null));
-            var url = UrlContext.GetUrlForAction<CompanyListController>(x=>x.Items(null));
+            var addUpdateUrl = UrlContext.GetUrlForAction<ClientController>(x => x.AddUpdate(null));
+            var url = UrlContext.GetUrlForAction<ClientListController>(x=>x.Items(null));
             var gridDefinition = _grid.GetGridDefinition(url, input.User);
             var model = new ListViewModel
             {
@@ -46,7 +46,7 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = _dynamicExpressionQuery.PerformQuery<Company>(input.filters);
+            var items = _dynamicExpressionQuery.PerformQuery<Client>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);
         }

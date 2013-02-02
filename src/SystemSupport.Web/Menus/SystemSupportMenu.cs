@@ -36,7 +36,7 @@ namespace SystemSupport.Web.Menus
             return _builder
 
                 .CreateTagNode<UserListController>(WebLocalizationKeys.USERS)
-                .CreateTagNode<CompanyListController>(WebLocalizationKeys.Clients)
+                .CreateTagNode<ClientListController>(WebLocalizationKeys.Clients)
                 .CreateTagNode<LoginStatisticsListController>(WebLocalizationKeys.LOGIN_INFORMATION)
                 .CreateTagNode<UserGroupListController>(WebLocalizationKeys.PERMISSION_USER_GROUPS)
                 .CreateTagNode<SiteConfigurationController>(WebLocalizationKeys.SYSTEM_OFFLINE)
