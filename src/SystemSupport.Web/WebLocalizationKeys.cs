@@ -36,7 +36,8 @@
         public static readonly StringToken EMAIL_ADDRESSES = new WebLocalizationKeys("EMAIL_ADDRESSES", "Emails");
         public static readonly StringToken PHONE_NUMBERS = new WebLocalizationKeys("PHONE_NUMBERS", "Phone Numbers");
         public static readonly StringToken ADD_THIS_ITEM = new WebLocalizationKeys("ADD_THIS_ITEM", "Add This Item");
-        public static readonly StringToken CLOSE_BUTTON_TITLE = new WebLocalizationKeys("CLOSE_BUTTON_TITLE", "Close");
+        public static readonly StringToken CLOSE = new WebLocalizationKeys("CLOSE", "Close");
+        public static readonly StringToken DATE_ADDED = new WebLocalizationKeys("DATE_ADDED", "Date Added {0}");
         public static readonly StringToken DEFAULT = new WebLocalizationKeys("DEFAULT", "Default");
         public static readonly StringToken CHOOSE_CLIENT = new WebLocalizationKeys("CHOOSE_CLIENT", "Choose Client");
         public static readonly StringToken LOGIN_INFORMATION = new WebLocalizationKeys("LOGIN_INFORMATION", "Login Information");

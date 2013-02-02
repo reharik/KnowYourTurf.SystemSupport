@@ -37,14 +37,11 @@ namespace SystemSupport.Web.Controllers
                 gridDef= gridDefinition,
             };
             return new CustomJsonResult(model);
-
         }
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = input.filters.IsNotEmpty()
-                ? _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters)
-                : _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters, x=>x.CreatedDate.Value.Date==DateTime.Now.Date);
+            var items = _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);
         }

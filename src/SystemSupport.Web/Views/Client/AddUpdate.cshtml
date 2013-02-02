@@ -1,6 +1,7 @@
 ﻿@model ClientViewModel
 @using SystemSupport.Web
 @using SystemSupport.Web.Controllers
+@using CC.Core.Html.CCUI
 @using HtmlTags
 
 @{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
@@ -8,12 +9,11 @@
 @section HeaderJavascript{
 }
 
-@section additionalHeaderButtons
+@section ExtraContentHeaderButtons
 {
     <button class="emailTemplates" title="@WebLocalizationKeys.EMAIL_TEMPLATES"></button>
 }
-    <input type="hidden" id="EntityId" name="EntityId" value="@Model.Client.EntityId" />
     <div class="row">
-        @Html.SubmissionFor(x=>x.Client.Name).Site("5").ToHtmlTag()
-        @Html.SubmissionFor(x => x.Client.HomeUrl).Site("5").ToHtmlTag()
+        @Html.SubmissionFor(x=>x.Name).Size("5").ToHtmlTag()
+        @Html.SubmissionFor(x => x.ZipCode).Size("5").ToHtmlTag()
     </div>

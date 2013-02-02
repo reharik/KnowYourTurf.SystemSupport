@@ -87,7 +87,7 @@ namespace KnowYourTurf.Web
             //            fileNames.Add("KYT/KYT.OneOffViews.js");
             fileNames.Add("KYT/KYT.Routing.js");
             fileNames.Add("KYT/KYT.State.js");
-            //            fileNames.Add("KYT/KYT.Services.js");
+            fileNames.Add("KYT/KYT.Services.js");
             fileNames.Add("KYT/KYT.WorkflowManager.js");
             fileNames.Add("KYT/SystemSupport/KYT.SystemSupportApp.js");
             fileNames.Add("KYT/SystemSupport/KYT.SystemSupportApp.Menu.js");

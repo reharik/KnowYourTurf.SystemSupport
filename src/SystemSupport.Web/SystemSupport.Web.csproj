@@ -158,7 +158,7 @@
     <Compile Include="Controllers\EmailTemplateController.cs" />
     <Compile Include="Controllers\EmailTemplateListController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\CompanyListController.cs" />
+    <Compile Include="Controllers\ClientListController.cs" />
     <Compile Include="Controllers\KYTController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\SiteConfigurationController.cs" />
@@ -459,7 +459,7 @@
     <Content Include="Views\Shared\PhoneTemplate.cshtml" />
     <Content Include="Views\Shared\_FormLayout.cshtml" />
     <Content Include="Views\Shared\_DisplayLayout.cshtml" />
-    <Content Include="Views\Company\AddUpdate.cshtml" />
+    <Content Include="Views\Client\AddUpdate.cshtml" />
     <Content Include="Views\EmailTemplate\AddUpdate.cshtml">
       <SubType>
       </SubType>

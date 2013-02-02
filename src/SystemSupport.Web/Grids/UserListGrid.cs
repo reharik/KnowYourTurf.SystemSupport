@@ -7,21 +7,19 @@ namespace SystemSupport.Web.Grids
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Services;
 
-    public class UserListGrid : Grid<UserLoginInfo>, IEntityListGrid<UserLoginInfo>
+    public class UserListGrid : Grid<User>, IEntityListGrid<User>
     {
-        public UserListGrid(IGridBuilder<UserLoginInfo> gridBuilder)
+        public UserListGrid(IGridBuilder<User> gridBuilder)
             : base(gridBuilder)
         {
         }
 
-        protected override Grid<UserLoginInfo> BuildGrid()
+        protected override Grid<User> BuildGrid()
         {
-            GridBuilder.LinkColumnFor(x => x.User.FullName)
+            GridBuilder.LinkColumnFor(x => x.FullName)
                 .ToPerformAction(ColumnAction.AddUpdateItem)
                 .ToolTip(WebLocalizationKeys.EDIT_ITEM);
-            GridBuilder.DisplayFor(x => x.User.FirstName);
-            GridBuilder.DisplayFor(x => x.User.LastName);
-            GridBuilder.DisplayFor(x => x.LoginName);
+            GridBuilder.DisplayFor(x => x.UserLoginInfo.LoginName);
             GridBuilder.ImageButtonColumn()
                 .ToPerformAction(ColumnAction.Login)
                 .ImageName("eye_of_horus-31px.png");

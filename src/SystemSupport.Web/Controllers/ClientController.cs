@@ -1,5 +1,9 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
+using CC.Core.CoreViewModelAndDTOs;
+using CC.Core.Html;
+using KnowYourTurf.Core.Domain;
 
 namespace SystemSupport.Web.Controllers
 {
@@ -32,10 +36,9 @@ namespace SystemSupport.Web.Controllers
         public ActionResult AddUpdate(ViewModel input)
         {
             Client item = input.EntityId > 0 ? _repository.Find<Client>(input.EntityId) : new Client();
-            var model = new ClientViewModel{
-                Client = item,
-                _Title = WebLocalizationKeys.CLIENT.ToString(),
-            };
+            var model = Mapper.Map<Client, ClientViewModel>(item);
+            model._Title = WebLocalizationKeys.CLIENT.ToString();
+            model._saveUrl = UrlContext.GetUrlForAction<ClientController>(x => x.Save(null));
             return new CustomJsonResult(model);
         }
 
@@ -50,14 +53,16 @@ namespace SystemSupport.Web.Controllers
 
         private void mapItem(ref Client original, ClientViewModel input)
         {
-            original.Name = input.Client.Name;
+            original.Name = input.Name;
+            original.ZipCode = input.ZipCode;
+            original.TaxRate = input.TaxRate;
         }
     }
 
     public class ClientViewModel:ViewModel
     {
-        public Client Client { get; set; }
-
-        public IEnumerable<SelectListItem> TenantList { get; set; }
+        public virtual string Name { get; set; }
+        public virtual double TaxRate { get; set; }
+        public virtual string ZipCode { get; set; }
     }
 }

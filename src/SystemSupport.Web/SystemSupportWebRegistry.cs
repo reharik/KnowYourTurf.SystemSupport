@@ -74,7 +74,7 @@ namespace SystemSupport.Web
                 .EqualToAppSetting("KnowYourTurf.sql_server_connection_string");
             For<ISessionFactory>().Singleton().Use(ctx => ctx.GetInstance<ISessionFactoryConfiguration>().CreateSessionFactory());
 
-            For<ISession>().HybridHttpOrThreadLocalScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession(new SaveUpdateInterceptorWithClientFilter()));
+            For<ISession>().HybridHttpOrThreadLocalScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession(new SaveUpdateInterceptor()));
 
             For<IUnitOfWork>().HybridHttpOrThreadLocalScoped().Use<SysUnitOfWork>();
 
@@ -99,7 +99,7 @@ namespace SystemSupport.Web
 
             For(typeof(IGridBuilder<>)).Use(typeof(GridBuilder<>));
 
-            For<IEntityListGrid<UserLoginInfo>>().Use<UserListGrid>();
+            For<IEntityListGrid<User>>().Use<UserListGrid>();
             For<IEntityListGrid<PermissionDto>>().Use<UserPermissionListGrid>();
             For<IEntityListGrid<PermissionDto>>().Add<GroupPermissionListGrid>().Named("group");
 

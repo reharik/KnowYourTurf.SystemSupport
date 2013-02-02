@@ -96,7 +96,7 @@ namespace SystemSupport.Web
 
             For(typeof(IGridBuilder<>)).Use(typeof(GridBuilder<>));
 
-            For<IEntityListGrid<UserLoginInfo>>().Use<UserListGrid>();
+            For<IEntityListGrid<User>>().Use<UserListGrid>();
             For<IEntityListGrid<PermissionDto>>().Use<UserPermissionListGrid>();
             For<IEntityListGrid<PermissionDto>>().Add<GroupPermissionListGrid>().Named("group");
 

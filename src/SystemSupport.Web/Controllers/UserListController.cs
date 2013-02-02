@@ -25,12 +25,12 @@ namespace SystemSupport.Web.Controllers
     public class UserListController : KYTController
     {
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;
-        private readonly IEntityListGrid<UserLoginInfo> _grid;
+        private readonly IEntityListGrid<User> _grid;
         private readonly IRepository _repository;
         private readonly IAuthorizationRepository _authorizationRepository;
 
         public UserListController(IDynamicExpressionQuery dynamicExpressionQuery,
-            IEntityListGrid<UserLoginInfo> grid,
+            IEntityListGrid<User> grid,
             IRepository repository,
             IAuthorizationRepository authorizationRepository)
         {
@@ -63,7 +63,7 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = _dynamicExpressionQuery.PerformQuery<UserLoginInfo>(input.filters);
+            var items = _dynamicExpressionQuery.PerformQuery<User>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);
         }

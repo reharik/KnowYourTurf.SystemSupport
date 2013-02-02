@@ -37,15 +37,15 @@ KYT.Views.UserGridView =  KYT.Views.GridView.extend({
         KYT.mixin(this, "setupGridSearchMixin");
     },
     viewLoaded:function(){
-        KYT.vent.bind(this.options.gridId+":Redirect",this.loginAsUser,this);
+        KYT.vent.bind("Login",this.loginAsUser,this);
         this.setupBindings();
     },
     onClose:function(){
-        KYT.vent.unbind(this.options.gridId+":Redirect",this.loginAsUser,this);
+        KYT.vent.unbind("Login",this.loginAsUser,this);
         this.unbindBindings();
     },
     loginAsUser:function(id){
-        KYT.repository.ajaxGet(this.model._getLogin() +"/"+id,null,$.proxy(this.redirectToApp,this));
+        KYT.repository.ajaxGet(this.options.getLogin +"/"+id,null).done($.proxy(this.redirectToApp,this));
     },
     redirectToApp:function(result){
         if(!result.Variable)return null;
@@ -54,7 +54,7 @@ KYT.Views.UserGridView =  KYT.Views.GridView.extend({
     }
 });
 
-KYT.Views.CompanyView = KYT.Views.AjaxFormView.extend({
+KYT.Views.ClientView = KYT.Views.AjaxFormView.extend({
     events:_.extend({
         'click .emailTemplates': "emailTemplates"
     }, KYT.Views.AjaxFormView.prototype.events),

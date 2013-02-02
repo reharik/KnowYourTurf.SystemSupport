@@ -14,13 +14,13 @@
 
         protected override Grid<LoginStatistics> BuildGrid()
         {
-            GridBuilder.DisplayFor(x => x.User.FullNameLNF);
-            GridBuilder.DisplayFor(x => x.CreatedDate);
-            GridBuilder.DisplayFor(x => x.BrowserType);
-            GridBuilder.DisplayFor(x => x.BrowserVersion);
+            GridBuilder.DisplayFor(x => x.User.FullNameLNF).Width(50);
+            GridBuilder.DisplayFor(x => x.CreatedDate).Width(25);
+            GridBuilder.DisplayFor(x => x.BrowserType).Width(25);
+            GridBuilder.DisplayFor(x => x.BrowserVersion).Width(25);
             GridBuilder.DisplayFor(x => x.UserAgent);
-            GridBuilder.DisplayFor(x => x.UserHostName);
-            GridBuilder.DisplayFor(x => x.UserHostAddress);
+            GridBuilder.DisplayFor(x => x.UserHostName).Width(25);
+            GridBuilder.DisplayFor(x => x.UserHostAddress).Width(25);
             return this;
         }
     }
