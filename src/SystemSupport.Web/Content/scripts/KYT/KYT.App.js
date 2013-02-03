@@ -48,6 +48,7 @@ KYT.addInitializer(function(){
 
 KYT.bind("initialize:after", function(){
     KYT.State.set({"application":"systemsupport"});
+    KYT.State.set({"ClientId":0});
     if (Backbone.history){
         Backbone.history.start();
     }
