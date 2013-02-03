@@ -11,22 +11,15 @@ KYT.Header = (function(KYT, Backbone){
 
     Header.HeaderView = Backbone.View.extend({
         events:{
-            'click #userSettings' : 'userSettings'
+            'click #userSettings' : 'userSettings',
+            'change #headerClientList' : 'headerClientList'
         },
         initialize: function(){
             this.setupAppSelectionEvents();
-            this.setupGlobalSettings();
         },
-        setupGlobalSettings:function(){
-          $("a[rel^='prettyPhoto']").live('mouseover', function()
-            {
-                if (!$(this).data('init'))
-                {
-                    $(this).data('init', true);
-                    $(this).prettyPhoto({theme: 'light_rounded', show_title:false,deeplinking:false});
-                    $(this).trigger('mouseover');
-                }
-            });  
+        headerClientList:function(){
+            var clientEntityId = this.options.model.ClientEntityId();
+            KYT.State.set("ClientId",clientEntityId);
         },
         userSettings:function(e){
             e.preventDefault();
