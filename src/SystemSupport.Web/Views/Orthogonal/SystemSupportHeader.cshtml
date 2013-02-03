@@ -1,20 +1,31 @@
 ﻿@using SystemSupport.Web
 @using SystemSupport.Web.Controllers
+@using CC.Core.Html.CCUI
+@using HtmlTags
 @model HeaderViewModel
  <script type="text/javascript">
+KYT.headerViewModel = {
+    _ClientEntityIdList:@MvcHtmlString.Create(JsonUtil.ToJson(@Model._ClientEntityIdList)),
+    ClientEntityId: @Model.ClientEntityId,
+    EntityId:0,
+    _Title:""
+    }
 </script>
             
     <div id="main-header">
         <span id="login-links">
-         @if (Model.LoggedIn)
+            @if (Model.LoggedIn)
             {
-            <a href="" class="first" id="userSettings">@Model.User.FullName</a>
-            <a href="">Help</a>
-            @Html.ActionLink(WebLocalizationKeys.LOG_OUT.ToString(), "Logout", "Login")
+                <a href="" class="first" id="userSettings">@Model.User.FullName</a>
+                <a href="">Help</a>
+                @Html.ActionLink(WebLocalizationKeys.LOG_OUT.ToString(), "Logout", "Login")
             }
-        else
-        {
+            else
+            {
                 @Html.ActionLink(WebLocalizationKeys.SIGN_IN.ToString(), "Login", "Login")
             }
         </span>
+        <div class="row">
+            @Html.SubmissionFor(x=>x.ClientEntityId).Size("5").AddClassToRoot("headerClientList").HideLabel().InputId("ClientEntityId").ToHtmlTag()
+        </div>
     </div>

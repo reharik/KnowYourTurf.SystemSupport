@@ -11,37 +11,23 @@ KYT.Header = (function(KYT, Backbone){
 
     Header.HeaderView = Backbone.View.extend({
         events:{
-            'click #userSettings' : 'userSettings'
+            'click #userSettings' : 'userSettings',
+            'change #ClientEntityId' : 'changeClient'
         },
         initialize: function(){
-            this.setupAppSelectionEvents();
-            this.setupGlobalSettings();
-        },
-        setupGlobalSettings:function(){
-          $("a[rel^='prettyPhoto']").live('mouseover', function()
-            {
-                if (!$(this).data('init'))
-                {
-                    $(this).data('init', true);
-                    $(this).prettyPhoto({theme: 'light_rounded', show_title:false,deeplinking:false});
-                    $(this).trigger('mouseover');
-                }
-            });  
+            KYT.mixin(this, "modelAndElementsMixin");
+            this.rawModel = KYT.headerViewModel;
+            this.bindModelAndElements();
+
+            var self = this;
+            KYT.State.bind("change:application", function(){
+                self.setSelection(KYT.State.get("application"));
+            });
         },
         userSettings:function(e){
             e.preventDefault();
             KYT.State.set({"application":"userSettings"});
             KYT.vent.trigger("route","usersettings",true);
-        },
-        setupAppSelectionEvents: function(){
-            var self = this;
-
-            //when the application is hit, either through the url
-            //or through the application somehow, make sure the
-            // header is showing the right state
-            KYT.State.bind("change:application", function(){
-                self.setSelection(KYT.State.get("application"));
-            });
         },
         // makes the header show the correct menu item as being selected
         setSelection: function(app){
@@ -61,6 +47,7 @@ KYT.Header = (function(KYT, Backbone){
         Header.view = new Header.HeaderView({
             el: $("#main-header")
         });
+        Header.view.render();
         // dont' really need to add this to the KYT.header.show() here
         // cuz there will only ever be one header but if we do you need a
         // surrounding div for main-header and set the KYT.header to that

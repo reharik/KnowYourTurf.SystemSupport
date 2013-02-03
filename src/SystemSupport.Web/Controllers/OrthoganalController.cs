@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using SystemSupport.Web.Menus;
+using CC.Core.DomainTools;
+using CC.Core.Services;
+using Castle.Components.Validator;
 
 namespace SystemSupport.Web.Controllers
 {
@@ -13,18 +16,26 @@ namespace SystemSupport.Web.Controllers
     public class OrthogonalController : KYTController
     {
         private readonly IMenuConfig _menuConfig;
+        private readonly IRepository _repository;
+        private readonly ISelectListItemService _selectListItemService;
 
-        public OrthogonalController(IMenuConfig menuConfig)
+        public OrthogonalController(IMenuConfig menuConfig,
+            IRepository repository,
+            ISelectListItemService selectListItemService)
         {
             _menuConfig = menuConfig;
+            _repository = repository;
+            _selectListItemService = selectListItemService;
         }
 
         public PartialViewResult SystemSupportHeader(ViewModel input)
         {
+            var clientList = _selectListItemService.CreateList<Client>(x => x.Name, x => x.EntityId, true);
             HeaderViewModel model = new HeaderViewModel
             {
                 User = (User)input.User,
                 LoggedIn = User.Identity.IsAuthenticated,
+                _ClientEntityIdList = clientList
             };
             return PartialView(model);
         }
@@ -50,5 +61,8 @@ namespace SystemSupport.Web.Controllers
         public User User { get; set; }
         public bool LoggedIn { get; set; }
         public string UserProfileUrl { get; set; }
+        public IEnumerable<SelectListItem> _ClientEntityIdList { get; set; }
+        public int ClientEntityId { get; set; }
+
     }
 }

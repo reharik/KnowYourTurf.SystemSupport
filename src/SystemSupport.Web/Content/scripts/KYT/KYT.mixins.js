@@ -81,7 +81,7 @@ KYT.mixins.reportMixin = {
     },
     createUrl:function(data){
     }
-}
+};
 
 KYT.mixins.formMixin = {
     events:{
@@ -149,7 +149,6 @@ KYT.mixins.displayMixin = {
         if(!this.options.noBubbleUp) {KYT.WorkflowManager.returnParentView();}
     }
 };
-
 
 KYT.mixins.ajaxDisplayMixin = {
     render:function(){
