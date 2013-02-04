@@ -14,6 +14,8 @@ KYT.Controller = (function(KYT, Backbone){
                return item.route == splat;
            });
            if (!routeToken)return;
+           var clientId = KYT.State.get("ClientId");
+           if(clientId<=0){return;}
            // this is so you don't set the id to the routetoken which stays in scope
            var viewOptions = $.extend({}, routeToken);
            viewOptions.templateUrl = viewOptions.url+"_Template";
@@ -25,10 +27,14 @@ KYT.Controller = (function(KYT, Backbone){
                viewOptions.url += "?ParentId=" + parentId;
                viewOptions.route += "/" + parentId;
            }
-           if (rootId) {
-               viewOptions.url += "&RootId=" + rootId;
-               viewOptions.route += "/" + rootId;
+
+           var rootVar = "?RootId=";
+           if(!viewOptions.url.indexOf("?")){
+               rootVar = "&RootId="
            }
+           viewOptions.url += rootVar + clientId;
+           viewOptions.route += "/" + clientId;
+
            if (_var) {
                viewOptions.url += "&Var=" + _var;
                viewOptions.route += "/" + _var;
@@ -37,7 +43,7 @@ KYT.Controller = (function(KYT, Backbone){
            {
                "entityId":entityId ? entityId : 0,
                "parentId":parentId ? parentId : 0,
-               "rootId":rootId ? rootId : 0,
+               "rootId":clientId,
                "extraVar":_var ? _var : ""
            }
            });

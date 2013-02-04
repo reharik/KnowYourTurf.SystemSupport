@@ -69,7 +69,9 @@ namespace SystemSupport.Web.Controllers
 
         public ActionResult AddUpdate(ViewModel input)
         {
-            var employee = _repository.Query<User>(x => x.EntityId == input.EntityId).Fetch(x => x.UserLoginInfo).FirstOrDefault();
+            var employee = input.EntityId > 0
+                               ? _repository.Query<User>(x => x.EntityId == input.EntityId).Fetch(x => x.UserLoginInfo).FirstOrDefault()
+                               : new User();
             var availableUserRoles = _repository.FindAll<UserRole>().Select(x => new TokenInputDto { id = x.EntityId.ToString(), name = x.Name });
             var selectedUserRoles = employee.UserRoles != null
                                                     ? employee.UserRoles.Select(x => new TokenInputDto { id = x.EntityId.ToString(), name = x.Name })
@@ -112,11 +114,8 @@ namespace SystemSupport.Web.Controllers
             }
             else
             {
-                employee = new User();
-           // need to add a client ddl or something
-                //     var clientId = _sessionContext.GetClientId();
-          //      var client = _repository.Find<Client>(clientId);
-          //      employee.Client = client;
+                var client = _repository.Load<Client>(input.RootId);
+                employee = new User{Client=client};
             }
             employee = mapToDomain(input, employee);
             mapRolesToGroups(employee);

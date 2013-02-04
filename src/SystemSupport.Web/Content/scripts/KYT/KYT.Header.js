@@ -12,10 +12,9 @@ KYT.Header = (function(KYT, Backbone){
     Header.HeaderView = Backbone.View.extend({
         events:{
             'click #userSettings' : 'userSettings',
-            'change #headerClientList' : 'headerClientList'
+            'change #ClientEntityId' : 'clientEntityId'
         },
         initialize: function(){
-            this.setupAppSelectionEvents();
             KYT.mixin(this, "modelAndElementsMixin");
             this.rawModel = KYT.headerViewModel;
             this.bindModelAndElements();
@@ -25,9 +24,12 @@ KYT.Header = (function(KYT, Backbone){
                 self.setSelection(KYT.State.get("application"));
             });
         },
-        headerClientList:function(){
-            var clientEntityId = this.options.model.ClientEntityId();
+        clientEntityId:function(){
+            var clientEntityId = this.model.ClientEntityId();
             KYT.State.set("ClientId",clientEntityId);
+            if(clientEntityId>0){
+                KYT.vent.trigger("route","client/"+clientEntityId,true);
+            }
         },
         userSettings:function(e){
             e.preventDefault();

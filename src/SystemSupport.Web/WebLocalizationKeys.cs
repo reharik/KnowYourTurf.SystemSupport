@@ -45,8 +45,9 @@
         public static readonly StringToken TENANT = new WebLocalizationKeys("TENANT", "Tenant");
         public static readonly StringToken TENANTS = new WebLocalizationKeys("TENANTS", "Tenants");
 
-        public static readonly StringToken CLIENT = new WebLocalizationKeys("CLIENT", "CLIENT");
-        public static readonly StringToken Clients = new WebLocalizationKeys("Clients", "Clients");
+        public static readonly StringToken HOME = new WebLocalizationKeys("HOME", "Home");
+        public static readonly StringToken CLIENT = new WebLocalizationKeys("CLIENT", "Client");
+        public static readonly StringToken CLIENTS = new WebLocalizationKeys("CLIENTS", "Clients");
         public static readonly StringToken REQUIRED = new WebLocalizationKeys("REQUIRED", "Required");
         public static readonly StringToken SUBSCRIPTION_INFORMATION = new WebLocalizationKeys("SUBSCRIPTION_INFORMATION", "Subscription Information");
         public static readonly StringToken VIEW_SUBSCRIPTION_HISTORY = new WebLocalizationKeys("VIEW_SUBSCRIPTION_HISTORY", "View Subscription History");

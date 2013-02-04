@@ -43,7 +43,6 @@ KYT.addInitializer(function(){
 
     // overriding compileTemplate with passthrough function because we are not compiling
     Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate){ return rawTemplate;};
-
 });
 
 KYT.bind("initialize:after", function(){

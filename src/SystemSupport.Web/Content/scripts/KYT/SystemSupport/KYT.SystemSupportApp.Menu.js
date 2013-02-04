@@ -19,6 +19,8 @@ KYT.SystemSupportApp.Menu = (function(KYT, Backbone, $){
             $(this.el).html(result);
             KYT.vent.bind("menuItem", this.menuItemClick,this);
             $(this.el).find(".ccMenu").ccMenu({ backLink: false, width : 220 });
+            //fire first time;
+            this.toggleMenu(KYT.State.get("ClientId"));
 
             KYT.State.bind("change:ClientId", function(e,f,g){
                 that.toggleMenu(KYT.State.get("ClientId"));

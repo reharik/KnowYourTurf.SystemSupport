@@ -34,9 +34,8 @@ namespace SystemSupport.Web.Menus
         private IList<MenuItem> DefaultMenubuilder(IUser user = null)
         {
             return _builder
-
+                .CreateTagNode<ClientController>(WebLocalizationKeys.HOME)
                 .CreateTagNode<UserListController>(WebLocalizationKeys.USERS)
-                .CreateTagNode<ClientListController>(WebLocalizationKeys.Clients)
                 .CreateTagNode<LoginStatisticsListController>(WebLocalizationKeys.LOGIN_INFORMATION)
                 .CreateTagNode<UserGroupListController>(WebLocalizationKeys.PERMISSION_USER_GROUPS)
                 .CreateTagNode<SiteConfigurationController>(WebLocalizationKeys.SYSTEM_OFFLINE)
