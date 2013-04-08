@@ -4,6 +4,7 @@ using SystemSupport.Web.Areas.Permissions.Grids;
 using SystemSupport.Web.Grids;
 using SystemSupport.Web.Menus;
 using SystemSupport.Web.Services;
+using SystemSupport.Web.Services.ViewOptions;
 
 
 namespace SystemSupport.Web
@@ -78,7 +79,6 @@ namespace SystemSupport.Web
 
             For<IRepository>().Use<Repository>();
 
-            For<IMergedEmailFactory>().Use<MergedEmailFactory>();
             For<ITemplateParser>().Use<TemplateParser>();
 
             For<ILocalizationDataProvider>().Use<LocalizationDataProvider>();
@@ -99,6 +99,7 @@ namespace SystemSupport.Web
             For<IEntityListGrid<User>>().Use<UserListGrid>();
             For<IEntityListGrid<PermissionDto>>().Use<UserPermissionListGrid>();
             For<IEntityListGrid<PermissionDto>>().Add<GroupPermissionListGrid>().Named("group");
+            For<IRouteTokenConfig>().Add<SystemSupportRouteTokenList>();
 
 
         }

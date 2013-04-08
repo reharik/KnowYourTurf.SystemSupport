@@ -12,6 +12,8 @@
     <AssemblyName>SystemSupport.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,11 +33,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CC.Core">
-      <HintPath>..\..\..\KnowYourTurf\KnowYourTurf.Core\bin\Debug\CC.Core.dll</HintPath>
+    <Reference Include="CC.Core, Version=1.0.0.39, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CC.Core.1.0.0.39\lib\CC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\..\..\KnowYourTurf\KnowYourTurf.Core\bin\Debug\NHibernate.dll</HintPath>
+    <Reference Include="CC.Core.Utilities, Version=1.0.0.39, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CC.Core.1.0.0.39\lib\CC.Core.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="CC.Security, Version=1.0.0.39, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CC.Core.1.0.0.39\lib\CC.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="CC.UI.Helpers, Version=1.0.0.39, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CC.Core.1.0.0.39\lib\CC.UI.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags, Version=1.0.0.39, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CC.Core.1.0.0.39\lib\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.3.3.4000\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,12 +71,10 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KnowYourTurf\KnowYourTurf.Core\KnowYourTurf.Core.csproj">
-      <Project>{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}</Project>
-      <Name>KnowYourTurf.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

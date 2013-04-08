@@ -80,7 +80,6 @@ namespace SystemSupport.Web
 
             For<IRepository>().Use<Repository>();
 
-            For<IMergedEmailFactory>().Use<MergedEmailFactory>();
             For<ITemplateParser>().Use<TemplateParser>();
 
             For<ILocalizationDataProvider>().Use<LocalizationDataProvider>();
