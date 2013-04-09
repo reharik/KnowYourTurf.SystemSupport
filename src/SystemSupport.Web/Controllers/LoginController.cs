@@ -45,15 +45,14 @@ namespace SystemSupport.Web.Controllers
             {
                 if (input.HasCredentials())
                 {
-                    var redirectUrl = string.Empty;
                     var user = _securityDataService.AuthenticateForUserId(input.UserName, input.Password);
                     if (user != null)
                     {
-                        redirectUrl = _authenticationContext.ThisUserHasBeenAuthenticated(user, input.RememberMe);
+                        _authenticationContext.ThisUserHasBeenAuthenticated(user, input.RememberMe);
                         notification.Success = true;
                         notification.Message = string.Empty;
                         notification.Redirect = true;
-                        notification.RedirectUrl = redirectUrl;
+                        notification.RedirectUrl = "/SystemSupport/Home#/clientlist";;
                     }
                 }
             }

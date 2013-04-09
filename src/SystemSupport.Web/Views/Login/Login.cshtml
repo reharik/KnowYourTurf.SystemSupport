@@ -2,7 +2,6 @@
 @using SystemSupport.Web
 @using CC.Core.Html.CCUI
 @using HtmlTags
-
 @{
     Layout = "";
 }
@@ -70,12 +69,16 @@
                     <div id="messageContainer"></div> 
                     <div class="signin">
                         <div class="form">
-                        <label class="big">@WebLocalizationKeys.SIGN_IN</label>
                         <div class="row">
-                            @Html.SubmissionFor(x => x.UserName).Size("5").ToHtmlTag()
+                            <div class="span10">
+                                <label class="big">@WebLocalizationKeys.SIGN_IN</label>
+                            </div>
                         </div>
                         <div class="row">
-                            @Html.SubmissionFor(x => x.Password).Size("5").ToHtmlTag()
+                            @Html.SubmissionFor(x => x.UserName).Size("10").ToHtmlTag()
+                        </div>
+                        <div class="row">
+                            @Html.SubmissionFor(x => x.Password).Size("10").ToHtmlTag()
                         </div>
                         <div class="row">
                             @Html.SubmissionFor(x => x.RememberMe).Size("5").AddClassToInputRoot("reverse").AddClassToLabelRoot("ckbLabel").InlineReverse().ToHtmlTag()

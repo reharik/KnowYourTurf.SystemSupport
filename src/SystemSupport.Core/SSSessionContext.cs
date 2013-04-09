@@ -20,7 +20,9 @@ namespace SystemSupport.Core
 
         public override int GetClientId()
         {
-            RetrieveSessionItem("ClientId")
+            var sessionItem = RetrieveSessionItem("ClientId");
+            if (sessionItem!=null) { return (Int32)sessionItem.SessionObject; }
+            return 0;
         }
     }
 }

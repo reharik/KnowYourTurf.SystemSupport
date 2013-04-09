@@ -82,6 +82,7 @@ namespace SystemSupport.Web
 
             For<ITemplateParser>().Use<TemplateParser>();
 
+            For<ISessionContext>().Use<SSSessionContext>();
             For<ILocalizationDataProvider>().Use<LocalizationDataProvider>();
             For<IAuthenticationContext>().Use<WebAuthenticationContext>();
 

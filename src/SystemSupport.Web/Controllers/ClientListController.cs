@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace SystemSupport.Web.Controllers
 {
@@ -19,18 +20,22 @@ namespace SystemSupport.Web.Controllers
         private readonly IEntityListGrid<Client> _grid;
         private readonly IDynamicExpressionQuery _dynamicExpressionQuery;
         private readonly IRepository _repository;
+        private readonly ISessionContext _sessionContext;
 
         public ClientListController(IEntityListGrid<Client> grid,
             IDynamicExpressionQuery dynamicExpressionQuery,
-            IRepository repository)
+            IRepository repository,
+            ISessionContext sessionContext)
         {
             _grid = grid;
             _dynamicExpressionQuery = dynamicExpressionQuery;
             _repository = repository;
+            _sessionContext = sessionContext;
         }
 
         public ActionResult ItemList(ViewModel input)
         {
+            _sessionContext.RemoveSessionItem("ClientId");
             var addUpdateUrl = UrlContext.GetUrlForAction<ClientController>(x => x.AddUpdate(null));
             var url = UrlContext.GetUrlForAction<ClientListController>(x=>x.Items(null));
             var gridDefinition = _grid.GetGridDefinition(url, input.User);

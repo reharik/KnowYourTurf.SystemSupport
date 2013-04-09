@@ -56,6 +56,24 @@ KYT.Views.UserGridView =  KYT.Views.View.extend({
     }
 });
 
+KYT.Views.ClientListView =  KYT.Views.View.extend({
+    initialize: function(){
+        KYT.mixin(this, "ajaxGridMixin");
+        KYT.mixin(this, "setupGridMixin");
+        KYT.mixin(this, "defaultGridEventsMixin");
+        KYT.mixin(this, "setupGridSearchMixin");
+    },
+    viewLoaded:function(){
+        KYT.State.set({"ClientId":0});
+        $("#left-navigation").hide();
+        this.setupBindings();
+    },
+    onClose:function(){
+        this.unbindBindings();
+    }
+});
+
+
 KYT.Views.ClientFormView = KYT.Views.View.extend({
     initialize:function(){
         KYT.mixin(this, "formMixin");
@@ -63,6 +81,7 @@ KYT.Views.ClientFormView = KYT.Views.View.extend({
         KYT.mixin(this, "modelAndElementsMixin");
     },
     viewLoaded:function(){
+        KYT.vent.bind("form:"+this.id+":success",this.saveSuccessful);
         KYT.State.set({"ClientId":this.model.EntityId()});
         $("#left-navigation").show();
     },
@@ -72,8 +91,15 @@ KYT.Views.ClientFormView = KYT.Views.View.extend({
         'click .emailTemplates': "emailTemplates"
     },
     emailTemplates:function(){
-        var id = $(this.el).find("#EntityId").val();
-        KYT.vent.trigger("route","emailtemplatelist/"+id,true);
+        KYT.vent.trigger("route","emailtemplatelist/"+this.model.EntityId(),true);
+    },
+    saveSuccessful:function(result) {
+        if(result.Variable){
+            KYT.State.set({"ClientId":result.Variable});
+        }
+    },
+    onClose:function(){
+        KYT.vent.unbind("form:"+this.id+":success",this.saveSuccessful);
     }
 });
 

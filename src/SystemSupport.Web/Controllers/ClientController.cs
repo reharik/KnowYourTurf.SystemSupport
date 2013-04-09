@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using CC.Core.CoreViewModelAndDTOs;
 using CC.Core.Html;
 using KnowYourTurf.Core.Domain;
+using KnowYourTurf.Core.Services;
 
 namespace SystemSupport.Web.Controllers
 {
@@ -20,12 +22,15 @@ namespace SystemSupport.Web.Controllers
     {
         private readonly IRepository _repository;
         private readonly ISaveEntityService _saveEntityService;
+        private readonly ISessionContext _sessionContext;
 
         public ClientController(IRepository repository,
-            ISaveEntityService saveEntityService)
+            ISaveEntityService saveEntityService,
+            ISessionContext sessionContext)
         {
             _repository = repository;
             _saveEntityService = saveEntityService;
+            _sessionContext = sessionContext;
         }
 
         public ActionResult AddUpdate_Template(ViewModel input)
@@ -35,7 +40,16 @@ namespace SystemSupport.Web.Controllers
 
         public ActionResult AddUpdate(ViewModel input)
         {
-            Client item = input.EntityId > 0 ? _repository.Find<Client>(input.EntityId) : new Client();
+            Client item;
+            if (input.EntityId > 0)
+            {
+                item = _repository.Find<Client>(input.EntityId);
+                _sessionContext.AddUpdateSessionItem(new SessionItem{SessionKey = "ClientId",SessionObject = input.EntityId});
+            }
+            else
+            {
+                item = new Client();
+            }
             var model = Mapper.Map<Client, ClientViewModel>(item);
             model._Title = WebLocalizationKeys.CLIENT.ToString();
             model._saveUrl = UrlContext.GetUrlForAction<ClientController>(x => x.Save(null));
@@ -48,6 +62,11 @@ namespace SystemSupport.Web.Controllers
             mapItem(ref item, input);
             var crudManger = _saveEntityService.ProcessSave(item);
             var notification = crudManger.Finish();
+            if (input.EntityId <= 0)
+            {
+                _sessionContext.AddUpdateSessionItem(new SessionItem { SessionKey = "ClientId", SessionObject = item.EntityId});
+                notification.Variable = item.EntityId.ToString();
+            }
             return Json(notification);
         }
 
