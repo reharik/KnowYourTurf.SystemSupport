@@ -15,7 +15,7 @@ KYT.Controller = (function(KYT, Backbone){
            });
            if (!routeToken)return;
            var clientId = KYT.State.get("ClientId");
-           if(clientId<=0){return;}
+           if(splat != "clientlist" && splat != "client" && clientId<=0){return;}
            // this is so you don't set the id to the routetoken which stays in scope
            var viewOptions = $.extend({}, routeToken);
            viewOptions.templateUrl = viewOptions.url+"_Template";

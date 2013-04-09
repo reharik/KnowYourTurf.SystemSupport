@@ -65,6 +65,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SSSessionContext.cs" />
     <Compile Include="SysUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\KnowYourTurf\KnowYourTurf.Core\KnowYourTurf.Core.csproj">
+      <Project>{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}</Project>
+      <Name>KnowYourTurf.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

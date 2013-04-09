@@ -3,7 +3,6 @@
 namespace SystemSupport.Web.Grids
 {
     using CC.Core.Html.Grid;
-
     using KnowYourTurf.Core.Domain;
     using KnowYourTurf.Core.Services;
 

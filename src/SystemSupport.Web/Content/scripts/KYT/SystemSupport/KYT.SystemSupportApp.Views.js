@@ -1,15 +1,17 @@
 
 
-KYT.Views.UserSettingsView =  KYT.Views.AjaxFormView.extend({
+KYT.Views.UserSettingsView =  KYT.Views.View.extend({
     initialize:function(){
         KYT.mixin(this, "formMixin");
         KYT.mixin(this, "ajaxFormMixin");
         KYT.mixin(this, "modelAndElementsMixin");
     },
 
-    events:_.extend({
+    events:{
+        'click #save' : 'saveItem',
+        'click #cancel' : 'cancel',
         "click #viewHistory":"viewHistory"
-    }, KYT.Views.AjaxFormView.prototype.events),
+    },
 
     viewLoaded:function(){
         $(this.el).find(".content-header").append('<button id="permissions" title="Permissions"></button>');
@@ -29,7 +31,7 @@ KYT.Views.UserSettingsView =  KYT.Views.AjaxFormView.extend({
     }
 });
 
-KYT.Views.UserGridView =  KYT.Views.GridView.extend({
+KYT.Views.UserGridView =  KYT.Views.View.extend({
     initialize: function(){
         KYT.mixin(this, "ajaxGridMixin");
         KYT.mixin(this, "setupGridMixin");
@@ -54,11 +56,21 @@ KYT.Views.UserGridView =  KYT.Views.GridView.extend({
     }
 });
 
-KYT.Views.ClientView = KYT.Views.AjaxFormView.extend({
-    events:_.extend({
+KYT.Views.ClientFormView = KYT.Views.View.extend({
+    initialize:function(){
+        KYT.mixin(this, "formMixin");
+        KYT.mixin(this, "ajaxFormMixin");
+        KYT.mixin(this, "modelAndElementsMixin");
+    },
+    viewLoaded:function(){
+        KYT.State.set({"ClientId":this.model.EntityId()});
+        $("#left-navigation").show();
+    },
+    events:{
+        'click #save' : 'saveItem',
+        'click #cancel' : 'cancel',
         'click .emailTemplates': "emailTemplates"
-    }, KYT.Views.AjaxFormView.prototype.events),
-
+    },
     emailTemplates:function(){
         var id = $(this.el).find("#EntityId").val();
         KYT.vent.trigger("route","emailtemplatelist/"+id,true);
