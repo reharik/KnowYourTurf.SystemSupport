@@ -51,6 +51,7 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
+            _repository.DisableFilter("ClientConditionFilter");
             var items = _dynamicExpressionQuery.PerformQuery<Client>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);

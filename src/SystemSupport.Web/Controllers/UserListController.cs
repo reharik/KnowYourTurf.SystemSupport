@@ -28,19 +28,16 @@ namespace SystemSupport.Web.Controllers
         private readonly IEntityListGrid<User> _grid;
         private readonly IRepository _repository;
         private readonly IAuthorizationRepository _authorizationRepository;
-        private readonly ISessionContext _sessionContext;
 
         public UserListController(IDynamicExpressionQuery dynamicExpressionQuery,
             IEntityListGrid<User> grid,
             IRepository repository,
-            IAuthorizationRepository authorizationRepository,
-            ISessionContext sessionContext)
+            IAuthorizationRepository authorizationRepository)
         {
             _dynamicExpressionQuery = dynamicExpressionQuery;
             _grid = grid;
             _repository = repository;
             _authorizationRepository = authorizationRepository;
-            _sessionContext = sessionContext;
         }
 
         public ActionResult ItemList(ListViewModel input)
@@ -66,7 +63,7 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = _dynamicExpressionQuery.PerformQuery<User>(input.filters,x=>x.ClientId==_sessionContext.GetClientId());
+            var items = _dynamicExpressionQuery.PerformQuery<User>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);
         }

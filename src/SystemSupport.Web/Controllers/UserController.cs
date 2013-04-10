@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Castle.Components.Validator;
 
 using StructureMap;
+using xVal.ServerSide;
 
 namespace SystemSupport.Web.Controllers
 {
@@ -105,7 +106,7 @@ namespace SystemSupport.Web.Controllers
             return new CustomJsonResult(notification);
         }
 
-        public JsonResult Save(UserViewModel input)
+        public ActionResult Save(UserViewModel input)
         {
             User employee;
             if (input.EntityId > 0)
@@ -118,6 +119,11 @@ namespace SystemSupport.Web.Controllers
                 employee = new User{Client=client};
             }
             employee = mapToDomain(input, employee);
+            ActionResult json;
+            if (!validateUserRolesAndPasswords(employee, input, out json))
+            {
+                return json;
+            }
             mapRolesToGroups(employee);
             handlePassword(input, employee);
             if (input.DeleteImage)
@@ -137,50 +143,71 @@ namespace SystemSupport.Web.Controllers
             return new CustomJsonResult(notification, "text/plain");
         }
 
+        private bool validateUserRolesAndPasswords(User employee, UserViewModel input, out ActionResult json)
+        {
+            var notification = new Notification { Success = true };
+            if (!employee.UserRoles.Any() || employee.UserRoles.FirstOrDefault()==null)
+            {
+                notification.Success = false;
+                notification.Errors = new List<ErrorInfo>
+                                          {
+                                              new ErrorInfo(WebLocalizationKeys.USER_ROLES.ToString(),
+                                                            WebLocalizationKeys.SELECT_AT_LEAST_ONE_USER_ROLE.ToString())
+                                          };
+            }
+            if (input.UserLoginInfoPassword!= input.PasswordConfirmation)
+            {
+                notification.Success = false;
+                var errorInfo = new ErrorInfo(WebLocalizationKeys.PASSWORD.ToString(), WebLocalizationKeys.PASSWORD_CONFIRMATION_MUST_MATCH.ToString());
+                if (notification.Errors != null) { notification.Errors.Add(errorInfo); }
+                else { notification.Errors = new List<ErrorInfo> { errorInfo }; }
+            }
+
+            json = !notification.Success ? new CustomJsonResult(notification) : null;
+            return notification.Success;
+        }
+
         private void mapRolesToGroups(User employee)
         {
-            foreach (var x in employee.UserRoles)
+            if (employee.UserRoles.Any(x => x.Name == UserType.Administrator.Key))
             {
-                if (x.Name == UserType.Administrator.Key)
-                {
-                    _authorizationRepository.AssociateUserWith(employee, UserType.Administrator.Key);
-                }
-                else if (!employee.UserRoles.Any(r => r.Name == x.Name))
-                {
-                    _authorizationRepository.DetachUserFromGroup(employee, UserType.Administrator.Key);
-                }
-                if (x.Name == UserType.Employee.Key)
-                {
-                    _authorizationRepository.AssociateUserWith(employee, UserType.Employee.Key);
-                }
-                else if (!employee.UserRoles.Any(r => r.Name == x.Name))
-                {
-                    _authorizationRepository.DetachUserFromGroup(employee, UserType.Employee.Key);
-                }
-                if (x.Name == UserType.Facilities.Key)
-                {
-                    _authorizationRepository.AssociateUserWith(employee, UserType.Facilities.Key);
-                }
-                else if (!employee.UserRoles.Any(r => r.Name == x.Name))
-                {
-                    _authorizationRepository.DetachUserFromGroup(employee, UserType.Facilities.Key);
-                }
-                if (x.Name == UserType.KYTAdmin.Key)
-                {
-                    _authorizationRepository.AssociateUserWith(employee, UserType.KYTAdmin.Key);
-                }
-                else if (!employee.UserRoles.Any(r => r.Name == x.Name))
-                {
-                    _authorizationRepository.DetachUserFromGroup(employee, UserType.KYTAdmin.Key);
-                }
-                if (x.Name == UserType.MultiTenant.Key)
-                {
-                    _authorizationRepository.AssociateUserWith(employee, UserType.MultiTenant.Key);
-                }
-                else if (!employee.UserRoles.Any(r => r.Name == x.Name))
-                {
-                    _authorizationRepository.DetachUserFromGroup(employee, UserType.MultiTenant.Key);
-                }
+                _authorizationRepository.AssociateUserWith(employee, UserType.Administrator.Key);
+            }
+            else
+            {
+                _authorizationRepository.DetachUserFromGroup(employee, UserType.Administrator.Key);
+            }
+            if (employee.UserRoles.Any(x => x.Name == UserType.Employee.Key))
+            {
+                _authorizationRepository.AssociateUserWith(employee, UserType.Employee.Key);
+            }
+            else
+            {
+                _authorizationRepository.DetachUserFromGroup(employee, UserType.Employee.Key);
+            }
+            if (employee.UserRoles.Any(x => x.Name == UserType.Facilities.Key))
+            {
+                _authorizationRepository.AssociateUserWith(employee, UserType.Facilities.Key);
+            }
+            else
+            {
+                _authorizationRepository.DetachUserFromGroup(employee, UserType.Facilities.Key);
+            }
+            if (employee.UserRoles.Any(x => x.Name == UserType.KYTAdmin.Key))
+            {
+                _authorizationRepository.AssociateUserWith(employee, UserType.KYTAdmin.Key);
+            }
+            else
+            {
+                _authorizationRepository.DetachUserFromGroup(employee, UserType.KYTAdmin.Key);
+            }
+            if (employee.UserRoles.Any(x => x.Name == UserType.MultiTenant.Key))
+            {
+                _authorizationRepository.AssociateUserWith(employee, UserType.MultiTenant.Key);
+            }
+            else
+            {
+                _authorizationRepository.DetachUserFromGroup(employee, UserType.MultiTenant.Key);
             }
         }
 

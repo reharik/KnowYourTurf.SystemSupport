@@ -15,7 +15,10 @@ KYT.Controller = (function(KYT, Backbone){
            });
            if (!routeToken)return;
            var clientId = KYT.State.get("ClientId");
-           if(splat != "clientlist" && splat != "client" && clientId<=0){return;}
+           if(splat != "clientlist"
+               && splat != "client"
+               && (rootId === undefined || rootId<=0 )
+               && (clientId === undefined || clientId<=0 )){return;}
            // this is so you don't set the id to the routetoken which stays in scope
            var viewOptions = $.extend({}, routeToken);
            viewOptions.templateUrl = viewOptions.url+"_Template";
@@ -26,6 +29,12 @@ KYT.Controller = (function(KYT, Backbone){
            if (parentId) {
                viewOptions.url += "?ParentId=" + parentId;
                viewOptions.route += "/" + parentId;
+           }
+//          this is to handle f5 situation
+           if((clientId === undefined || clientId<=0 ) && rootId>0)
+           {
+               KYT.State.set({"ClientId":rootId});
+               $("#left-navigation").show();
            }
 
            var rootVar = "?RootId=";

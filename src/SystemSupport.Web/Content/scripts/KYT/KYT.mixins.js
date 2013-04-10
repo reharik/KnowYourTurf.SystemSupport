@@ -124,7 +124,7 @@ KYT.mixins.formMixin = {
             if(result.Errors && !$.noty.getByViewIdAndElementId(this.cid)){
                 _.each(result.Errors,function(item){
                     $(this.errorSelector).noty({type: "error", text:item.ErrorMessage, viewId:this.cid});
-                })
+                },this)
             }
         }else{
             if(result.Message){

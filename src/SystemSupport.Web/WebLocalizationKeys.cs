@@ -102,7 +102,11 @@
         public static readonly StringToken STATUS = new WebLocalizationKeys("STATUS", "Status");
         public static readonly StringToken EMPLOYEE_INFORMATION = new WebLocalizationKeys("EMPLOYEE_INFORMATION", "Employee Information");
         public static readonly StringToken FORGOT_YOUR_PASSWORD = new WebLocalizationKeys("FORGOT_YOUR_PASSWORD", "Forgot your password?");
-    
+
+        public static readonly StringToken USER_ROLES = new WebLocalizationKeys("USER_ROLES", "UserRoles");
+        public static readonly StringToken SELECT_AT_LEAST_ONE_USER_ROLE = new WebLocalizationKeys("SELECT_AT_LEAST_ONE_USER_ROLE", "You must select at least one User Role.");
+        public static readonly StringToken PASSWORD_CONFIRMATION_MUST_MATCH = new WebLocalizationKeys("PASSWORD_CONFIRMATION_MUST_MATCH", "Password confirmation must match password");
+
     
     }
 }

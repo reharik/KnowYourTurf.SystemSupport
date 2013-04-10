@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{20D23A31-18C0-4DDA-BEC9-6FD5A8AE0B17}"
 	ProjectSection(SolutionItems) = preProject
-		SystemSupport.Web\appSettings.config = SystemSupport.Web\appSettings.config
+		..\AppSettings.config = ..\AppSettings.config
 		..\build.bat = ..\build.bat
 		..\build.proj = ..\build.proj
 		ftp_systemsupport_files_to_QA.txt = ftp_systemsupport_files_to_QA.txt
