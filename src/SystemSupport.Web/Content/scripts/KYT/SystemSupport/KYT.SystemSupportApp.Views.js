@@ -64,7 +64,6 @@ KYT.Views.ClientListView =  KYT.Views.View.extend({
         KYT.mixin(this, "setupGridSearchMixin");
     },
     viewLoaded:function(){
-        KYT.State.set({"ClientId":0});
         $("#left-navigation").hide();
         this.setupBindings();
     },
@@ -82,7 +81,6 @@ KYT.Views.ClientFormView = KYT.Views.View.extend({
     },
     viewLoaded:function(){
         KYT.vent.bind("form:"+this.id+":success",this.saveSuccessful);
-        KYT.State.set({"ClientId":this.model.EntityId()});
         $("#left-navigation").show();
     },
     events:{
@@ -95,7 +93,6 @@ KYT.Views.ClientFormView = KYT.Views.View.extend({
     },
     saveSuccessful:function(result) {
         if(result.Variable){
-            KYT.State.set({"ClientId":result.Variable});
         }
     },
     onClose:function(){

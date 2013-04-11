@@ -4,6 +4,7 @@ using SystemSupport.Web.Menus;
 using CC.Core.DomainTools;
 using CC.Core.Services;
 using Castle.Components.Validator;
+using KnowYourTurf.Core.Services;
 
 namespace SystemSupport.Web.Controllers
 {
@@ -17,25 +18,25 @@ namespace SystemSupport.Web.Controllers
     {
         private readonly IMenuConfig _menuConfig;
         private readonly IRepository _repository;
-        private readonly ISelectListItemService _selectListItemService;
+        private readonly ISessionContext _sessionContext;
 
         public OrthogonalController(IMenuConfig menuConfig,
             IRepository repository,
-            ISelectListItemService selectListItemService)
+            ISessionContext sessionContext)
         {
             _menuConfig = menuConfig;
             _repository = repository;
-            _selectListItemService = selectListItemService;
+            _sessionContext = sessionContext;
         }
 
         public PartialViewResult SystemSupportHeader(ViewModel input)
         {
-            var clientList = _selectListItemService.CreateList<Client>(x => x.Name, x => x.EntityId, true);
+            var clientId = _sessionContext.GetClientId();
             HeaderViewModel model = new HeaderViewModel
             {
                 User = (User)input.User,
                 LoggedIn = User.Identity.IsAuthenticated,
-                _ClientEntityIdList = clientList
+                ClientEntityId = clientId
             };
             return PartialView(model);
         }

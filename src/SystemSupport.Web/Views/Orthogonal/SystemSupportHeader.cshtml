@@ -16,6 +16,7 @@ KYT.headerViewModel = {
         <span id="login-links">
             @if (Model.LoggedIn)
             {
+                @Html.HiddenFor(x=>x.ClientEntityId)
                 <a href="" class="first" id="userSettings">@Model.User.FullName</a>
                 <a href="">Help</a>
                 @Html.ActionLink(WebLocalizationKeys.LOG_OUT.ToString(), "Logout", "Login")

@@ -44,6 +44,7 @@ namespace SystemSupport.Web.Controllers
         private readonly IAuthorizationRepository _authorizationRepository;
         private readonly IFileHandlerService _fileHandlerService;
         private readonly IUpdateCollectionService _updateCollectionService;
+        private readonly ISessionContext _sessionContext;
 
         public UserController(
             IRepository repository,
@@ -52,7 +53,8 @@ namespace SystemSupport.Web.Controllers
             ISelectListItemService selectListItemService,
             IAuthorizationRepository authorizationRepository,
             IFileHandlerService fileHandlerService,
-            IUpdateCollectionService updateCollectionService)
+            IUpdateCollectionService updateCollectionService,
+            ISessionContext sessionContext)
         {
             _repository = repository;
             _saveEntityService = saveEntityService;
@@ -61,6 +63,7 @@ namespace SystemSupport.Web.Controllers
             _authorizationRepository = authorizationRepository;
             _fileHandlerService = fileHandlerService;
             _updateCollectionService = updateCollectionService;
+            _sessionContext = sessionContext;
         }
 
         public ActionResult AddUpdate_Template(ViewModel input)
@@ -115,8 +118,8 @@ namespace SystemSupport.Web.Controllers
             }
             else
             {
-                var client = _repository.Load<Client>(input.RootId);
-                employee = new User{Client=client};
+                var client = _repository.Find<Client>(_sessionContext.GetClientId());
+                employee = new User{Client=client,ClientId = client.EntityId};
             }
             employee = mapToDomain(input, employee);
             ActionResult json;
@@ -232,7 +235,7 @@ namespace SystemSupport.Web.Controllers
             }
             employee.UserLoginInfo.LoginName = model.Email;
             _updateCollectionService.Update(employee.UserRoles, model.UserRoles, employee.AddUserRole, employee.RemoveUserRole);
-            if (!employee.UserRoles.Any())
+            if (!employee.UserRoles.Any() || employee.UserRoles.FirstOrDefault() == null)
             {
                 var emp = _repository.Query<UserRole>(x => x.Name == UserType.Employee.ToString()).FirstOrDefault();
                 employee.AddUserRole(emp);
