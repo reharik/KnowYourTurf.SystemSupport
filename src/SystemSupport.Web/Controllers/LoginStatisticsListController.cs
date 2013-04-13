@@ -31,7 +31,7 @@ namespace SystemSupport.Web.Controllers
         {
             var url = UrlContext.GetUrlForAction<LoginStatisticsListController>(x => x.Items(null));
             var gridDefinition = _grid.GetGridDefinition(url,viewModel.User);
-            var model = new ListViewModel
+            var model = new LoginListViewModel
             {
                 _Title = WebLocalizationKeys.LOGIN_INFORMATION.ToString(),
                 gridDef= gridDefinition,
@@ -41,9 +41,17 @@ namespace SystemSupport.Web.Controllers
 
         public JsonResult Items(GridItemsRequestModel input)
         {
-            var items = _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters,x=>x.ClientId==input.RootId);
+            var items = _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);
+        }
+    }
+
+    public class LoginListViewModel:ListViewModel
+    {
+        public string LoginTime
+        {
+            get { return DateCreated.ToString("MM\DD\YYYY HH:MM tt"); }
         }
     }
 }

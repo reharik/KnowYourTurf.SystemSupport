@@ -25,29 +25,20 @@ KYT.addInitializer(function(){
         KYT.Routing.showRoute(route,triggerRoute);
     });
 
-    $(".content-outer").delegate("a[rel^='prettyPhoto']",'mouseover', function()
-    {
-        if (!$(this).data('init'))
-        {
-            $(this).data('init', true);
-            $(this).prettyPhoto({theme: 'light_rounded', show_title:false,deeplinking:false});
-            $(this).trigger('mouseover');
-        }
-    });
 
 //    CC.notification = new CC.NotificationService();
 //    CC.notification.render($("#messageContainer").get(0));
     Backbone.Marionette.TemplateCache.prototype.loadTemplate = function(templateId){
         return KYT.repository.ajaxGet(this.url, this.data);
-    };
+    },
 
     // overriding compileTemplate with passthrough function because we are not compiling
     Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate){ return rawTemplate;};
+
 });
 
 KYT.bind("initialize:after", function(){
     KYT.State.set({"application":"systemsupport"});
-//    KYT.State.set({"ClientId":0});
     if (Backbone.history){
         Backbone.history.start();
     }

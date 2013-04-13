@@ -3,14 +3,6 @@
 @using CC.Core.Html.CCUI
 @using HtmlTags
 @model HeaderViewModel
- <script type="text/javascript">
-KYT.headerViewModel = {
-    _ClientEntityIdList:@MvcHtmlString.Create(JsonUtil.ToJson(@Model._ClientEntityIdList)),
-    ClientEntityId: @Model.ClientEntityId,
-    EntityId:0,
-    _Title:""
-    }
-</script>
             
     <div id="main-header">
         <span id="login-links">
@@ -26,7 +18,4 @@ KYT.headerViewModel = {
                 @Html.ActionLink(WebLocalizationKeys.SIGN_IN.ToString(), "Login", "Login")
             }
         </span>
-        <div class="row">
-            @Html.SubmissionFor(x=>x.ClientEntityId).Size("5").AddClassToRoot("headerClientList").HideLabel().InputId("ClientEntityId").ToHtmlTag()
-        </div>
     </div>

@@ -107,6 +107,8 @@
         public static readonly StringToken SELECT_AT_LEAST_ONE_USER_ROLE = new WebLocalizationKeys("SELECT_AT_LEAST_ONE_USER_ROLE", "You must select at least one User Role.");
         public static readonly StringToken PASSWORD_CONFIRMATION_MUST_MATCH = new WebLocalizationKeys("PASSWORD_CONFIRMATION_MUST_MATCH", "Password confirmation must match password");
 
+        public static readonly StringToken LOGIN_TIME = new WebLocalizationKeys("LOGIN_TIME", "Login Time");
+
     
     }
 }
