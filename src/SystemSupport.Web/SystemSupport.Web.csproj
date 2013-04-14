@@ -114,6 +114,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="KnowYourTurf.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\KnowYourTurf.Core.0.132\lib\KnowYourTurf.Core.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
@@ -455,10 +459,6 @@
     <Content Include="Views\Orthogonal\SystemSupportMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KnowYourTurf\KnowYourTurf.Core\KnowYourTurf.Core.csproj">
-      <Project>{3cbc320b-ecd3-4a3c-a6a3-704a23e6d1d7}</Project>
-      <Name>KnowYourTurf.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SystemSupport.Core\SystemSupport.Core.csproj">
       <Project>{6F644C87-3BF2-4109-8731-F257104DC45A}</Project>
       <Name>SystemSupport.Core</Name>
