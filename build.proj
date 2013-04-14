@@ -1,4 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Test" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+<PropertyGroup>
+    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\packages\MSBuildTasks.1.4.0.56\tools</MSBuildCommunityTasksPath>
+    <SourcePath>$(MSBuildProjectDirectory)</SourcePath>
+</PropertyGroup>
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
+
+
+
+<!-- ____________PUBLIC TASKS_______________  -->
+
+  <Target Name="Test" DependsOnTargets="_build;_unitTests" />
+  <Target Name="Push" DependsOnTargets="_pushToQA;" />
+
+ <Target Name="_pushToQA" >
+    <ItemGroup>
+      <WebFiles Include="src\SystemSupport.Web\**\*.*;"
+                Exclude="src\SystemSupport.Web\obj\**;
+						 src\SystemSupport.Web\**\*.cs;
+						 src\SystemSupport.Web\**\.idea\**;
+						 src\SystemSupport.Web\**\.svn\**;
+						 src\SystemSupport.Web\**\*.pdb;
+						 src\SystemSupport.Web\*.*;
+						 src\SystemSupport.Web\Tenant\**;
+						 src\SystemSupport.Web\App_Data\**;
+						 src\SystemSupport.Web\Logs\**;"
+    />
+
+    </ItemGroup>
+    <Time>
+      <Output TaskParameter="Month" PropertyName="Month" />
+      <Output TaskParameter="Day" PropertyName="Day" />
+      <Output TaskParameter="Year" PropertyName="Year" />
+      <Output TaskParameter="Hour" PropertyName="Hour" />
+      <Output TaskParameter="Minute" PropertyName="Minute" />
+    </Time>
+
+    <PropertyGroup>
+      <OutputDirectory>f:\WebSites\KnowYourTurf_SystemSupport_QA</OutputDirectory>
+    </PropertyGroup>
+
+   <MakeDir Directories="$(OutputDirectory)"  />
+   <Copy SourceFiles="@(WebFiles)" DestinationFolder="$(OutputDirectory)\%(RecursiveDir)" />
+     
+   <Zip Files="@(WebFiles)"
+      WorkingDirectory="f:\WebSites\BackUp\KnowYourTurf_SystemSupport_QA"
+      ZipFileName="f:\WebSites\BackUp\KnowYourTurf_SystemSupport_QA\KYTWeb$(Month).$(Day).$(Year)-$(Hour).$(Minute).zip"
+      ZipLevel="9" />
+ </Target>
+
+  <Target Name="myTemp" >
+    <Message Text="Current Date and Time: $(Month).$(Day).$(Year)-$(Hour).$(Minute)" />
+  </Target>
+  
+  <Target Name="_build">
+    <MSBuild Projects="$(SourcePath)\SystemSupport.sln" Properties="Configuration=Debug" ContinueOnError="false" />
+<Message Text="$(MSBuildExtensionsPath)"></Message>
+<Message Text="$(MSBuildProjectDirectory)"></Message>
+<Message Text="$(MSBuildProjectDirectory)\packages\MSBuildTasks.1.4.0.56\tools"></Message>
+  </Target>
+  
+  <ItemGroup>
+    <UnitTestAssemblies Include="$(SourcePath)\SystemSupport.Test\bin\Debug\SystemSupport.Test.dll;" />
+  </ItemGroup>
+  <Target Name="_unitTests">
+    <NUnit Assemblies="@(UnitTestAssemblies)" ToolPath="$(MSBuildProjectDirectory)\packages\NUnit.Runners.2.6.2\tools" />
+  </Target>
+
+
+</Project>
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>

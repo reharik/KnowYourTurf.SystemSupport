@@ -37,8 +37,8 @@ namespace SystemSupport.Web.Menus
                 .CreateTagNode<ClientListController>(WebLocalizationKeys.HOME)
                 .CreateTagNode<UserListController>(WebLocalizationKeys.USERS)
                 .CreateTagNode<LoginStatisticsListController>(WebLocalizationKeys.LOGIN_INFORMATION)
-                .CreateTagNode<UserGroupListController>(WebLocalizationKeys.PERMISSION_USER_GROUPS)
-                .CreateTagNode<SiteConfigurationController>(WebLocalizationKeys.SYSTEM_OFFLINE)
+//                .CreateTagNode<UserGroupListController>(WebLocalizationKeys.PERMISSION_USER_GROUPS)
+//                .CreateTagNode<SiteConfigurationController>(WebLocalizationKeys.SYSTEM_OFFLINE)
                 .MenuTree(user);
         }
     }

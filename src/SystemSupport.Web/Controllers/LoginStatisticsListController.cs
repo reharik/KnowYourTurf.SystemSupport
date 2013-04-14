@@ -1,5 +1,7 @@
 using System;
+using System.Globalization;
 using System.Web.Mvc;
+using CC.Core;
 
 namespace SystemSupport.Web.Controllers
 {
@@ -31,7 +33,7 @@ namespace SystemSupport.Web.Controllers
         {
             var url = UrlContext.GetUrlForAction<LoginStatisticsListController>(x => x.Items(null));
             var gridDefinition = _grid.GetGridDefinition(url,viewModel.User);
-            var model = new LoginListViewModel
+            var model = new ListViewModel
             {
                 _Title = WebLocalizationKeys.LOGIN_INFORMATION.ToString(),
                 gridDef= gridDefinition,
@@ -44,14 +46,6 @@ namespace SystemSupport.Web.Controllers
             var items = _dynamicExpressionQuery.PerformQuery<LoginStatistics>(input.filters);
             var gridItemsViewModel = _grid.GetGridItemsViewModel(input.PageSortFilter, items, input.User);
             return new CustomJsonResult(gridItemsViewModel);
-        }
-    }
-
-    public class LoginListViewModel:ListViewModel
-    {
-        public string LoginTime
-        {
-            get { return DateCreated.ToString("MM\DD\YYYY HH:MM tt"); }
         }
     }
 }
