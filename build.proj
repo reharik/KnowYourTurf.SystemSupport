@@ -3,7 +3,7 @@
 
 <PropertyGroup>
     <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\packages\MSBuildTasks.1.4.0.56\tools</MSBuildCommunityTasksPath>
-    <SourcePath>$(MSBuildProjectDirectory)</SourcePath>
+    <SourcePath>$(MSBuildProjectDirectory)\src</SourcePath>
 </PropertyGroup>
   <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
 
