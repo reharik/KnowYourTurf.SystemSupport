@@ -6,7 +6,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		..\AppSettings.config = ..\AppSettings.config
 		..\build.bat = ..\build.bat
 		..\build.proj = ..\build.proj
-		ftp_systemsupport_files_to_QA.txt = ftp_systemsupport_files_to_QA.txt
 		..\Gen.bat = ..\Gen.bat
 	EndProjectSection
 EndProject
@@ -23,7 +22,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{81B71F
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowYourTurf.Core", "..\..\KnowYourTurf\KnowYourTurf.Core\KnowYourTurf.Core.csproj", "{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{B978A46C-FDA2-429E-86B6-37980904AD28}"
+	ProjectSection(SolutionItems) = preProject
+		Build.proj = Build.proj
+		.build\MSBuild.Community.Tasks.dll = .build\MSBuild.Community.Tasks.dll
+		.build\MSBuild.Community.Tasks.targets = .build\MSBuild.Community.Tasks.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +47,6 @@ Global
 		{6F644C87-3BF2-4109-8731-F257104DC45A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F644C87-3BF2-4109-8731-F257104DC45A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F644C87-3BF2-4109-8731-F257104DC45A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CBC320B-ECD3-4A3C-A6A3-704A23E6D1D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

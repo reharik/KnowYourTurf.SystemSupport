@@ -104,7 +104,8 @@ namespace SystemSupport.Web.Controllers
                                    {
                                        Success = true,
                                        Variable = user.UserLoginInfo.ByPassToken.ToString(),
-                                       EntityId = user.EntityId
+                                       EntityId = user.EntityId,
+                                       Data = _sessionContext.GetUserId()
                                    };
             return new CustomJsonResult(notification);
         }

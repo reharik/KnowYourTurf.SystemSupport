@@ -51,7 +51,7 @@ KYT.Views.UserGridView =  KYT.Views.View.extend({
     },
     redirectToApp:function(result){
         if(!result.Variable)return null;
-        var url = this.options.RedirectUrl + "/login/log_in?guid=" + result.Variable + "&EntityId=" + result.EntityId + "&bypass=true";
+        var url = this.options.RedirectUrl + "/login/log_in?guid=" + result.Variable + "&EntityId=" + result.EntityId + "&bypass=true&ImpersonatorId="+result.Data;
         window.open(url);
     }
 });
