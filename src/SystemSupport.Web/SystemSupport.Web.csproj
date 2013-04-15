@@ -102,7 +102,7 @@
     </Reference>
     <Reference Include="KnowYourTurf.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\KnowYourTurf.Core.0.132\lib\KnowYourTurf.Core.dll</HintPath>
+      <HintPath>..\packages\KnowYourTurf.Core.1.0.0.133\lib\KnowYourTurf.Core.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
