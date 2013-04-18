@@ -236,11 +236,11 @@ namespace SystemSupport.Web.Controllers
             }
             employee.UserLoginInfo.LoginName = model.Email;
             _updateCollectionService.Update(employee.UserRoles, model.UserRoles, employee.AddUserRole, employee.RemoveUserRole);
-            if (!employee.UserRoles.Any() || employee.UserRoles.FirstOrDefault() == null)
-            {
-                var emp = _repository.Query<UserRole>(x => x.Name == UserType.Employee.ToString()).FirstOrDefault();
-                employee.AddUserRole(emp);
-            }
+//            if (!employee.UserRoles.Any() || employee.UserRoles.FirstOrDefault() == null)
+//            {
+//                var emp = _repository.Query<UserRole>(x => x.Name == UserType.Employee.ToString()).FirstOrDefault();
+//                employee.AddUserRole(emp);
+//            }
             return employee;
         }
 
