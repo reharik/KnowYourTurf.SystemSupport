@@ -1,19 +1,17 @@
-﻿namespace SystemSupport.Web.Config
-{
-    using AutoMapper;
-    using CC.Core.CoreViewModelAndDTOs;
-    using KnowYourTurf.Core.Domain;
-    using KnowYourTurf.Core.Domain.Persistence;
-    using KnowYourTurf.Web.Controllers;
-    using SystemSupport.Web.Controllers;
+﻿using AutoMapper;
+using KnowYourTurf.Core.Domain;
+using SystemSupport.Web.Controllers;
 
+namespace SystemSupport.Web.Config
+{
     public class AutoMapperBootstrapper
     {
         public virtual void BootstrapAutoMapper()
         {
             Mapper.CreateMap<User, UserViewModel>().ForMember(d => d.UserRoles, o => o.Ignore());
             Mapper.CreateMap<Client, ClientViewModel>();
-//            Mapper.CreateMap<Photo, PhotoDto>();
+            Mapper.CreateMap<Field, FieldViewModel>();
+            //            Mapper.CreateMap<Photo, PhotoDto>();
 //            Mapper.CreateMap<Task, TaskViewModel>().ForMember(d => d.Equipment, o => o.Ignore()).ForMember(d => d.Employees, o => o.Ignore());
 //            Mapper.CreateMap<Task, DisplayTaskViewModel>();
 //            Mapper.CreateMap<Equipment, EquipmentViewModel>();

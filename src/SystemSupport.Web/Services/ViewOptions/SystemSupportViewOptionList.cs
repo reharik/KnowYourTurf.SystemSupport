@@ -33,6 +33,12 @@ namespace SystemSupport.Web.Services.ViewOptions
             _builder.TokenForList<ClientListController>(x => x.ItemList(null)).End();
             _builder.TokenForForm<ClientController>(x => x.AddUpdate(null)).End();
 
+            _builder.TokenForList<FieldListController>(x => x.ItemList(null)).End();
+            _builder.TokenForForm<FieldController>(x => x.AddUpdate(null)).ViewName("FieldView").End();
+
+            _builder.TokenForList<SiteListController>(x => x.ItemList(null)).End();
+            _builder.TokenForForm<SiteController>(x => x.AddUpdate(null)).End();
+
             _builder.TokenForList<EmailTemplateListController>(x => x.ItemList(null)).End();
             _builder.TokenForForm<EmailTemplateController>(x => x.AddUpdate(null)).End();
 

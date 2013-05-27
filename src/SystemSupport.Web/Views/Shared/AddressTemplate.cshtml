@@ -10,7 +10,7 @@
             @Html.SubmissionFor(x => x.Address.IsDefault).AddClassToRoot("checkbox half ").InlineReverse().ToHtmlTag()
         </div>
         <div class="fieldRow">
-            @Html.SubmissionFor(x => x.Address.Address1).AddClassToRoot("full-row").LabelDisplay(WebLocalizationKeys.ADDRESS1).ToHtmlTag()
+            @Html.SubmissionFor(x => x.Address.Address).AddClassToRoot("full-row").LabelDisplay(WebLocalizationKeys.ADDRESS1).ToHtmlTag()
         </div>
         <div class="fieldRow">
             @Html.SubmissionFor(x => x.Address.Address2).AddClassToRoot("full-row").LabelDisplay(WebLocalizationKeys.ADDRESS2).ToHtmlTag()

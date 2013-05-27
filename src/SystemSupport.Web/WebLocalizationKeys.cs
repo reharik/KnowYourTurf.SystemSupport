@@ -108,6 +108,11 @@
         public static readonly StringToken PASSWORD_CONFIRMATION_MUST_MATCH = new WebLocalizationKeys("PASSWORD_CONFIRMATION_MUST_MATCH", "Password confirmation must match password");
 
         public static readonly StringToken LOGIN_TIME = new WebLocalizationKeys("LOGIN_TIME", "Login Time");
+        public static readonly StringToken FIELDS = new WebLocalizationKeys("FIELDS", "Fields");
+        public static readonly StringToken SELECT_COLOR_TO_ASSOCIATE_WITH_THIS_ITEM = new WebLocalizationKeys("SELECT_COLOR_TO_ASSOCIATE_WITH_THIS_ITEM", "Select A Color To Associate With This Item");
+        public static readonly StringToken ABBR = new WebLocalizationKeys("ABBR", "Abbr.");
+        public static readonly StringToken SITES = new WebLocalizationKeys("SITES", "Sites");
+        public static readonly StringToken SITE = new WebLocalizationKeys("SITE", "Site");
 
     
     }

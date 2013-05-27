@@ -1,0 +1,22 @@
+﻿@using SystemSupport.Web
+@using CC.Core.Html.CCUI
+@model SystemSupport.Web.Controllers.FieldViewModel
+
+@{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
+
+        <div class="row">
+            @Html.SubmissionFor(x => x.Name).Size("5").ToHtmlTag()
+            @Html.SubmissionFor(x => x.Abbreviation).LabelDisplay(WebLocalizationKeys.ABBR).Size("2").ToHtmlTag()
+            @Html.SubmissionFor(x => x.Size).Size("3").ToHtmlTag()
+        </div>
+        <div class="row">
+        </div>
+            <div class="row">
+                <h5 class="stdTxtColor ml2 span10">@WebLocalizationKeys.SELECT_COLOR_TO_ASSOCIATE_WITH_THIS_ITEM.ToString()</h5>
+        </div>
+        <div class="row">
+            @Html.SubmissionFor(x => x.FieldColor).HideLabel().Size("10").InputId("colorPickerInput").ToHtmlTag()
+        </div>
+        <div class="row">
+            @Html.SubmissionFor(x => x.Description).Size("10").ToHtmlTag()
+        </div>

@@ -16,5 +16,15 @@
 
 <div class="row">
     @Html.SubmissionFor(x=>x.Name).Size("5").ToHtmlTag()
-    @Html.SubmissionFor(x => x.ZipCode).Size("5").ToHtmlTag()
+    @Html.SubmissionFor(x=>x.TaxRate).Size("2").ToHtmlTag()
+    @Html.SubmissionFor(x=>x.NumberOfSites).Size("3").ToHtmlTag()
+</div>
+<div class="row">
+    @Html.SubmissionFor(x => x.Address).Size("5").ToHtmlTag()
+    @Html.SubmissionFor(x => x.Address2).Size("5").ToHtmlTag()
+</div>
+<div class="row">
+    @Html.SubmissionFor(x => x.City).Size("5").ToHtmlTag()
+    @Html.SubmissionFor(x => x.State).Size("3").ToHtmlTag()
+    @Html.SubmissionFor(x => x.ZipCode).Size("2").ToHtmlTag()
 </div>

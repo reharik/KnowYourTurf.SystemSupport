@@ -1,0 +1,12 @@
+﻿@using SystemSupport.Web
+@using CC.Core.Html.CCUI
+@model SystemSupport.Web.Controllers.SiteViewModel
+@{ Layout = "~/Views/Shared/_FormLayout.cshtml"; }
+
+        <div class="row">
+            @Html.SubmissionFor(x => x.Name).Size("5").ToHtmlTag()
+            @Html.SubmissionFor(x => x.SiteOperation).Size("5").ToHtmlTag()
+        </div>
+        <div class="row">
+            @Html.SubmissionFor(x => x.Description).Size("10").ToHtmlTag()
+        </div>

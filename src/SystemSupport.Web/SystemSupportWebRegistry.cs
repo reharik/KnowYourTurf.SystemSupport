@@ -4,6 +4,7 @@ using SystemSupport.Web.Areas.Permissions.Grids;
 using SystemSupport.Web.Grids;
 using SystemSupport.Web.Menus;
 using SystemSupport.Web.Services;
+using KnowYourTurf.Core.Html.Menu;
 
 
 namespace SystemSupport.Web
@@ -54,18 +55,17 @@ namespace SystemSupport.Web
                 x.AssemblyContainingType(typeof(MergedEmailFactory));
                 x.AssemblyContainingType<Entity>();
                 x.AssemblyContainingType<IUser>();
-                x.AssemblyContainingType<HtmlConventionRegistry>();
+                x.AssemblyContainingType<TagProfileExpression>();
 //                x.AddAllTypesOf<ICalculatorHandler>().NameBy(t => t.Name);
                 x.AddAllTypesOf<RulesEngineBase>().NameBy(t => t.Name);
 //                x.AddAllTypesOf<IEmailTemplateHandler>().NameBy(t => t.Name);
                 x.WithDefaultConventions();
             });
 
-            For<HtmlConventionRegistry>().Add<KYTKOHtmlConventionRegistry>();
+            For<TagProfileExpression>().Add<KYTKOHtmlConventionRegistry>();
             For<IServiceLocator>().Singleton().Use(new StructureMapServiceLocator());
             For<IElementNamingConvention>().Use<CCElementNamingConvention>();
             For(typeof(ITagGenerator<>)).Use(typeof(TagGenerator<>));
-            For<TagProfileLibrary>().Singleton();
             For<INHSetupConfig>().Use<KYTNHSetupConfig>();
 
             For<ISessionFactoryConfiguration>().Singleton()

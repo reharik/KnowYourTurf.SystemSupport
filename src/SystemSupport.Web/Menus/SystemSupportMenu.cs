@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using SystemSupport.Web.Areas.Permissions.Controllers;
 using SystemSupport.Web.Controllers;
+using KnowYourTurf.Core.Html.Menu;
 
 namespace SystemSupport.Web.Menus
 {
@@ -11,11 +12,10 @@ namespace SystemSupport.Web.Menus
 
     public class SystemSupportMenu : IMenuConfig
     {
-        private readonly IMenuBuilder _builder;
-
+        private readonly IKYTMenuBuilder _builder;
         private readonly ISessionContext _sessionContext;
 
-        public SystemSupportMenu(IMenuBuilder builder, ISessionContext sessionContext)
+        public SystemSupportMenu(IKYTMenuBuilder builder, ISessionContext sessionContext)
         {
             _builder = builder;
             _sessionContext = sessionContext;
@@ -36,8 +36,11 @@ namespace SystemSupport.Web.Menus
             return _builder
                 .CreateTagNode<ClientListController>(WebLocalizationKeys.HOME)
                 .CreateTagNode<UserListController>(WebLocalizationKeys.USERS)
+                .CreateTagNode<SiteListController>(WebLocalizationKeys.SITES)
                 .CreateTagNode<LoginStatisticsListController>(WebLocalizationKeys.LOGIN_INFORMATION)
-//                .CreateTagNode<UserGroupListController>(WebLocalizationKeys.PERMISSION_USER_GROUPS)
+                .SiteGroupForIteration()
+                    .CreateTagNode<FieldListController>(WebLocalizationKeys.FIELDS)
+                .EndCategoryGroup()//                .CreateTagNode<UserGroupListController>(WebLocalizationKeys.PERMISSION_USER_GROUPS)
 //                .CreateTagNode<SiteConfigurationController>(WebLocalizationKeys.SYSTEM_OFFLINE)
                 .MenuTree(user);
         }

@@ -179,3 +179,15 @@ KYT.Views.UserGroupView = KYT.Views.AjaxFormView.extend({
     }
 });
 
+
+KYT.Views.FieldView = KYT.Views.View.extend({
+    initialize:function(){
+        KYT.mixin(this, "formMixin");
+        KYT.mixin(this, "ajaxFormMixin");
+        KYT.mixin(this, "modelAndElementsMixin");
+    },
+    viewLoaded:function(){
+        this.addIdsToModel();
+        $('#colorPickerInput',this.el).miniColors();
+    }
+});
